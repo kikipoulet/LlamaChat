@@ -1,0 +1,103 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" x:DataType="pages:ResourcesVM" DataContext="{x:Static pages:ResourcesVM.Instance}"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:pages="clr-namespace:LlamaChat.Pages"
+             xmlns:theme="clr-namespace:SukiUI.Theme;assembly=SukiUI"
+             xmlns:classes="clr-namespace:LlamaChat.Classes"
+             xmlns:controls="clr-namespace:SukiUI.Controls;assembly=SukiUI"
+             xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+             xmlns:system="clr-namespace:System;assembly=System.Runtime"
+             xmlns:chats="clr-namespace:LlamaChat.Pages.Chats"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="850"
+             x:Class="LlamaChat.Pages.Models.ModelsView">
+  <UserControl.Resources>
+      <chats:FilenameToStringConverter x:Key="FilenameConverter"></chats:FilenameToStringConverter>
+  </UserControl.Resources>
+        <StackPanel Margin="50">
+            <TextBlock Classes="h2" Text="Installed Models"></TextBlock>
+            
+            <ScrollViewer Margin="0,20,0,0">
+               <ItemsControl  theme:ItemsControlExtensions.AnimatedScroll="True" ItemsSource="{Binding  Models}">
+                   <ItemsControl.ItemsPanel>
+                       <ItemsPanelTemplate>
+                           <StackPanel Spacing="40" Orientation="Horizontal" />
+                       </ItemsPanelTemplate>
+                   </ItemsControl.ItemsPanel>
+                   <ItemsControl.DataTemplates>
+               <DataTemplate DataType="system:String">
+                   <controls:GlassCard IsInteractive="True">
+                       <DockPanel>
+                           <Image VerticalAlignment="Top" Margin="5,8,5,5" Source="/Assets/icons8-artificial-intelligence-48.png" Height="24" Width="24" DockPanel.Dock="Left"></Image>
+                           <StackPanel Margin="9,9,0,0">
+                           <TextBlock FontSize="19" FontWeight="DemiBold" Text="{Binding, Converter={StaticResource FilenameConverter}}"></TextBlock>
+                               <TextBlock FontSize="15" Margin="0,20,0,0" Text="{Binding}"></TextBlock>
+                           </StackPanel>
+                       </DockPanel>
+                   </controls:GlassCard>
+               </DataTemplate>
+           </ItemsControl.DataTemplates>
+       </ItemsControl>
+            </ScrollViewer>
+            
+            <StackPanel IsVisible="{Binding !Models.Count}" HorizontalAlignment="Center" >
+                <Image Source="/Assets/icons8-empty-96.png" Height="96" Width="96"></Image>
+                <TextBlock Foreground="{DynamicResource SukiLowText}" Text="No Model Installed yet."></TextBlock>
+            </StackPanel>
+            
+            <TextBlock Classes="h2" Margin="0,65,0,0" Text="Search Models"></TextBlock>
+            
+            <ScrollViewer Margin="0,28,0,0">
+                <ScrollViewer.Resources>
+                    <chats:BoolToDoubleConverter x:Key="BtoD"></chats:BoolToDoubleConverter>
+                </ScrollViewer.Resources>
+                <ItemsControl  theme:ItemsControlExtensions.AnimatedScroll="True" ItemsSource="{Binding   ModelsToDownload}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.DataTemplates>
+                        <DataTemplate DataType="classes:AiModel">
+                            <controls:GlassCard Margin="0,15,40,15" Width="460" Height="210" >
+                                <Panel>
+                                    <StackPanel Margin="9,9,0,0">
+                                        <DockPanel>
+                                            <controls:GlassCard Padding="0" Margin="0,-15" CornerRadius="70" Height="50" Width="50"  DockPanel.Dock="Right">
+                                                <TextBlock Classes="h3" FontSize="18" Margin="0,1,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Size}"></TextBlock>
+                                            </controls:GlassCard>
+                                            <TextBlock FontSize="19" FontWeight="DemiBold" Text="{Binding Name}"></TextBlock>
+                                        </DockPanel>
+                                            <TextBlock TextWrapping="Wrap" FontSize="15" Margin="0,25,0,0" Text="{Binding Description}"></TextBlock>
+                                    </StackPanel>
+                                    
+                                    <Button IsVisible="{Binding !IsInstalled}" Opacity="{Binding !IsDownloading, Converter={StaticResource BtoD}}" Click="DownloadModel" Tag="{Binding }" VerticalAlignment="Bottom" HorizontalAlignment="Right" Classes="Flat" Content="Download" Margin="0,12,0,0">
+                                        <Button.Transitions>
+                                            <Transitions>
+                                                <DoubleTransition Property="Opacity" Duration="0:0:0.3"></DoubleTransition>
+                                            </Transitions>
+                                        </Button.Transitions>
+                                    </Button>
+                                    <ProgressBar  Opacity="{Binding IsDownloading, Converter={StaticResource BtoD}}" ShowProgressText="True"  Margin="10" VerticalAlignment="Bottom" Minimum="0" Maximum="100" Value="{Binding DownloadValue}">
+                                        <ProgressBar.Transitions>
+                                            <Transitions>
+                                                <DoubleTransition Property="Opacity" Duration="0:0:0.3"></DoubleTransition>
+                                            </Transitions>
+                                        </ProgressBar.Transitions>
+                                    </ProgressBar>
+                                    
+                                    <StackPanel Opacity="{Binding !IsDownloading, Converter={StaticResource BtoD}}" Margin="6" IsVisible="{Binding IsInstalled}" Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+                                        <avalonia:MaterialIcon Margin="8,0" Foreground="{DynamicResource SukiLowText}" Kind="Check" Height="15" Width="15"></avalonia:MaterialIcon>
+
+                                        <TextBlock Foreground="{DynamicResource SukiLowText}" Text="Installed" ></TextBlock>
+                                        </StackPanel> 
+                                    </Panel>
+                            </controls:GlassCard>
+                        </DataTemplate>
+                    </ItemsControl.DataTemplates>
+                </ItemsControl>
+            </ScrollViewer>
+            
+        </StackPanel>
+    
+</UserControl>

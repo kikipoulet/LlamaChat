@@ -1,0 +1,75 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mdxaml="https://github.com/whistyun/Markdown.Avalonia.Tight"
+        xmlns:ctxt="clr-namespace:ColorTextBlock.Avalonia;assembly=ColorTextBlock.Avalonia"
+        xmlns:avedit="https://github.com/avaloniaui/avaloniaedit"
+        xmlns:full="https://github.com/whistyun/Markdown.Avalonia">
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <full:MarkdownScrollViewer  xml:space="preserve">
+ 
+<full:MarkdownScrollViewer.Styles>
+
+<Style Selector="ctxt|CCode">
+    <Style.Setters>
+
+        <Setter Property="BorderBrush"         Value="Green"/>
+        <Setter Property="BorderThickness"     Value="0"/>
+        <Setter Property="Padding"             Value="2"/>
+      
+        <Setter Property="Foreground"          Value="DarkGreen" />
+        <Setter Property="Background"          Value="LightGreen" />
+    </Style.Setters>
+</Style>
+
+<Style Selector="Border.CodeBlock">
+    <Style.Setters>
+<Setter Property="CornerRadius" Value="10" />
+        <Setter Property="BorderBrush"     Value="{DynamicResource SukiCardBackground}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+<Setter Property="Padding" Value="12"></Setter>
+        <Setter Property="Margin"          Value="5,10"/>
+        <Setter Property="Background"      Value="{DynamicResource SukiCardBackground}"/>
+    </Style.Setters>
+</Style>
+
+
+
+<Style Selector="TextBlock.CodeBlock">
+    <Style.Setters>
+        <Setter Property="Foreground"      Value="{DynamicResource SukiText}"/>
+    
+    </Style.Setters>
+</Style>
+
+<Style Selector="avedit|TextEditor">
+    <Setter Property="Background"          Value="Pink" />
+</Style>
+
+
+ 
+</full:MarkdownScrollViewer.Styles>
+
+```java
+    # Heading1
+# Heading1
+# Heading1
+# Heading1
+# Heading1
+```
+    Hello Markdown.Avalonia!
+
+    * listitem1
+    * listitem2
+
+    | col1 | col2 | col3 |
+    |------|------|------|
+    | one  |------|------|
+    | two  |------|------|
+
+  </full:MarkdownScrollViewer>
+        </Border>
+    </Design.PreviewWith>
+
+    <!-- Add Styles Here -->
+</Styles>

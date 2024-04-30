@@ -1,0 +1,105 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+             xmlns:controls="clr-namespace:SukiUI.Controls;assembly=SukiUI"
+             xmlns:pages="clr-namespace:LlamaChat.Pages"
+             xmlns:chats="clr-namespace:LlamaChat.Pages.Chats"
+
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="LlamaChat.Pages.Chats.EmptyChatView">
+    <UserControl.Resources>
+        <chats:BoolToDoubleConverter x:Key="BtoD" />
+        <chats:FilenameToStringConverter x:Key="FilenameConverter"></chats:FilenameToStringConverter>
+    </UserControl.Resources>
+    <controls:GlassCard VerticalAlignment="Center" MaxHeight="600" MaxWidth="500" Margin="60">
+        <controls:BusyArea Name="BA" BusyText="Loading Model ..">
+        <DockPanel x:DataType="pages:ResourcesVM" DataContext="{x:Static pages:ResourcesVM.Instance}" >
+        <DockPanel.Styles>
+           
+            <Style Selector="controls|GlassCard.Primary /template/ Border#PART_BorderCard">
+                <Setter Property="Background" >
+                    <Setter.Value>
+                        <LinearGradientBrush EndPoint="1,1" StartPoint="0,0">
+                            <GradientStop Color="#052f54eb" Offset="0" />
+                            <GradientStop Color="#332f54eb" Offset="1" />
+                        </LinearGradientBrush>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </DockPanel.Styles>
+   
+        <TextBlock Classes="h2" Text="New Chat" DockPanel.Dock="Top" Margin="15"></TextBlock>
+        <Button IsVisible="{Binding Models.Count}"  Height="45"  CornerRadius="50" Margin="10" Click="newChat" Classes="Large" DockPanel.Dock="Bottom" >
+            <StackPanel Orientation="Horizontal" Spacing="18" Margin="10,0">
+                <avalonia:MaterialIcon Kind="Plus" Foreground="{DynamicResource SukiText}" />
+                <TextBlock Text="Start New Chat" FontSize="17"></TextBlock>
+            </StackPanel>
+        </Button>
+            <Panel>
+              
+          <ListBox
+                            Classes="Void Stack"
+                            ItemsSource="{Binding Models}"
+                            Margin="5,40"
+                            Name="ListModels"
+                            SelectionMode="AlwaysSelected"
+                            VerticalAlignment="Top">
+                            <ListBox.Styles>
+                                <Style Selector="avalonia|MaterialIcon">
+                                    <Setter Property="Opacity" Value="1" />
+                                </Style>
+                            </ListBox.Styles>
+                            <ListBox.Resources>
+                                <Color x:Key="SukiPrimaryColor">#adc6ff</Color>
+                                <Color x:Key="SukiPrimaryColorGradient">#adc6ff</Color>
+                            </ListBox.Resources>
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <VirtualizingStackPanel />
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <controls:GlassCard IsInteractive="True"  CornerRadius="12" Classes.Primary="{Binding Path=IsSelected, Mode=TwoWay, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBoxItem}}" Padding="12" Margin="0,5">
+                                        <controls:GlassCard.Resources>
+                                            <Color x:Key="SukiBackground">Transparent</Color>
+                                        </controls:GlassCard.Resources>
+                                        <DockPanel Margin="0,3,0,2" >
+                                            
+                                            <Image DockPanel.Dock="Left" VerticalAlignment="Top" Margin="3,2,15,6" Source="/Assets/icons8-artificial-intelligence-48.png" Height="24" Width="24"></Image>
+                                            
+                                        
+                                            <Image Source="/Assets/icons8-check-48.png" DockPanel.Dock="Right" Opacity="{Binding Path=IsSelected, Converter={StaticResource BtoD},RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBoxItem}}"  Height="24" Width="24" Margin="5,0" VerticalAlignment="Center" >
+                                                <Image.Transitions>
+                                                    <Transitions>
+                                                        <DoubleTransition Property="Opacity" Duration="0:0:0.3"></DoubleTransition>
+                                                    </Transitions>
+                                                </Image.Transitions>
+                                            </Image>
+                                    
+
+                                            <TextBlock
+                                                FontSize="15"
+                                                FontWeight="DemiBold" Foreground="{DynamicResource SukiText}"
+                                                VerticalAlignment="Center"
+                                                Text="{Binding ., Converter={StaticResource FilenameConverter }}" />
+                                          
+
+
+                                           
+                                            </DockPanel>
+                                   </controls:GlassCard>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                <StackPanel Margin="0,30,0,40" VerticalAlignment="Center" IsVisible="{Binding !Models.Count}" HorizontalAlignment="Center" >
+                    <Image Source="/Assets/icons8-empty-96.png" Height="96" Width="96"></Image>
+                    <TextBlock Foreground="{DynamicResource SukiLowText}" Text="No Model Installed yet."></TextBlock>
+                </StackPanel>
+            </Panel>
+    </DockPanel>
+        </controls:BusyArea>
+        </controls:GlassCard>
+</UserControl>

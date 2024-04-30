@@ -1,0 +1,67 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+        <ApplicationManifest>app.manifest</ApplicationManifest>
+        <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+       
+    </PropertyGroup>
+
+    <ItemGroup>
+        <TrimmerRootAssembly Include="Avalonia.Themes.Fluent"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Avalonia" Version="11.1.0-beta2" />
+        <PackageReference Include="Avalonia.Desktop" Version="11.1.0-beta2" />
+        <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
+        <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.1.0-beta2" />
+        <PackageReference Include="Avalonia.Themes.Fluent" Version="11.1.0-beta2" />
+        <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+        <PackageReference Include="HeroIcons.Avalonia" Version="1.0.2" />
+        <PackageReference Include="LLamaSharp" Version="0.11.2" />
+        <PackageReference Include="LLamaSharp.Backend.Cpu" Version="0.11.2" />
+        <PackageReference Include="Markdown.Avalonia" Version="11.0.3-a1" />
+        <PackageReference Include="Markdown.Avalonia.SyntaxHigh" Version="11.0.3-a1" />
+        <PackageReference Include="Markdown.Avalonia.Tight" Version="11.0.3-a1" />
+        <PackageReference Include="Material.Icons.Avalonia" Version="2.1.9" />
+        <PackageReference Include="MvvmStupidPocHelper" Version="10.0.0" />
+        <PackageReference Include="Projektanker.Icons.Avalonia.FontAwesome" Version="9.3.0" />
+        <PackageReference Include="SukiUI" Version="6.0.0-beta5" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Assets\icons8-settings-96.png" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Assets\icons8-settings-48.png" />
+      <None Remove="Assets\icons8-speech-48.png" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Assets\undraw_texting_re_l11n.svg" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Assets\clip-woman-communicating-with-chatbot.png" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Assets\icons8-llama-96.png" />
+      <None Remove="Assets\icons8-llama-64.png" />
+      <AvaloniaResource Include="Assets\icons8-llama-64.png" />
+      <None Remove="Assets\icons8-check-48.png" />
+      <AvaloniaResource Include="Assets\icons8-check-48.png" />
+      <None Remove="Assets\icons8-user-48.png" />
+      <AvaloniaResource Include="Assets\icons8-user-48.png" />
+      <None Remove="Assets\icons8-artificial-intelligence-48.png" />
+      <AvaloniaResource Include="Assets\icons8-artificial-intelligence-48.png" />
+      <None Remove="Assets\icons8-send-48.png" />
+      <AvaloniaResource Include="Assets\icons8-send-48.png" />
+      <None Remove="Assets\icons8-empty-96.png" />
+      <AvaloniaResource Include="Assets\icons8-empty-96.png" />
+    </ItemGroup>
+</Project>

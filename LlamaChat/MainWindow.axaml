@@ -1,0 +1,52 @@
+<suki:SukiWindow xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+
+        xmlns:suki="clr-namespace:SukiUI.Controls;assembly=SukiUI"
+        xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+        xmlns:chats="clr-namespace:LlamaChat.Pages.Chats"
+        xmlns:models="clr-namespace:LlamaChat.Pages.Models" Width="1300" Height="650"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="LlamaChat.MainWindow"
+        Title="LLama Chat">
+    <suki:SukiWindow.LogoContent>
+       
+    </suki:SukiWindow.LogoContent>
+    <suki:SukiSideMenu>
+
+        <suki:SukiSideMenu.HeaderContent>
+            <Image Source="/Assets/icons8-llama-64.png" Height="48" Width="48" Margin="0,5,0,30" HorizontalAlignment="Center"></Image>
+        </suki:SukiSideMenu.HeaderContent>
+
+        <suki:SukiSideMenu.Items>
+          
+            <suki:SukiSideMenuItem Header="Chat">
+                <suki:SukiSideMenuItem.Icon>
+                    <avalonia:MaterialIcon Height="22" Width="22" Foreground="{DynamicResource SukiText}" Kind="ChatOutline" />
+                </suki:SukiSideMenuItem.Icon>
+                <suki:SukiSideMenuItem.PageContent>
+                    <chats:ChatView />
+                </suki:SukiSideMenuItem.PageContent>
+            </suki:SukiSideMenuItem>
+            
+            <suki:SukiSideMenuItem Header="Models">
+                <suki:SukiSideMenuItem.Icon>
+                    <avalonia:MaterialIcon Height="22" Width="22" Foreground="{DynamicResource SukiText}" Kind="ScatterPlotOutline" />
+                </suki:SukiSideMenuItem.Icon>
+                <suki:SukiSideMenuItem.PageContent>
+                    <models:ModelsView />
+                </suki:SukiSideMenuItem.PageContent>
+            </suki:SukiSideMenuItem>
+            
+            <suki:SukiSideMenuItem Header="Settings">
+                <suki:SukiSideMenuItem.Icon>
+                    <avalonia:MaterialIcon Height="22" Width="22" Foreground="{DynamicResource SukiText}" Kind="Cogs" />
+                </suki:SukiSideMenuItem.Icon>
+                <suki:SukiSideMenuItem.PageContent>
+                    <TextBlock Margin="200" Text="Statistics Page"></TextBlock>
+                </suki:SukiSideMenuItem.PageContent>
+            </suki:SukiSideMenuItem>
+        </suki:SukiSideMenu.Items>
+    </suki:SukiSideMenu>
+</suki:SukiWindow>

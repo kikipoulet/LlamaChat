@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="LlamaChat/App.axaml" value="LlamaChat/LlamaChat.csproj" />
+        <entry key="LlamaChat/MainWindow.axaml" value="LlamaChat/LlamaChat.csproj" />
+        <entry key="LlamaChat/MarkdownStyles.axaml" value="LlamaChat/LlamaChat.csproj" />
+        <entry key="LlamaChat/Pages/Chats/ChatView.axaml" value="LlamaChat/LlamaChat.csproj" />
+        <entry key="LlamaChat/Pages/Chats/EmptyChatView.axaml" value="LlamaChat/LlamaChat.csproj" />
+        <entry key="LlamaChat/Pages/Models/ModelsView.axaml" value="LlamaChat/LlamaChat.csproj" />
+      </map>
+    </option>
+  </component>
+</project>

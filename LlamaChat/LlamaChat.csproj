@@ -27,7 +27,6 @@
         <PackageReference Include="Markdown.Avalonia.SyntaxHigh" Version="11.0.3-a1" />
         <PackageReference Include="Markdown.Avalonia.Tight" Version="11.0.3-a1" />
         <PackageReference Include="Material.Icons.Avalonia" Version="2.1.9" />
-        <PackageReference Include="MvvmStupidPocHelper" Version="10.0.0" />
         <PackageReference Include="Projektanker.Icons.Avalonia.FontAwesome" Version="9.3.0" />
         <PackageReference Include="SukiUI" Version="6.0.0-beta5" />
     </ItemGroup>

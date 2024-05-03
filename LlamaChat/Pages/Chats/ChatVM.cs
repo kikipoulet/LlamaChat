@@ -9,6 +9,7 @@ using Avalonia.Threading;
 using CommunityToolkit.Mvvm.ComponentModel;
 using LLama;
 using LLama.Common;
+using LLama.Native;
 using LlamaChat.Classes;
 using MvvmStupidPocHelper;
 
@@ -18,12 +19,15 @@ public partial class ChatVM : Singleton<ChatVM>
 {
     [ObservableProperty] private Chat currentChat = null;
 
-    [ObservableProperty] private bool sending = false;
+    [ObservableProperty] private ChatAdvancedSettings advancedSettings = new ChatAdvancedSettings();
+    [
+        ObservableProperty] private bool sending = false;
+    [ObservableProperty] private bool settingsOpen = false;
     [ObservableProperty] private bool isInit = false;
 
     [ObservableProperty] private string currentMessage = "";
 
-    public List<CancellationToken> CurrentBackends = new List<CancellationToken>();
+    public List<CancellationTokenSource> CurrentBackends = new List<CancellationTokenSource>();
 
     public ChatSession Session = null;
     
@@ -31,15 +35,20 @@ public partial class ChatVM : Singleton<ChatVM>
     
     public ScrollViewer MessagesScrollViewer { get; set; } = null;
 
+    public void ChangePane() => SettingsOpen = !SettingsOpen;
+
     public void InitChat(string modelPath)
     {
         var cts = new CancellationTokenSource();
         var token = cts.Token;
-        CurrentBackends.Add(token);
+        
+        CurrentBackends.ForEach(t => t.Cancel());
+        
+        CurrentBackends.Add(cts);
         
         CurrentChat = new Chat()
         {
-            OriginalModel = modelPath, Messages = new ObservableCollection<Message>(), Title = ""
+            OriginalModel = modelPath.Replace("models\\","").Replace(".gguf", "").Replace("-"," ") , Messages = new ObservableCollection<Message>(), Title = ""
         };
         
         
@@ -63,14 +72,7 @@ public partial class ChatVM : Singleton<ChatVM>
 
             ChatSession session = new(executor, chatHistory);
 
-            InferenceParams inferenceParams = new InferenceParams()
-            {
-                MaxTokens = 256, // No more than 256 tokens should appear in answer. Remove it if antiprompt is enough for control.
-                AntiPrompts = new List<string> { "User:" } // Stop generation once antiprompts appear.
-                 
-                
-            };
-
+         
             var bannedwords = new List<string>() { "User:", "Assistant:", "<|assistant|>" };
             
 
@@ -94,6 +96,18 @@ public partial class ChatVM : Singleton<ChatVM>
                 CurrentChat.Messages.Add(aimessage);
 
                 string buffer = "";
+                
+                InferenceParams inferenceParams = new InferenceParams()
+                {
+                    MaxTokens = AdvancedSettings.MaxTokens,
+                    Temperature = AdvancedSettings.Temperature,
+                    FrequencyPenalty = AdvancedSettings.FrequencePenalty,
+                    RepeatPenalty = AdvancedSettings.Repeatpenalty,
+                    AntiPrompts = new List<string> { "User:" } // Stop generation once antiprompts appear.
+                    , 
+                
+                };
+
                 
                 await foreach (var text in session.ChatAsync(new ChatHistory.Message(AuthorRole.User, currentMessage), inferenceParams))
                 {
@@ -139,6 +153,9 @@ public partial class ChatVM : Singleton<ChatVM>
     
     public async void SendMessage()
     {
+        if (CurrentChat?.Title?.Length == 0)
+            CurrentChat.Title = CurrentMessage.Length > 30 ? CurrentMessage.Substring(0, 30) + " .." : CurrentMessage;
+        
         signalEvent.Set();
     }
 }

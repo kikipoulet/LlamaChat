@@ -29,11 +29,17 @@
      </Style>
  </UserControl.Styles>
     <UserControl.Resources>
-        <system:Double x:Key="GlassOpacity">0.35</system:Double>
+        <system:Double x:Key="GlassOpacity">0.32</system:Double>
+        <chats:BoolToDoubleConverter x:Key="BtoD"></chats:BoolToDoubleConverter>
         <chats:NullToDoubleConverter x:Key="NtoD"></chats:NullToDoubleConverter>
         <chats:NotNullToDoubleConverter x:Key="NNtoD"></chats:NotNullToDoubleConverter>
     </UserControl.Resources>
-    <Panel>
+    
+    <SplitView OpenPaneLength="400" PaneBackground="Transparent" IsPaneOpen="{Binding SettingsOpen}" DisplayMode="Inline" PanePlacement="Right">
+        <SplitView.Pane>
+            <chats:ChatSettings></chats:ChatSettings>
+        </SplitView.Pane>
+        <Panel>
         <chats:EmptyChatView IsHitTestVisible="{Binding CurrentChat, Converter={x:Static ObjectConverters.IsNull}}" Opacity="{Binding CurrentChat, Converter={StaticResource NNtoD}}">
             <chats:EmptyChatView.Transitions>
                 <Transitions>
@@ -50,6 +56,52 @@
           </Transitions>
       </DockPanel.Transitions>
                 
+                <Panel DockPanel.Dock="Top">
+                    <Button HorizontalAlignment="Left" Click="Button_OnClick" Classes="Basic" Margin="20,0" Padding="0">
+                        <StackPanel  Orientation="Horizontal">
+                            <avalonia:MaterialIcon Margin="8,4,0,0" Kind="KeyboardBackspace" Height="28" Width="28" VerticalAlignment="Center" Foreground="{DynamicResource SukiLowText}">
+                            </avalonia:MaterialIcon>
+                            <TextBlock Foreground="{DynamicResource SukiText}" Margin="24,0" VerticalAlignment="Center" FontSize="32" FontWeight="Normal"  Text="{Binding CurrentChat.Title}"></TextBlock>
+                        </StackPanel>
+                        <Button.ContextMenu>
+                                                                             <ContextMenu>
+                                                                                 <MenuItem Width="140" Header="New Chat">
+                                                                                     <MenuItem.Icon>
+                                                                                         <Image Margin="2,2,0,0"
+                                                                                             Height="16"
+                                                                                             Source="/Assets/icons8-replay-48.png"
+                                                                                             VerticalAlignment="Center"
+                                                                                             Width="16" />
+                                                                                     </MenuItem.Icon>
+                                                                                 </MenuItem>
+                                                                                 <MenuItem Width="140" Header="Save Chat">
+                                                                                     <MenuItem.Icon>
+                                                                                         <Image Margin="2,2,0,0"
+                                                                                             Height="16"
+                                                                                             Source="/Assets/icons8-save-48 (1).png"
+                                                                                             VerticalAlignment="Center"
+                                                                                             Width="16" />
+                                                                                     </MenuItem.Icon>
+                                                                                 </MenuItem>
+                                                                             </ContextMenu>
+                                                                         </Button.ContextMenu>
+                    </Button>
+               
+                   
+                    
+                    <Button Opacity="{Binding !SettingsOpen, Converter={StaticResource BtoD }}" Command="{Binding ChangePane}" Classes="Basic" HorizontalAlignment="Right" Margin="12">
+                        <Button.Transitions>
+                            <Transitions>
+                                <DoubleTransition Property="Opacity" Duration="0:0:0.3"></DoubleTransition>
+                                </Transitions>
+                        </Button.Transitions>
+                        <StackPanel Orientation="Horizontal">
+                            <avalonia:MaterialIcon Margin="8,0" Height="17" Width="17" Foreground="{DynamicResource SukiLowText}" Kind="CogOutline"></avalonia:MaterialIcon>
+                            <TextBlock Foreground="{DynamicResource SukiLowText}" Text="Options"></TextBlock>
+                        </StackPanel>
+                    </Button>
+                </Panel>
+                
        <Grid Margin="10" DockPanel.Dock="Bottom">
            <DockPanel>
                <Border Margin="0,15" Background="{DynamicResource SukiBorderBrush}" DockPanel.Dock="Top" Height="1" ></Border>
@@ -65,8 +117,12 @@
                <TextBox Classes="B" Watermark="Type your message here .." IsEnabled="{Binding !Sending}" Text="{Binding CurrentMessage}" Margin="0,0,10,0" TextWrapping="Wrap" Padding="10,5"></TextBox>
            </DockPanel>
        </Grid>
+                
+                
        <ScrollViewer x:Name="MonScrollViewer" >
-       <ItemsControl  theme:ItemsControlExtensions.AnimatedScroll="True" ItemsSource="{Binding CurrentChat.Messages}">
+           
+           
+           <ItemsControl  theme:ItemsControlExtensions.AnimatedScroll="True" ItemsSource="{Binding CurrentChat.Messages}">
          <ItemsControl.Resources>
              <chats:MarkdownConverter x:Key="MC"/> 
          </ItemsControl.Resources>
@@ -127,11 +183,11 @@
                                                    <Style Selector="Border.CodeBlock">
                                                        <Style.Setters>
                                                            <Setter Property="CornerRadius" Value="10" />
-                                                           <Setter Property="BorderBrush"     Value="{DynamicResource SukiCardBackground}"/>
+                                                           <Setter Property="BorderBrush"     Value="{DynamicResource SukiAccentColor5}"/>
                                                            <Setter Property="BorderThickness" Value="0"/>
                                                            <Setter Property="Padding" Value="12"></Setter>
                                                            <Setter Property="Margin"          Value="5,10"/>
-                                                           <Setter Property="Background"      Value="{DynamicResource SukiCardBackground}"/>
+                                                           <Setter Property="Background"      Value="{DynamicResource SukiAccentColor5}"/>
                                                        </Style.Setters>
                                                    </Style>
 
@@ -157,9 +213,7 @@
                                                        </Style.Setters>
                                                    </Style>
 
-                                                   <Style Selector="avedit|TextEditor">
-                                                       <Setter Property="Background"          Value="Pink" />
-                                                   </Style>
+                                             
                                                </mdxaml:MarkdownScrollViewer.Styles>
                                            </mdxaml:MarkdownScrollViewer>
                                            <Viewbox IsVisible="{Binding IsWriting}" Height="20" Width="20" HorizontalAlignment="Center" Margin="5,25,5,0">
@@ -185,8 +239,11 @@
                </DataTemplate>
            </ItemsControl.DataTemplates>
        </ItemsControl>
+           
+           
        </ScrollViewer>
    </DockPanel>
         
     </Panel>
+    </SplitView>
 </UserControl>

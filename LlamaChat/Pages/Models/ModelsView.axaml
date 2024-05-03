@@ -14,6 +14,7 @@
   <UserControl.Resources>
       <chats:FilenameToStringConverter x:Key="FilenameConverter"></chats:FilenameToStringConverter>
   </UserControl.Resources>
+    <ScrollViewer Classes="Stack">
         <StackPanel Margin="50">
             <TextBlock Classes="h2" Text="Installed Models"></TextBlock>
             
@@ -99,5 +100,5 @@
             </ScrollViewer>
             
         </StackPanel>
-    
+    </ScrollViewer>
 </UserControl>

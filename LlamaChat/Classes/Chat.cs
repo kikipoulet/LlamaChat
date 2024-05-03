@@ -15,6 +15,17 @@ public partial class Chat : ObservableObject
 
 }
 
+public partial class ChatAdvancedSettings : ObservableObject
+{
+    [ObservableProperty] private int maxTokens = 256;
+    [ObservableProperty] private float temperature = 0.8f;
+    [ObservableProperty] private float frequencePenalty= 0;
+    [ObservableProperty] private float repeatpenalty = 1.1f;
+    
+
+
+}
+
 public partial class Message : ObservableObject
 {
     [ObservableProperty] private bool isUser;

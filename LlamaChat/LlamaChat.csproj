@@ -62,5 +62,9 @@
       <AvaloniaResource Include="Assets\icons8-send-48.png" />
       <None Remove="Assets\icons8-empty-96.png" />
       <AvaloniaResource Include="Assets\icons8-empty-96.png" />
+      <None Remove="Assets\icons8-save-48 (1).png" />
+      <AvaloniaResource Include="Assets\icons8-save-48 (1).png" />
+      <None Remove="Assets\icons8-replay-48.png" />
+      <AvaloniaResource Include="Assets\icons8-replay-48.png" />
     </ItemGroup>
 </Project>

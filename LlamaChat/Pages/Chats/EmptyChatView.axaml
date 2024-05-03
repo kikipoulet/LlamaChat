@@ -6,13 +6,38 @@
              xmlns:controls="clr-namespace:SukiUI.Controls;assembly=SukiUI"
              xmlns:pages="clr-namespace:LlamaChat.Pages"
              xmlns:chats="clr-namespace:LlamaChat.Pages.Chats"
+             xmlns:system="clr-namespace:System;assembly=System.Runtime"
 
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="LlamaChat.Pages.Chats.EmptyChatView">
     <UserControl.Resources>
+        <system:Double x:Key="GlassOpacity">0.22</system:Double>
         <chats:BoolToDoubleConverter x:Key="BtoD" />
         <chats:FilenameToStringConverter x:Key="FilenameConverter"></chats:FilenameToStringConverter>
     </UserControl.Resources>
+    <UserControl.Styles>
+        <Style Selector="Button.H:pointerover">
+            <Setter Property="Background" Value="{DynamicResource SukiPrimaryColor5}"></Setter>
+        </Style><Style Selector="Button.H:pressed">
+            <Setter Property="Background" Value="{DynamicResource SukiPrimaryColor5}"></Setter>
+        </Style>
+        <Style Selector="Button.H avalonia|MaterialIcon">
+            <Setter Property="Transitions" >
+                <Setter.Value>
+                    <Transitions>
+                        <BrushTransition Property="Foreground" Duration="0:0:0.3"></BrushTransition>
+                    </Transitions>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Foreground" Value="{DynamicResource SukiText}"></Setter>
+        </Style>
+        <Style Selector="Button.H:pointerover avalonia|MaterialIcon">
+            <Setter Property="Foreground" Value="{DynamicResource SukiPrimaryColor}"></Setter>
+        </Style>
+        <Style Selector="Button.H:pressed avalonia|MaterialIcon">
+            <Setter Property="Foreground" Value="{DynamicResource SukiPrimaryColor}"></Setter>
+        </Style>
+    </UserControl.Styles>
     <controls:GlassCard VerticalAlignment="Center" MaxHeight="600" MaxWidth="500" Margin="60">
         <controls:BusyArea Name="BA" BusyText="Loading Model ..">
         <DockPanel x:DataType="pages:ResourcesVM" DataContext="{x:Static pages:ResourcesVM.Instance}" >
@@ -31,9 +56,9 @@
         </DockPanel.Styles>
    
         <TextBlock Classes="h2" Text="New Chat" DockPanel.Dock="Top" Margin="15"></TextBlock>
-        <Button IsVisible="{Binding Models.Count}"  Height="45"  CornerRadius="50" Margin="10" Click="newChat" Classes="Large" DockPanel.Dock="Bottom" >
+        <Button IsVisible="{Binding Models.Count}"  Height="45"  CornerRadius="50" BorderThickness="0" Margin="100,10" Click="newChat" Classes="Large H" DockPanel.Dock="Bottom" >
             <StackPanel Orientation="Horizontal" Spacing="18" Margin="10,0">
-                <avalonia:MaterialIcon Kind="Plus" Foreground="{DynamicResource SukiText}" />
+                <avalonia:MaterialIcon Kind="Plus"/>
                 <TextBlock Text="Start New Chat" FontSize="17"></TextBlock>
             </StackPanel>
         </Button>

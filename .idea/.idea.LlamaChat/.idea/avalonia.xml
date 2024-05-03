@@ -6,6 +6,8 @@
         <entry key="LlamaChat/App.axaml" value="LlamaChat/LlamaChat.csproj" />
         <entry key="LlamaChat/MainWindow.axaml" value="LlamaChat/LlamaChat.csproj" />
         <entry key="LlamaChat/MarkdownStyles.axaml" value="LlamaChat/LlamaChat.csproj" />
+        <entry key="LlamaChat/Pages/Chats/ChatBubbleListView.axaml" value="LlamaChat/LlamaChat.csproj" />
+        <entry key="LlamaChat/Pages/Chats/ChatSettings.axaml" value="LlamaChat/LlamaChat.csproj" />
         <entry key="LlamaChat/Pages/Chats/ChatView.axaml" value="LlamaChat/LlamaChat.csproj" />
         <entry key="LlamaChat/Pages/Chats/EmptyChatView.axaml" value="LlamaChat/LlamaChat.csproj" />
         <entry key="LlamaChat/Pages/Models/ModelsView.axaml" value="LlamaChat/LlamaChat.csproj" />

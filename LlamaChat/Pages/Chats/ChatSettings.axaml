@@ -1,0 +1,61 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" x:DataType="chats:ChatVM" DataContext="{x:Static chats:ChatVM.Instance}"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:SukiUI.Controls;assembly=SukiUI"
+             xmlns:chats="clr-namespace:LlamaChat.Pages.Chats"
+             xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+             xmlns:system="clr-namespace:System;assembly=System.Runtime"
+             xmlns:theme="clr-namespace:SukiUI.Theme;assembly=SukiUI"
+             mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="550"
+             x:Class="LlamaChat.Pages.Chats.ChatSettings">
+    <UserControl.Resources>
+        <system:Double x:Key="GlassOpacity">0.3</system:Double>
+    </UserControl.Resources>
+    <controls:GlassCard CornerRadius="0" Margin="-10">
+        <ScrollViewer Classes="Stack">
+        <StackPanel>
+            <Panel>
+            <Button Command="{Binding ChangePane}" Classes="Basic" HorizontalAlignment="Left" Margin="0">
+                <avalonia:MaterialIcon Foreground="{DynamicResource SukiLowText}" Kind="Close" Height="22" Width="22" />
+            </Button>
+                
+                <Button PointerExited="InputElement_OnPointerExited" PointerEntered="InputElement_OnPointerEntered" HorizontalAlignment="Right" Height="55" Padding="15" Classes="Rounded" >
+                    
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Assets/icons8-save-48 (1).png" Height="24" Width="24"></Image>
+                            <TextBlock Name="TB" VerticalAlignment="Center" TextAlignment="Right" HorizontalAlignment="Center" Margin="0,0,0,0" Width="0" Text="Save Chat"></TextBlock>
+                        </StackPanel>
+                  
+                </Button>
+            </Panel>
+            <controls:GlassCard CornerRadius="120" Height="120" Width="120" >
+                            <Image Height="48" Width="48" Margin="13" Source="/Assets/icons8-artificial-intelligence-48.png"></Image>
+            </controls:GlassCard>
+            <TextBlock HorizontalAlignment="Center" FontWeight="DemiBold" Margin="12" FontSize="17" Text="{Binding CurrentChat.OriginalModel}"></TextBlock>
+          
+            
+            <Border Margin="12,25,12,25" Height="1" Background="{DynamicResource SukiControlBorderBrush}"></Border>
+            
+            
+            
+            <Panel Margin="12,8">
+                <TextBlock VerticalAlignment="Center" FontWeight="DemiBold" Foreground="{DynamicResource SukiLowText}" FontSize="15" Text="Max Tokens"></TextBlock>
+                <NumericUpDown HorizontalContentAlignment="Right" MinWidth="100" HorizontalAlignment="Right" ShowButtonSpinner="False" theme:NumericUpDownExtensions.Unit="tokens" Value="{Binding  AdvancedSettings.MaxTokens}"></NumericUpDown>
+            </Panel>
+            <Panel Margin="12,8">
+                <TextBlock VerticalAlignment="Center" FontWeight="DemiBold" Foreground="{DynamicResource SukiLowText}" FontSize="15" Text="Temperature"></TextBlock>
+                <NumericUpDown HorizontalContentAlignment="Right" MinWidth="100" HorizontalAlignment="Right" ShowButtonSpinner="False" Value="{Binding  AdvancedSettings.Temperature}"></NumericUpDown>
+            </Panel>
+            <Panel Margin="12,8">
+                <TextBlock VerticalAlignment="Center" FontWeight="DemiBold" Foreground="{DynamicResource SukiLowText}" FontSize="15" Text="Frequence Penalty"></TextBlock>
+                <NumericUpDown HorizontalContentAlignment="Right" MinWidth="100" HorizontalAlignment="Right" ShowButtonSpinner="False" Value="{Binding  AdvancedSettings.FrequencePenalty}"></NumericUpDown>
+            </Panel>
+            <Panel Margin="12,8">
+                <TextBlock VerticalAlignment="Center" FontWeight="DemiBold" Foreground="{DynamicResource SukiLowText}" FontSize="15" Text="Repeat Penalty"></TextBlock>
+                <NumericUpDown HorizontalContentAlignment="Right" MinWidth="100" HorizontalAlignment="Right" ShowButtonSpinner="False" Value="{Binding  AdvancedSettings.Repeatpenalty}"></NumericUpDown>
+            </Panel>
+        </StackPanel>
+        </ScrollViewer>
+    </controls:GlassCard>
+</UserControl>

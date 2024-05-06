@@ -10,7 +10,9 @@
         <entry key="LlamaChat/Pages/Chats/ChatSettings.axaml" value="LlamaChat/LlamaChat.csproj" />
         <entry key="LlamaChat/Pages/Chats/ChatView.axaml" value="LlamaChat/LlamaChat.csproj" />
         <entry key="LlamaChat/Pages/Chats/EmptyChatView.axaml" value="LlamaChat/LlamaChat.csproj" />
+        <entry key="LlamaChat/Pages/Chats/RecentChats.axaml" value="LlamaChat/LlamaChat.csproj" />
         <entry key="LlamaChat/Pages/Models/ModelsView.axaml" value="LlamaChat/LlamaChat.csproj" />
+        <entry key="LlamaChatMobile/LlamaChatMobile/Views/MainWindow.axaml" value="LlamaChatMobile/LlamaChatMobile.Desktop/LlamaChatMobile.Desktop.csproj" />
       </map>
     </option>
   </component>

@@ -10,10 +10,11 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using LLama;
 using LLama.Common;
 using LLama.Native;
-using LlamaChat.Classes;
+using LlamaChatBackend.Classes;
 using MvvmStupidPocHelper;
+using Newtonsoft.Json;
 
-namespace LlamaChat.Pages.Chats;
+namespace LlamaChatBackend;
 
 public partial class ChatVM : Singleton<ChatVM>
 {
@@ -37,7 +38,12 @@ public partial class ChatVM : Singleton<ChatVM>
 
     public void ChangePane() => SettingsOpen = !SettingsOpen;
 
-    public void InitChat(string modelPath)
+    public void SaveChat()
+    {
+        File.WriteAllText("chats\\" +CurrentChat.Title + "####" + CurrentChat.CreationDate.ToString().Replace(':','_'),JsonConvert.SerializeObject(CurrentChat));
+    }
+
+    public void InitChat(string modelPath, Chat? previouschat = null)
     {
         var cts = new CancellationTokenSource();
         var token = cts.Token;
@@ -46,15 +52,15 @@ public partial class ChatVM : Singleton<ChatVM>
         
         CurrentBackends.Add(cts);
         
-        CurrentChat = new Chat()
+        CurrentChat = previouschat ?? new Chat()
         {
-            OriginalModel = modelPath.Replace("models\\","").Replace(".gguf", "").Replace("-"," ") , Messages = new ObservableCollection<Message>(), Title = ""
+            OriginalModel = modelPath , Messages = new ObservableCollection<Message>(), Title = ""
         };
         
         
         Task.Run((async () =>
         {
-            var parameters = new ModelParams(modelPath)
+            var parameters = new ModelParams(CurrentChat.OriginalModel)
             {
                 ContextSize = 1024, // The longest length of chat as memory.
                 GpuLayerCount = 8 // How many layers to offload to GPU. Please adjust it according to your GPU memory.
@@ -67,8 +73,9 @@ public partial class ChatVM : Singleton<ChatVM>
             var chatHistory = new ChatHistory(); 
             
             chatHistory.AddMessage(AuthorRole.System, "Transcript of a dialog, where the User interacts with an Assistant named Bob. Bob is helpful, kind, honest, good at writing, and never fails to answer the User's requests immediately and with precision.");
-             chatHistory.AddMessage(AuthorRole.User, "Hello, Bob.");
-             chatHistory.AddMessage(AuthorRole.Assistant, "Hello. How may I help you today?"); 
+          
+            foreach (var currentChatMessage in CurrentChat.Messages)
+                chatHistory.AddMessage( currentChatMessage.IsUser ? AuthorRole.User : AuthorRole.Assistant, currentChatMessage.Content);
 
             ChatSession session = new(executor, chatHistory);
 

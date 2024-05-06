@@ -10,9 +10,22 @@ namespace LlamaChat.Pages;
 
 public partial class ResourcesVM : Singleton<ResourcesVM>
 {
+
+[ObservableProperty] private ObservableCollection<string> recentChats = GetChats();
+
+public static ObservableCollection<string> GetChats()
+{
+    if(!new DirectoryInfo("chats").Exists)
+        new DirectoryInfo("chats").Create();
+            
+    var collection = new ObservableCollection<string>(new DirectoryInfo("chats").GetFiles().Select(file => file.Name));
+    return collection;
+}
+
+
     [ObservableProperty] private ObservableCollection<string> models = GetModels();
 
-    private static ObservableCollection<string> GetModels()
+    public static ObservableCollection<string> GetModels()
     {
         if(!new DirectoryInfo("models").Exists)
             new DirectoryInfo("models").Create();

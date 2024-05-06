@@ -7,11 +7,12 @@
              xmlns:pages="clr-namespace:LlamaChat.Pages"
              xmlns:chats="clr-namespace:LlamaChat.Pages.Chats"
              xmlns:system="clr-namespace:System;assembly=System.Runtime"
+             xmlns:pages1="clr-namespace:LlamaChat.Pages;assembly=LLamaChatBackend"
 
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="LlamaChat.Pages.Chats.EmptyChatView">
     <UserControl.Resources>
-        <system:Double x:Key="GlassOpacity">0.22</system:Double>
+        <system:Double x:Key="GlassOpacity">0.3</system:Double>
         <chats:BoolToDoubleConverter x:Key="BtoD" />
         <chats:FilenameToStringConverter x:Key="FilenameConverter"></chats:FilenameToStringConverter>
     </UserControl.Resources>
@@ -38,9 +39,13 @@
             <Setter Property="Foreground" Value="{DynamicResource SukiPrimaryColor}"></Setter>
         </Style>
     </UserControl.Styles>
-    <controls:GlassCard VerticalAlignment="Center" MaxHeight="600" MaxWidth="500" Margin="60">
+    <DockPanel>
+        <controls:GlassCard VerticalAlignment="Stretch" Width="350" Margin="-5" DockPanel.Dock="Right" CornerRadius="0">
+            <chats:RecentChats></chats:RecentChats>
+        </controls:GlassCard>
+        <Border VerticalAlignment="Center" MaxHeight="800" MaxWidth="500" Margin="60">
         <controls:BusyArea Name="BA" BusyText="Loading Model ..">
-        <DockPanel x:DataType="pages:ResourcesVM" DataContext="{x:Static pages:ResourcesVM.Instance}" >
+        <DockPanel x:DataType="pages1:ResourcesVM" DataContext="{x:Static pages1:ResourcesVM.Instance}" >
         <DockPanel.Styles>
            
             <Style Selector="controls|GlassCard.Primary /template/ Border#PART_BorderCard">
@@ -126,5 +131,7 @@
             </Panel>
     </DockPanel>
         </controls:BusyArea>
-        </controls:GlassCard>
+        </Border>
+        
+    </DockPanel>
 </UserControl>

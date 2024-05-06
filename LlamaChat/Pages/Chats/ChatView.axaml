@@ -12,7 +12,9 @@
              xmlns:mdxaml="https://github.com/whistyun/Markdown.Avalonia.Tight"
              xmlns:ctxt="clr-namespace:ColorTextBlock.Avalonia;assembly=ColorTextBlock.Avalonia"
              xmlns:avedit="https://github.com/avaloniaui/avaloniaedit"
-             x:DataType="chats:ChatVM" DataContext="{x:Static chats:ChatVM.Instance}"
+             xmlns:llamaChatBackend="clr-namespace:LlamaChatBackend;assembly=LLamaChatBackend"
+             xmlns:classes1="clr-namespace:LlamaChatBackend.Classes;assembly=LLamaChatBackend"
+             x:DataType="llamaChatBackend:ChatVM" DataContext="{x:Static llamaChatBackend:ChatVM.Instance}"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="LlamaChat.Pages.Chats.ChatView">
   
@@ -65,7 +67,7 @@
                         </StackPanel>
                         <Button.ContextMenu>
                                                                              <ContextMenu>
-                                                                                 <MenuItem Width="140" Header="New Chat">
+                                                                                 <MenuItem Click="newChatClick" Width="140" Header="New Chat">
                                                                                      <MenuItem.Icon>
                                                                                          <Image Margin="2,2,0,0"
                                                                                              Height="16"
@@ -74,7 +76,7 @@
                                                                                              Width="16" />
                                                                                      </MenuItem.Icon>
                                                                                  </MenuItem>
-                                                                                 <MenuItem Width="140" Header="Save Chat">
+                                                                                 <MenuItem Click="SaveChat" Width="140" Header="Save Chat">
                                                                                      <MenuItem.Icon>
                                                                                          <Image Margin="2,2,0,0"
                                                                                              Height="16"
@@ -118,16 +120,25 @@
            </DockPanel>
        </Grid>
                 
-                
-       <ScrollViewer x:Name="MonScrollViewer" >
+                <Panel>
+                    
+                    <StackPanel Opacity="{Binding !CurrentChat.Messages.Count}" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <controls:GlassCard CornerRadius="120" Height="120" Width="120" >
+                            <Image Height="48" Width="48" Margin="13" Source="/Assets/icons8-artificial-intelligence-48.png"></Image>
+                        </controls:GlassCard>
+                        
+                        <TextBlock Classes="h3" Text="How can I help you today ?" Margin="15" HorizontalAlignment="Center"  ></TextBlock>
+                    </StackPanel>
+                    
+                    <ScrollViewer x:Name="MonScrollViewer" >
            
            
-           <ItemsControl  theme:ItemsControlExtensions.AnimatedScroll="True" ItemsSource="{Binding CurrentChat.Messages}">
+           <ItemsControl  Opacity="{Binding CurrentChat.Messages.Count}"   theme:ItemsControlExtensions.AnimatedScroll="True" ItemsSource="{Binding CurrentChat.Messages}">
          <ItemsControl.Resources>
              <chats:MarkdownConverter x:Key="MC"/> 
          </ItemsControl.Resources>
            <ItemsControl.DataTemplates>
-               <DataTemplate DataType="classes:Message">
+               <DataTemplate DataType="classes1:Message">
                    <TransitioningContentControl >
                        <TransitioningContentControl.PageTransition>
                            <CrossFade Duration="0:00:00.200"  />
@@ -242,6 +253,7 @@
            
            
        </ScrollViewer>
+                    </Panel>
    </DockPanel>
         
     </Panel>

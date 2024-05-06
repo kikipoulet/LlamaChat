@@ -1,6 +1,6 @@
 ﻿<UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" x:DataType="pages:ResourcesVM" DataContext="{x:Static pages:ResourcesVM.Instance}"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" x:DataType="pages1:ResourcesVM" DataContext="{x:Static pages1:ResourcesVM.Instance}"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:pages="clr-namespace:LlamaChat.Pages"
              xmlns:theme="clr-namespace:SukiUI.Theme;assembly=SukiUI"
@@ -9,6 +9,8 @@
              xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
              xmlns:system="clr-namespace:System;assembly=System.Runtime"
              xmlns:chats="clr-namespace:LlamaChat.Pages.Chats"
+             xmlns:classes1="clr-namespace:LlamaChat.Classes;assembly=LLamaChatBackend"
+             xmlns:pages1="clr-namespace:LlamaChat.Pages;assembly=LLamaChatBackend"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="850"
              x:Class="LlamaChat.Pages.Models.ModelsView">
   <UserControl.Resources>
@@ -59,7 +61,7 @@
                         </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.DataTemplates>
-                        <DataTemplate DataType="classes:AiModel">
+                        <DataTemplate DataType="classes1:AiModel">
                             <controls:GlassCard Margin="0,15,40,15" Width="460" Height="210" >
                                 <Panel>
                                     <StackPanel Margin="9,9,0,0">

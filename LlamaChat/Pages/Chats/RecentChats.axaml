@@ -1,0 +1,52 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:pages="clr-namespace:LlamaChat.Pages;assembly=LLamaChatBackend"
+             xmlns:theme="clr-namespace:SukiUI.Theme;assembly=SukiUI"
+             xmlns:system="clr-namespace:System;assembly=System.Runtime"
+             xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+             xmlns:chats="clr-namespace:LlamaChat.Pages.Chats"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450" MinWidth="250" x:DataType="pages:ResourcesVM" DataContext="{x:Static pages:ResourcesVM.Instance}"
+             x:Class="LlamaChat.Pages.Chats.RecentChats">
+    <Panel>
+    <StackPanel  Margin="8">
+        <TextBlock Classes="h3" Margin="0" FontWeight="DemiBold" Text="Recent Chats"></TextBlock>
+        
+        <ItemsControl Margin="-12, 20,8,0" theme:ItemsControlExtensions.AnimatedScroll="True" ItemsSource="{Binding  RecentChats}">
+           <ItemsControl.Resources>
+               <chats:FileNameConverter x:Key="FC" />
+           </ItemsControl.Resources>
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Spacing="0" Orientation="Vertical" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.DataTemplates>
+                <DataTemplate DataType="system:String">
+                    <Button Click="NewChatFromHistory" Tag="{Binding }" Margin="0,0,0,0" HorizontalContentAlignment="Left" BorderThickness="0">
+                        <StackPanel Orientation="Horizontal">
+                            <avalonia:MaterialIcon Width="20" Height="20" Kind="ChatOutline" >
+                                <avalonia:MaterialIcon.Foreground>
+                                    <LinearGradientBrush StartPoint="100%,0%" EndPoint="0%,100%">
+                                        <GradientStop Color="{DynamicResource SukiPrimaryColor75}" Offset="0.40" />
+                                     
+                                        <GradientStop Color="{DynamicResource SukiAccentColor50}" Offset="1.0" />
+                                    </LinearGradientBrush>
+                                </avalonia:MaterialIcon.Foreground>
+                            </avalonia:MaterialIcon>
+                            <TextBlock FontSize="16" Margin="12,0,0,0" HorizontalAlignment="Left" Text="{Binding , Converter={StaticResource FC}}"></TextBlock>
+                        </StackPanel>
+                       
+                    </Button>
+                </DataTemplate>
+            </ItemsControl.DataTemplates>
+        </ItemsControl>
+        
+    </StackPanel>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" IsVisible="{Binding !RecentChats.Count}">
+            <Image Source="/Assets/icons8-inbox-48.png" Height="48" Width="48"></Image>
+            <TextBlock  Margin="8,20,8,20" FontWeight="DemiBold" HorizontalAlignment="Center" Foreground="{DynamicResource SukiLowText}" Text="No Chat saved yet."></TextBlock>
+        </StackPanel>
+    </Panel>
+</UserControl>

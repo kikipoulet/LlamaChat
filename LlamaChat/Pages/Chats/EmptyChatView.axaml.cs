@@ -14,6 +14,7 @@ using Avalonia.Threading;
 using LLama;
 using LLama.Common;
 using LlamaChat.Classes;
+using LlamaChatBackend;
 using SukiUI.Controls;
 
 namespace LlamaChat.Pages.Chats;

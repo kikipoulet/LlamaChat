@@ -10,7 +10,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <TrimmerRootAssembly Include="Avalonia.Themes.Fluent"/>
+        <TrimmerRootAssembly Include="Avalonia.Themes.Fluent" />
     </ItemGroup>
 
     <ItemGroup>
@@ -18,7 +18,6 @@
         <PackageReference Include="Avalonia.Desktop" Version="11.1.0-beta2" />
         <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
         <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.1.0-beta2" />
-        <PackageReference Include="Avalonia.Themes.Fluent" Version="11.1.0-beta2" />
         <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
         <PackageReference Include="HeroIcons.Avalonia" Version="1.0.2" />
         <PackageReference Include="LLamaSharp" Version="0.11.2" />
@@ -66,5 +65,13 @@
       <AvaloniaResource Include="Assets\icons8-save-48 (1).png" />
       <None Remove="Assets\icons8-replay-48.png" />
       <AvaloniaResource Include="Assets\icons8-replay-48.png" />
+      <None Remove="Assets\icons8-inbox-48.png" />
+      <AvaloniaResource Include="Assets\icons8-inbox-48.png" />
+      <None Remove="Assets\icons8-speech-48 (1).png" />
+      <AvaloniaResource Include="Assets\icons8-speech-48 (1).png" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\LLamaChatBackend\LLamaChatBackend.csproj" />
     </ItemGroup>
 </Project>

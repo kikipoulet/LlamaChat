@@ -1,6 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LlamaChat", "LlamaChat\LlamaChat.csproj", "{37C9609C-FC20-4387-A928-AEBAFDC63500}"
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34310.174
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LlamaChat", "LlamaChat\LlamaChat.csproj", "{37C9609C-FC20-4387-A928-AEBAFDC63500}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LLamaChatBackend", "LLamaChatBackend\LLamaChatBackend.csproj", "{7940D3DC-D14F-4FFB-9332-8E395C140FFE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LlamaChatMobile", "LlamaChatMobile\LlamaChatMobile\LlamaChatMobile.csproj", "{3D2DBE12-FC98-4737-9C3B-693AC830E1A8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LlamaChatMobile.Android", "LlamaChatMobile\LlamaChatMobile.Android\LlamaChatMobile.Android.csproj", "{EF037757-2613-4266-8139-29D2B8076E33}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LlamaChatMobile.Desktop", "LlamaChatMobile\LlamaChatMobile.Desktop\LlamaChatMobile.Desktop.csproj", "{AE653777-C936-47F2-A89F-F96F99B5C76E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LlamaChatMobile.iOS", "LlamaChatMobile\LlamaChatMobile.iOS\LlamaChatMobile.iOS.csproj", "{DA65F6C8-4E59-4245-AB94-86069CC64460}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,5 +25,29 @@ Global
 		{37C9609C-FC20-4387-A928-AEBAFDC63500}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{37C9609C-FC20-4387-A928-AEBAFDC63500}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{37C9609C-FC20-4387-A928-AEBAFDC63500}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7940D3DC-D14F-4FFB-9332-8E395C140FFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7940D3DC-D14F-4FFB-9332-8E395C140FFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7940D3DC-D14F-4FFB-9332-8E395C140FFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7940D3DC-D14F-4FFB-9332-8E395C140FFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D2DBE12-FC98-4737-9C3B-693AC830E1A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D2DBE12-FC98-4737-9C3B-693AC830E1A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D2DBE12-FC98-4737-9C3B-693AC830E1A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D2DBE12-FC98-4737-9C3B-693AC830E1A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF037757-2613-4266-8139-29D2B8076E33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF037757-2613-4266-8139-29D2B8076E33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF037757-2613-4266-8139-29D2B8076E33}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{EF037757-2613-4266-8139-29D2B8076E33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF037757-2613-4266-8139-29D2B8076E33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE653777-C936-47F2-A89F-F96F99B5C76E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE653777-C936-47F2-A89F-F96F99B5C76E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE653777-C936-47F2-A89F-F96F99B5C76E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE653777-C936-47F2-A89F-F96F99B5C76E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA65F6C8-4E59-4245-AB94-86069CC64460}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA65F6C8-4E59-4245-AB94-86069CC64460}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA65F6C8-4E59-4245-AB94-86069CC64460}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA65F6C8-4E59-4245-AB94-86069CC64460}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 EndGlobal

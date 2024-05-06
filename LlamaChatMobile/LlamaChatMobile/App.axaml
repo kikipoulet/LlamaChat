@@ -1,0 +1,22 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="using:LlamaChatMobile"
+             x:Class="LlamaChatMobile.App"  xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+             xmlns:system="clr-namespace:System;assembly=System.Runtime"
+             RequestedThemeVariant="Default">
+             <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+
+   <Application.Styles>
+        <avalonia:MaterialIconStyles />
+        <StyleInclude Source="avares://CherylUI/Index.axaml" />
+    </Application.Styles>
+    <Application.Resources>
+        <ResourceDictionary>
+            <system:Double x:Key="GlassOpacity">0.32</system:Double>
+            <system:Double x:Key="GlassOpacityDark">0.32</system:Double>
+            <system:Double x:Key="GlassOpacityLight">0.47</system:Double>
+            <Color x:Key="LightAccent">#100A59F7</Color>
+ 
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

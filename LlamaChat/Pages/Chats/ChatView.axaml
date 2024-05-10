@@ -14,7 +14,8 @@
              xmlns:avedit="https://github.com/avaloniaui/avaloniaedit"
              xmlns:llamaChatBackend="clr-namespace:LlamaChatBackend;assembly=LLamaChatBackend"
              xmlns:classes1="clr-namespace:LlamaChatBackend.Classes;assembly=LLamaChatBackend"
-             x:DataType="llamaChatBackend:ChatVM" DataContext="{x:Static llamaChatBackend:ChatVM.Instance}"
+             xmlns:pages1="clr-namespace:LlamaChat.Pages;assembly=LLamaChatBackend"
+             x:DataType="pages1:ResourcesVM" DataContext="{x:Static pages1:ResourcesVM.Instance}"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="LlamaChat.Pages.Chats.ChatView">
   
@@ -37,12 +38,12 @@
         <chats:NotNullToDoubleConverter x:Key="NNtoD"></chats:NotNullToDoubleConverter>
     </UserControl.Resources>
     
-    <SplitView OpenPaneLength="400" PaneBackground="Transparent" IsPaneOpen="{Binding SettingsOpen}" DisplayMode="Inline" PanePlacement="Right">
+    <SplitView OpenPaneLength="400" PaneBackground="Transparent" IsPaneOpen="{Binding ChatVM.SettingsOpen}" DisplayMode="Inline" PanePlacement="Right">
         <SplitView.Pane>
             <chats:ChatSettings></chats:ChatSettings>
         </SplitView.Pane>
         <Panel>
-        <chats:EmptyChatView IsHitTestVisible="{Binding CurrentChat, Converter={x:Static ObjectConverters.IsNull}}" Opacity="{Binding CurrentChat, Converter={StaticResource NNtoD}}">
+        <chats:EmptyChatView IsHitTestVisible="{Binding ChatVM.CurrentChat, Converter={x:Static ObjectConverters.IsNull}}" Opacity="{Binding ChatVM.CurrentChat, Converter={StaticResource NNtoD}}">
             <chats:EmptyChatView.Transitions>
                 <Transitions>
                     <DoubleTransition Property="Opacity" Duration="0:0:0.5"></DoubleTransition>
@@ -51,7 +52,7 @@
         </chats:EmptyChatView>
         
 
-            <DockPanel Margin="20" IsHitTestVisible="{Binding CurrentChat, Converter={x:Static ObjectConverters.IsNotNull}}" Opacity="{Binding CurrentChat, Converter={StaticResource NtoD}}">
+            <DockPanel Margin="20" IsHitTestVisible="{Binding ChatVM.CurrentChat, Converter={x:Static ObjectConverters.IsNotNull}}" Opacity="{Binding ChatVM.CurrentChat, Converter={StaticResource NtoD}}">
       <DockPanel.Transitions>
           <Transitions>
               <DoubleTransition Property="Opacity" Duration="0:0:0.5"></DoubleTransition>
@@ -63,7 +64,7 @@
                         <StackPanel  Orientation="Horizontal">
                             <avalonia:MaterialIcon Margin="8,4,0,0" Kind="KeyboardBackspace" Height="28" Width="28" VerticalAlignment="Center" Foreground="{DynamicResource SukiLowText}">
                             </avalonia:MaterialIcon>
-                            <TextBlock Foreground="{DynamicResource SukiText}" Margin="24,0" VerticalAlignment="Center" FontSize="32" FontWeight="Normal"  Text="{Binding CurrentChat.Title}"></TextBlock>
+                            <TextBlock Foreground="{DynamicResource SukiText}" Margin="24,0" VerticalAlignment="Center" FontSize="32" FontWeight="Normal"  Text="{Binding ChatVM.CurrentChat.Title}"></TextBlock>
                         </StackPanel>
                         <Button.ContextMenu>
                                                                              <ContextMenu>
@@ -91,7 +92,7 @@
                
                    
                     
-                    <Button Opacity="{Binding !SettingsOpen, Converter={StaticResource BtoD }}" Command="{Binding ChangePane}" Classes="Basic" HorizontalAlignment="Right" Margin="12">
+                    <Button Opacity="{Binding !ChatVM.SettingsOpen, Converter={StaticResource BtoD }}" Command="{Binding ChatVM.ChangePane}" Classes="Basic" HorizontalAlignment="Right" Margin="12">
                         <Button.Transitions>
                             <Transitions>
                                 <DoubleTransition Property="Opacity" Duration="0:0:0.3"></DoubleTransition>
@@ -107,7 +108,7 @@
        <Grid Margin="10" DockPanel.Dock="Bottom">
            <DockPanel>
                <Border Margin="0,15" Background="{DynamicResource SukiBorderBrush}" DockPanel.Dock="Top" Height="1" ></Border>
-               <Button Height="55" Width="55" CornerRadius="30" IsDefault="True"  IsEnabled="{Binding !Sending}" Command="{Binding SendMessage}" Classes="Rounded Basic H" DockPanel.Dock="Right">
+               <Button Height="55" Width="55" CornerRadius="30" IsDefault="True"  IsEnabled="{Binding !ChatVM.Sending}" Command="{Binding ChatVM.SendMessage}" Classes="Rounded Basic H" DockPanel.Dock="Right">
                   <PathIcon Margin="5,3,0,0"  Height="22" Width="22" Foreground="{DynamicResource SukiLowText}">
                       <PathIcon.Data>
                       <StreamGeometry>M3.78963301,2.77233335 L24.8609339,12.8499121 C25.4837277,13.1477699 25.7471402,13.8941055 25.4492823,14.5168992 C25.326107,14.7744476 25.1184823,14.9820723 24.8609339,15.1052476 L3.78963301,25.1828263 C3.16683929,25.4806842 2.42050372,25.2172716 2.12264586,24.5944779 C1.99321184,24.3238431 1.96542524,24.015685 2.04435886,23.7262618 L4.7030903,13.9775798 L2.04435886,4.22889788 C1.8627142,3.56286745 2.25538645,2.87569101 2.92141688,2.69404635 C3.21084015,2.61511273 3.51899823,2.64289932 3.78963301,2.77233335 Z M3.63522914,4.36121177 L6.058,13.249 L17,13.25 C17.3796958,13.25 17.693491,13.5321539 17.7431534,13.8982294 L17.75,14 C17.75,14.3796958 17.4678461,14.693491 17.1017706,14.7431534 L17,14.75 L6.046,14.749 L3.63522914,23.5939479 L23.7421805,13.9775798 L3.63522914,4.36121177 Z</StreamGeometry>
@@ -116,13 +117,13 @@
                </Button>
                <Image DockPanel.Dock="Left" Source="/Assets/icons8-user-48.png" Height="48" Width="48"></Image>
               
-               <TextBox Classes="B" Watermark="Type your message here .." IsEnabled="{Binding !Sending}" Text="{Binding CurrentMessage}" Margin="0,0,10,0" TextWrapping="Wrap" Padding="10,5"></TextBox>
+               <TextBox Classes="B" Watermark="Type your message here .." IsEnabled="{Binding !ChatVM.Sending}" Text="{Binding ChatVM.CurrentMessage}" Margin="0,0,10,0" TextWrapping="Wrap" Padding="10,5"></TextBox>
            </DockPanel>
        </Grid>
                 
                 <Panel>
                     
-                    <StackPanel Opacity="{Binding !CurrentChat.Messages.Count}" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <StackPanel IsVisible="{Binding !ChatVM.CurrentChat.Messages.Count}" HorizontalAlignment="Center" VerticalAlignment="Center">
                         <controls:GlassCard CornerRadius="120" Height="120" Width="120" >
                             <Image Height="48" Width="48" Margin="13" Source="/Assets/icons8-artificial-intelligence-48.png"></Image>
                         </controls:GlassCard>
@@ -133,7 +134,7 @@
                     <ScrollViewer x:Name="MonScrollViewer" >
            
            
-           <ItemsControl  Opacity="{Binding CurrentChat.Messages.Count}"   theme:ItemsControlExtensions.AnimatedScroll="True" ItemsSource="{Binding CurrentChat.Messages}">
+           <ItemsControl    theme:ItemsControlExtensions.AnimatedScroll="True" ItemsSource="{Binding ChatVM.CurrentChat.Messages}">
          <ItemsControl.Resources>
              <chats:MarkdownConverter x:Key="MC"/> 
          </ItemsControl.Resources>
@@ -148,13 +149,37 @@
                            <Grid IsVisible="{Binding !IsUser}" ColumnDefinitions="5*,*">
                                <DockPanel Grid.Column="0">
                                    <Image DockPanel.Dock="Left"  Source="/Assets/icons8-artificial-intelligence-48.png" VerticalAlignment="Center" Margin="22,15,15,15"  Height="48" Width="48"></Image>
-                                   <controls:GlassCard CornerRadius="12" MinWidth="200" HorizontalAlignment="Left" >
+                                  <StackPanel Spacing="0"  HorizontalAlignment="Left" Opacity="{Binding !IsWriting, Converter={StaticResource BtoD}}" VerticalAlignment="Center" DockPanel.Dock="Right" >
+                                   <Button x:DataType="pages1:ResourcesVM" DataContext="{x:Static pages1:ResourcesVM.Instance}" Command="{Binding ChatVM.Retry}"  ToolTip.Tip="Retry"  Classes="Basic">
+                                      <avalonia:MaterialIcon Kind="Refresh" Height="24" Width="24" Foreground="{DynamicResource SukiControlBorderBrush}"></avalonia:MaterialIcon>
+                                  </Button>
+                                      <Button x:DataType="pages1:ResourcesVM" DataContext="{x:Static pages1:ResourcesVM.Instance}" Command="{Binding ChatVM.Continue}"  ToolTip.Tip="Retry"  Classes="Basic">
+                                          <avalonia:MaterialIcon Kind="ChatPlusOutline" Height="22" Width="22" Foreground="{DynamicResource SukiControlBorderBrush}"></avalonia:MaterialIcon>
+                                      </Button>
+                                  </StackPanel>
+                                   <controls:GlassCard CornerRadius="12" MinWidth="400" HorizontalAlignment="Left" >
                                        <StackPanel>
                                            <Button Command="{Binding Copy}" CommandParameter="{Binding Content}" Classes="Basic" HorizontalAlignment="Right" Margin="-15,-10,-15,-12">
                                                <avalonia:MaterialIcon Kind="ContentCopy" Foreground="{DynamicResource SukiText}"></avalonia:MaterialIcon>
                                            </Button>
-                                           <mdxaml:MarkdownScrollViewer Margin="0,5,0,0"  Markdown="{Binding Content, Converter={StaticResource MC}}">
+                                           <mdxaml:MarkdownScrollViewer SelectionEnabled="True" Margin="0,5,0,0"  Markdown="{Binding Content, Converter={StaticResource MC}}">
                                                <mdxaml:MarkdownScrollViewer.Styles>
+                                                   <Style Selector=".Markdown_Avalonia_MarkdownViewer ctxt|CTextBlock">
+                                                       <Style.Setters>
+                                                           <Setter Property="SelectionBrush" Value="{DynamicResource SukiCardBackground}"></Setter>
+                                                           <Setter Property="FontSize"   Value="14" />
+                                                           <Setter Property="FontFamily" Value="{StaticResource QuicksandFont}"></Setter>
+                                                           <Setter Property="Margin"     Value="0,3" />
+                                                       </Style.Setters>
+                                                   </Style>
+                                                   <Style Selector=".Markdown_Avalonia_MarkdownViewer TextBlock">
+                                                       <Style.Setters>
+                                                           <Setter Property="FontSize"   Value="14" />
+                                                           <Setter Property="FontFamily" Value="{StaticResource QuicksandFont}"></Setter>
+                                                       </Style.Setters>
+                                                   </Style>
+
+                                                   
                                                    <Style Selector="ctxt|CTextBlock.Heading1">
                                                        <Setter Property="Foreground" Value="{DynamicResource SukiText}"/>
                                                        <Setter Property="Margin" Value="0,8"></Setter>
@@ -178,16 +203,25 @@
                                                        <Setter Property="Foreground" Value="{DynamicResource SukiText}"/>
                                                    </Style>
                                                    
-                                                 
                                                    <Style Selector="ctxt|CCode">
                                                        <Style.Setters>
 
-                                                           <Setter Property="BorderBrush"         Value="Green"/>
+                                                           <Setter Property="FontFamily" Value="{StaticResource QuicksandFont}"></Setter>
                                                            <Setter Property="BorderThickness"     Value="0"/>
-                                                           <Setter Property="Padding"             Value="2"/>
+                                                           <Setter Property="CornerRadius"     Value="7"/>
+                                                           <Setter Property="Padding"             Value="5,5,5,1"/>
+                                                           <Setter Property="Margin" Value="1,0"></Setter>
       
-                                                           <Setter Property="Foreground"          Value="{DynamicResource SukiText}" />
-                                                           <Setter Property="Background"          Value="LightGreen" />
+       
+                                                       </Style.Setters>
+                                                   </Style>
+
+                                                   <Style Selector=".Markdown_Avalonia_MarkdownViewer ctxt|CCode">
+                                                       <Style.Setters>
+                                                           <Setter Property="FontFamily" Value="{StaticResource QuicksandFont}"></Setter>
+                                                           <Setter Property="FontWeight" Value="Normal"></Setter>
+                                                           <Setter Property="Foreground" Value="White" />
+                                                           <Setter Property="Background" Value="{DynamicResource SukiAccentColor5}" />
                                                        </Style.Setters>
                                                    </Style>
 
@@ -213,23 +247,35 @@
                                                    <Style Selector="AccessText">
                                                        <Style.Setters>
                                                            <Setter Property="Foreground"      Value="{DynamicResource SukiText}"/>
-    
+                                                           <Setter Property="FontFamily" Value="{StaticResource QuicksandFont}"></Setter>
                                                        </Style.Setters>
                                                    </Style>
                                                    
                                                    <Style Selector="TextBlock">
                                                        <Style.Setters>
                                                            <Setter Property="Foreground"      Value="{DynamicResource SukiText}"/>
-    
+                                                           <Setter Property="FontFamily" Value="{StaticResource QuicksandFont}"></Setter>
                                                        </Style.Setters>
                                                    </Style>
 
                                              
                                                </mdxaml:MarkdownScrollViewer.Styles>
                                            </mdxaml:MarkdownScrollViewer>
-                                           <Viewbox IsVisible="{Binding IsWriting}" Height="20" Width="20" HorizontalAlignment="Center" Margin="5,25,5,0">
-                                                <controls:Loading ></controls:Loading>
-                                           </Viewbox>
+                                           <Panel  IsVisible="{Binding IsWriting}" HorizontalAlignment="Center" Margin="5,25,5,0">
+                                               <Panel.Transitions>
+                                                   <Transitions>
+                                                   <DoubleTransition Property="Opacity" Duration="0:0:0.25"></DoubleTransition>
+                                                       </Transitions>
+                                               </Panel.Transitions> 
+                                            
+                                               <Panel.Resources>
+                                                   <Color x:Key="SukiPrimaryColor">#cf1322</Color>
+                                               </Panel.Resources>
+                                               
+                                               <Button  BorderThickness="0" x:DataType="pages1:ResourcesVM" DataContext="{x:Static pages1:ResourcesVM.Instance}"  Command="{Binding ChatVM.StopAnswerGeneration}"  Margin="0,0,0,0" Classes="Basic Rounded"  >
+                                                   <TextBlock FontWeight="Bold"  Text="Stop Generation" FontSize="13" ></TextBlock>
+                                               </Button>
+                                           </Panel>
                                        </StackPanel>
                                    </controls:GlassCard>
                                </DockPanel>
@@ -253,6 +299,7 @@
            
            
        </ScrollViewer>
+                 
                     </Panel>
    </DockPanel>
         

@@ -6,21 +6,34 @@
         xmlns:full="https://github.com/whistyun/Markdown.Avalonia">
     <Design.PreviewWith>
         <Border Padding="20">
-            <full:MarkdownScrollViewer  xml:space="preserve">
+            <full:MarkdownScrollViewer SelectionEnabled="True" xml:space="preserve">
  
 <full:MarkdownScrollViewer.Styles>
 
-<Style Selector="ctxt|CCode">
+ <Style Selector=".Markdown_Avalonia_MarkdownViewer ctxt|CTextBlock">
     <Style.Setters>
 
-        <Setter Property="BorderBrush"         Value="Green"/>
-        <Setter Property="BorderThickness"     Value="0"/>
-        <Setter Property="Padding"             Value="2"/>
-      
-        <Setter Property="Foreground"          Value="DarkGreen" />
-        <Setter Property="Background"          Value="LightGreen" />
+<Setter Property="SelectionBrush" Value="{DynamicResource SukiCardBackground}"></Setter>
+      <Setter Property="FontSize"   Value="14" />
+<Setter Property="FontFamily" Value="{StaticResource QuicksandFont}"></Setter>
+      <Setter Property="Margin"     Value="0,3" />
     </Style.Setters>
-</Style>
+  </Style>
+  <Style Selector=".Markdown_Avalonia_MarkdownViewer TextBlock">
+    <Style.Setters>
+      <Setter Property="FontSize"   Value="14" />
+<Setter Property="FontFamily" Value="{StaticResource QuicksandFont}"></Setter>
+    </Style.Setters>
+  </Style>
+
+
+
+
+
+
+
+
+
 
 <Style Selector="Border.CodeBlock">
     <Style.Setters>
@@ -38,7 +51,7 @@
 <Style Selector="TextBlock.CodeBlock">
     <Style.Setters>
         <Setter Property="Foreground"      Value="{DynamicResource SukiText}"/>
-    
+    <Setter Property="FontFamily" Value="{StaticResource QuicksandFont}"></Setter>
     </Style.Setters>
 </Style>
 
@@ -47,17 +60,39 @@
 </Style>
 
 
- 
+ <Style Selector="ctxt|CCode">
+    <Style.Setters>
+
+     <Setter Property="FontFamily" Value="{StaticResource QuicksandFont}"></Setter>
+        <Setter Property="BorderThickness"     Value="0"/>
+        <Setter Property="CornerRadius"     Value="7"/>
+        <Setter Property="Padding"             Value="5,5,5,1"/>
+       <Setter Property="Margin" Value="1,0"></Setter>
+      
+       
+    </Style.Setters>
+</Style>
+
+<Style Selector=".Markdown_Avalonia_MarkdownViewer ctxt|CCode">
+    <Style.Setters>
+<Setter Property="FontFamily" Value="{StaticResource QuicksandFont}"></Setter>
+<Setter Property="FontWeight" Value="Normal"></Setter>
+      <Setter Property="Foreground" Value="{DynamicResource SukiPrimaryText}" />
+      <Setter Property="Background" Value="{DynamicResource SukiAccentColor50}" />
+    </Style.Setters>
+  </Style>
+
+
 </full:MarkdownScrollViewer.Styles>
 
-```java
+```
     # Heading1
 # Heading1
 # Heading1
 # Heading1
 # Heading1
 ```
-    Hello Markdown.Avalonia!
+    Hello Markdown `test` .Avalonia!
 
     * listitem1
     * listitem2

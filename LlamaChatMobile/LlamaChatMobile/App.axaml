@@ -3,7 +3,7 @@
              xmlns:local="using:LlamaChatMobile"
              x:Class="LlamaChatMobile.App"  xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
              xmlns:system="clr-namespace:System;assembly=System.Runtime"
-             RequestedThemeVariant="Default">
+         >
              <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
 
    <Application.Styles>

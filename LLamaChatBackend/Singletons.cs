@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using System.Text.Json;
 using CommunityToolkit.Mvvm.ComponentModel;
+using LlamaChat.Pages;
 
 namespace MvvmStupidPocHelper;
 
@@ -17,6 +18,10 @@ public class Singleton<T> : ObservableObject where T : class, new()
 
             return _instance;
         }
+        set
+        {
+            _instance = value;
+        }
     }
 }
 
@@ -31,7 +36,7 @@ public class PersistentSingleton<T> : ObservableObject where T : class, new()
             if (_instance == null)
             {
                 
-                var path = "DB" + Path.DirectorySeparatorChar +   typeof(T).Name;
+                var path = ResourcesVM.GetRootPath() +  "DB" + Path.DirectorySeparatorChar +   typeof(T).Name;
 
                 var file = new FileInfo(path);
                 if (file.Exists)

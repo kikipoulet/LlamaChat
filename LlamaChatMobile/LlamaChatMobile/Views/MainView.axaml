@@ -2,13 +2,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:vm="clr-namespace:LlamaChatMobile.ViewModels"
+          
              xmlns:controls="clr-namespace:CherylUI.Controls;assembly=CherylUI"
              xmlns:glassMorphism="clr-namespace:CherylUI.Controls.GlassMorphism;assembly=CherylUI"
              xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+             xmlns:pages="clr-namespace:LlamaChat.Pages;assembly=LLamaChatBackend"
+             xmlns:classes="clr-namespace:LlamaChat.Classes;assembly=LLamaChatBackend"
+             xmlns:modelsList="clr-namespace:LlamaChatMobile.Views.ModelsList"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="LlamaChatMobile.Views.MainView"
            >
+  <UserControl.Resources>
+    <modelsList:NoModelConverter x:Key="NMC" />
+  </UserControl.Resources>
   <controls:InteractiveContainer>
     <Panel>
 
@@ -28,26 +34,35 @@
 
 
           <DockPanel Margin="0,5,0,0" >
-            <Button VerticalAlignment="Center" DockPanel.Dock="Right" Classes="Text">
+            <Button Click="GoToModels" VerticalAlignment="Center" DockPanel.Dock="Right" Classes="Text">
               <avalonia:MaterialIcon VerticalAlignment="Center" Height="22" Width="22" Kind="ArrowRightThin" />
             </Button>
             <TextBlock VerticalAlignment="Top" Margin="0,9,0,0" Text="Models" FontWeight="DemiBold" FontSize="22"></TextBlock>
           </DockPanel>
 
-          <StackPanel Spacing="15" Orientation="Horizontal" Margin="0,5,0,0">
-            <DockPanel>
-              <TextBlock Text="Phi 3 Mini 4K" Foreground="{DynamicResource SecondaryText}" FontWeight="Bold" HorizontalAlignment="Center" Margin="7" DockPanel.Dock="Bottom"></TextBlock>
-              <glassMorphism:GlassCard  Width="70" Height="70" CornerRadius="100">
-                <Image Height="48" Width="48" HorizontalAlignment="Center" VerticalAlignment="Center" Source="/Assets/icons8-artificial-intelligence-48 (1).png"></Image>
-              </glassMorphism:GlassCard>
-            </DockPanel>
+          <ItemsControl  x:DataType="pages:ResourcesVM" DataContext="{x:Static pages:ResourcesVM.Instance}" ItemsSource="{Binding ModelsToDownload}" Margin="0,5,0,0">
+            <ItemsControl.ItemsPanel>
+              <ItemsPanelTemplate>
+              <StackPanel Spacing="15" Orientation="Horizontal" />
+              </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.DataTemplates>
+              <DataTemplate DataType="classes:AiModel">
+                <DockPanel IsVisible="{Binding IsInstalled}">
+                  <TextBlock Text="{Binding Name}" Foreground="{DynamicResource SecondaryText}" FontWeight="Bold" HorizontalAlignment="Center" Margin="7" DockPanel.Dock="Bottom"></TextBlock>
+                  <glassMorphism:GlassCard  Width="70" Height="70" CornerRadius="100">
+                    <Image Height="48" Width="48" HorizontalAlignment="Center" VerticalAlignment="Center" Source="/Assets/icons8-artificial-intelligence-48 (1).png"></Image>
+                  </glassMorphism:GlassCard>
+                </DockPanel>
+              </DataTemplate>
+              </ItemsControl.DataTemplates>
+           
 
-            <DockPanel>
-              <TextBlock Text="Llama 3 7B" Foreground="{DynamicResource SecondaryText}" FontWeight="Bold" HorizontalAlignment="Center" Margin="7" DockPanel.Dock="Bottom"></TextBlock>
-              <glassMorphism:GlassCard  Width="70" Height="70" CornerRadius="100">
-                <Image Height="48" Width="48" HorizontalAlignment="Center" VerticalAlignment="Center" Source="/Assets/icons8-artificial-intelligence-48 (1).png"></Image>
-              </glassMorphism:GlassCard>
-            </DockPanel>
+          </ItemsControl>
+          
+          <StackPanel  x:DataType="pages:ResourcesVM" DataContext="{x:Static pages:ResourcesVM.Instance}" IsVisible="{Binding ModelsToDownload, Converter={StaticResource NMC}}"  HorizontalAlignment="Center">
+            <Image Height="48" Width="48" Source="/Assets/icons8-empty-96.png"></Image>
+            <TextBlock FontSize="14" HorizontalAlignment="Center" Margin="5" Foreground="{DynamicResource SecondaryText}" Text="No Models Installed Yet"></TextBlock>
           </StackPanel>
 
           <DockPanel Margin="0,35,0,0" >

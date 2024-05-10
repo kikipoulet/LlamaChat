@@ -15,7 +15,7 @@ public partial class ChatView : UserControl
     {
         InitializeComponent();
         
-        ChatVM.Instance.MessagesScrollViewer = this.FindControl<ScrollViewer>("MonScrollViewer");
+        ResourcesVM.Instance.ChatScroll= this.FindControl<ScrollViewer>("MonScrollViewer");
     }
 
     private void Button_OnClick(object? sender, RoutedEventArgs e)
@@ -29,14 +29,14 @@ public partial class ChatView : UserControl
 
     private void newChatClick(object? sender, RoutedEventArgs e)
     {
-        ChatVM.Instance.CurrentChat = null;
+        ResourcesVM.Instance.ChatVM.CurrentChat = null;
     }
 
     private void SaveChat(object? sender, RoutedEventArgs e)
     {
         Task.Run(() =>
         {
-            ChatVM.Instance.SaveChat();
+            ResourcesVM.Instance.ChatVM.SaveChat();
             ResourcesVM.Instance.RecentChats = ResourcesVM.GetChats();
         });
         

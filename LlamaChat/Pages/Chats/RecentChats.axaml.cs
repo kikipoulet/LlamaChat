@@ -23,7 +23,7 @@ public partial class RecentChats : UserControl
     private void NewChatFromHistory(object? sender, RoutedEventArgs e)
     {
         Chat chat = JsonConvert.DeserializeObject<Chat>(File.ReadAllText(@"chats\\" + ((Button)sender).Tag));
-        ChatVM.Instance.InitChat("",chat);
+        ResourcesVM.Instance.ChatVM.InitChat("",chat);
     }
 }
 

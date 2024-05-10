@@ -129,7 +129,7 @@
           }
         }
       },
-      "LLamaSharp.Backend.Cpu/0.11.2": {
+      "LLamaSharp.Backend.Cpu/0.10.0": {
         "type": "package",
         "build": {
           "build/netstandard2.0/LLamaSharp.Backend.Cpu.props": {}
@@ -139,15 +139,7 @@
             "assetType": "native",
             "rid": "linux-x64"
           },
-          "runtimes/linux-x64/native/avx/libllava_shared.so": {
-            "assetType": "native",
-            "rid": "linux-x64"
-          },
           "runtimes/linux-x64/native/avx2/libllama.so": {
-            "assetType": "native",
-            "rid": "linux-x64"
-          },
-          "runtimes/linux-x64/native/avx2/libllava_shared.so": {
             "assetType": "native",
             "rid": "linux-x64"
           },
@@ -155,15 +147,7 @@
             "assetType": "native",
             "rid": "linux-x64"
           },
-          "runtimes/linux-x64/native/avx512/libllava_shared.so": {
-            "assetType": "native",
-            "rid": "linux-x64"
-          },
           "runtimes/linux-x64/native/libllama.so": {
-            "assetType": "native",
-            "rid": "linux-x64"
-          },
-          "runtimes/linux-x64/native/libllava_shared.so": {
             "assetType": "native",
             "rid": "linux-x64"
           },
@@ -175,15 +159,7 @@
             "assetType": "native",
             "rid": "osx-arm64"
           },
-          "runtimes/osx-arm64/native/libllava_shared.dylib": {
-            "assetType": "native",
-            "rid": "osx-arm64"
-          },
           "runtimes/osx-x64/native/libllama.dylib": {
-            "assetType": "native",
-            "rid": "osx-x64"
-          },
-          "runtimes/osx-x64/native/libllava_shared.dylib": {
             "assetType": "native",
             "rid": "osx-x64"
           },
@@ -191,15 +167,7 @@
             "assetType": "native",
             "rid": "win-x64"
           },
-          "runtimes/win-x64/native/avx/llava_shared.dll": {
-            "assetType": "native",
-            "rid": "win-x64"
-          },
           "runtimes/win-x64/native/avx2/llama.dll": {
-            "assetType": "native",
-            "rid": "win-x64"
-          },
-          "runtimes/win-x64/native/avx2/llava_shared.dll": {
             "assetType": "native",
             "rid": "win-x64"
           },
@@ -207,15 +175,7 @@
             "assetType": "native",
             "rid": "win-x64"
           },
-          "runtimes/win-x64/native/avx512/llava_shared.dll": {
-            "assetType": "native",
-            "rid": "win-x64"
-          },
           "runtimes/win-x64/native/llama.dll": {
-            "assetType": "native",
-            "rid": "win-x64"
-          },
-          "runtimes/win-x64/native/llava_shared.dll": {
             "assetType": "native",
             "rid": "win-x64"
           }
@@ -275,6 +235,49 @@
         "runtime": {
           "lib/net6.0/Newtonsoft.Json.dll": {
             "related": ".xml"
+          }
+        }
+      },
+      "OpenAI-DotNet/7.7.8": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/OpenAI-DotNet.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/OpenAI-DotNet.dll": {}
+        }
+      },
+      "SharpToken/2.0.2": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/SharpToken.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/SharpToken.dll": {}
+        }
+      },
+      "System.Numerics.Vectors/4.5.0": {
+        "type": "package",
+        "compile": {
+          "ref/netcoreapp2.0/_._": {}
+        },
+        "runtime": {
+          "lib/netcoreapp2.0/_._": {}
+        }
+      },
+      "Xamarin.Essentials/1.8.1": {
+        "type": "package",
+        "dependencies": {
+          "System.Numerics.Vectors": "4.5.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Xamarin.Essentials.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Xamarin.Essentials.dll": {
+            "related": ".pdb;.xml"
           }
         }
       }
@@ -522,38 +525,28 @@
         "llamasharp.nuspec"
       ]
     },
-    "LLamaSharp.Backend.Cpu/0.11.2": {
-      "sha512": "ELBKP9QDnxhecoflMD/dJqt2j9rRFomNx3bcu66z2rx5ufRVvVET/hsDQaAG6JkqUvgfOk5exfDFlrQAHX0zKQ==",
+    "LLamaSharp.Backend.Cpu/0.10.0": {
+      "sha512": "FdYveoisVuwzYVUyHLg73JmgEB1Z+fl8iTJOIN3Rt7YcUAiM/XeZ38uJsjB/sv3eh/Yd7Zc7R96zM5k4zK4ZgA==",
       "type": "package",
-      "path": "llamasharp.backend.cpu/0.11.2",
+      "path": "llamasharp.backend.cpu/0.10.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "build/netstandard2.0/LLamaSharp.Backend.Cpu.props",
         "icon512.png",
-        "llamasharp.backend.cpu.0.11.2.nupkg.sha512",
+        "llamasharp.backend.cpu.0.10.0.nupkg.sha512",
         "llamasharp.backend.cpu.nuspec",
         "runtimes/linux-x64/native/avx/libllama.so",
-        "runtimes/linux-x64/native/avx/libllava_shared.so",
         "runtimes/linux-x64/native/avx2/libllama.so",
-        "runtimes/linux-x64/native/avx2/libllava_shared.so",
         "runtimes/linux-x64/native/avx512/libllama.so",
-        "runtimes/linux-x64/native/avx512/libllava_shared.so",
         "runtimes/linux-x64/native/libllama.so",
-        "runtimes/linux-x64/native/libllava_shared.so",
         "runtimes/osx-arm64/native/ggml-metal.metal",
         "runtimes/osx-arm64/native/libllama.dylib",
-        "runtimes/osx-arm64/native/libllava_shared.dylib",
         "runtimes/osx-x64/native/libllama.dylib",
-        "runtimes/osx-x64/native/libllava_shared.dylib",
         "runtimes/win-x64/native/avx/llama.dll",
-        "runtimes/win-x64/native/avx/llava_shared.dll",
         "runtimes/win-x64/native/avx2/llama.dll",
-        "runtimes/win-x64/native/avx2/llava_shared.dll",
         "runtimes/win-x64/native/avx512/llama.dll",
-        "runtimes/win-x64/native/avx512/llava_shared.dll",
-        "runtimes/win-x64/native/llama.dll",
-        "runtimes/win-x64/native/llava_shared.dll"
+        "runtimes/win-x64/native/llama.dll"
       ]
     },
     "MicroCom.Runtime/0.11.0": {
@@ -703,6 +696,126 @@
         "newtonsoft.json.nuspec",
         "packageIcon.png"
       ]
+    },
+    "OpenAI-DotNet/7.7.8": {
+      "sha512": "q8g5vMDPbD/T6ymcCRH+Q/7yYlnVgI9xUO/O16L7s2O8a3G9jqCC8AXepyPPikCwuv3yPrzI7JT87yWmIM3XUg==",
+      "type": "package",
+      "path": "openai-dotnet/7.7.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Assets/OpenAI-DotNet-Icon.png",
+        "LICENSE",
+        "README.md",
+        "lib/net6.0/OpenAI-DotNet.dll",
+        "openai-dotnet.7.7.8.nupkg.sha512",
+        "openai-dotnet.nuspec"
+      ]
+    },
+    "SharpToken/2.0.2": {
+      "sha512": "agF4GdYY9Zv2fdnK6uPUra6/WDg9hLd5bfeTLKNOfNanPFAeY5lSQjvmHYoUkZWEmNs7fzjDfAc5bDbqfuJfIA==",
+      "type": "package",
+      "path": "sharptoken/2.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "README.md",
+        "lib/net6.0/SharpToken.dll",
+        "lib/net8.0/SharpToken.dll",
+        "lib/netstandard2.0/SharpToken.dll",
+        "sharptoken.2.0.2.nupkg.sha512",
+        "sharptoken.nuspec"
+      ]
+    },
+    "System.Numerics.Vectors/4.5.0": {
+      "sha512": "QQTlPTl06J/iiDbJCiepZ4H//BVraReU4O4EoRw1U02H5TLUIT7xn3GnDp9AXPSlJUDyFs4uWjWafNX6WrAojQ==",
+      "type": "package",
+      "path": "system.numerics.vectors/4.5.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net46/System.Numerics.Vectors.dll",
+        "lib/net46/System.Numerics.Vectors.xml",
+        "lib/netcoreapp2.0/_._",
+        "lib/netstandard1.0/System.Numerics.Vectors.dll",
+        "lib/netstandard1.0/System.Numerics.Vectors.xml",
+        "lib/netstandard2.0/System.Numerics.Vectors.dll",
+        "lib/netstandard2.0/System.Numerics.Vectors.xml",
+        "lib/portable-net45+win8+wp8+wpa81/System.Numerics.Vectors.dll",
+        "lib/portable-net45+win8+wp8+wpa81/System.Numerics.Vectors.xml",
+        "lib/uap10.0.16299/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net45/System.Numerics.Vectors.dll",
+        "ref/net45/System.Numerics.Vectors.xml",
+        "ref/net46/System.Numerics.Vectors.dll",
+        "ref/net46/System.Numerics.Vectors.xml",
+        "ref/netcoreapp2.0/_._",
+        "ref/netstandard1.0/System.Numerics.Vectors.dll",
+        "ref/netstandard1.0/System.Numerics.Vectors.xml",
+        "ref/netstandard2.0/System.Numerics.Vectors.dll",
+        "ref/netstandard2.0/System.Numerics.Vectors.xml",
+        "ref/uap10.0.16299/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "system.numerics.vectors.4.5.0.nupkg.sha512",
+        "system.numerics.vectors.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "Xamarin.Essentials/1.8.1": {
+      "sha512": "IzfRGrCrRuytgdQU+Im17Cepib6qUyLj1xfMjn+sDPTfmhmcZotsQCm5Dblm4Vxo9/SGFTdm1OgJUKWzu+dfjw==",
+      "type": "package",
+      "path": "xamarin.essentials/1.8.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "icon.png",
+        "lib/monoandroid13.0/Xamarin.Essentials.dll",
+        "lib/monoandroid13.0/Xamarin.Essentials.pdb",
+        "lib/monoandroid13.0/Xamarin.Essentials.xml",
+        "lib/netstandard1.0/Xamarin.Essentials.dll",
+        "lib/netstandard1.0/Xamarin.Essentials.pdb",
+        "lib/netstandard1.0/Xamarin.Essentials.xml",
+        "lib/netstandard2.0/Xamarin.Essentials.dll",
+        "lib/netstandard2.0/Xamarin.Essentials.pdb",
+        "lib/netstandard2.0/Xamarin.Essentials.xml",
+        "lib/tizen40/Xamarin.Essentials.dll",
+        "lib/tizen40/Xamarin.Essentials.pdb",
+        "lib/tizen40/Xamarin.Essentials.xml",
+        "lib/uap10.0.16299/Xamarin.Essentials.dll",
+        "lib/uap10.0.16299/Xamarin.Essentials.pdb",
+        "lib/uap10.0.16299/Xamarin.Essentials.pri",
+        "lib/uap10.0.16299/Xamarin.Essentials.xml",
+        "lib/xamarinios10/Xamarin.Essentials.dll",
+        "lib/xamarinios10/Xamarin.Essentials.pdb",
+        "lib/xamarinios10/Xamarin.Essentials.xml",
+        "lib/xamarinmac20/Xamarin.Essentials.dll",
+        "lib/xamarinmac20/Xamarin.Essentials.pdb",
+        "lib/xamarinmac20/Xamarin.Essentials.xml",
+        "lib/xamarintvos10/Xamarin.Essentials.dll",
+        "lib/xamarintvos10/Xamarin.Essentials.pdb",
+        "lib/xamarintvos10/Xamarin.Essentials.xml",
+        "lib/xamarinwatchos10/Xamarin.Essentials.dll",
+        "lib/xamarinwatchos10/Xamarin.Essentials.pdb",
+        "lib/xamarinwatchos10/Xamarin.Essentials.xml",
+        "readme.txt",
+        "xamarin.essentials.1.8.1.nupkg.sha512",
+        "xamarin.essentials.nuspec"
+      ]
     }
   },
   "projectFileDependencyGroups": {
@@ -710,8 +823,11 @@
       "Avalonia >= 11.1.0-beta2",
       "CommunityToolkit.Mvvm >= 8.2.2",
       "LLamaSharp >= 0.11.2",
-      "LLamaSharp.Backend.Cpu >= 0.11.2",
-      "Newtonsoft.Json >= 13.0.3"
+      "LLamaSharp.Backend.Cpu >= 0.10.0",
+      "Newtonsoft.Json >= 13.0.3",
+      "OpenAI-DotNet >= 7.7.8",
+      "SharpToken >= 2.0.2",
+      "Xamarin.Essentials >= 1.8.1"
     ]
   },
   "packageFolders": {
@@ -777,11 +893,23 @@
           },
           "LLamaSharp.Backend.Cpu": {
             "target": "Package",
-            "version": "[0.11.2, )"
+            "version": "[0.10.0, )"
           },
           "Newtonsoft.Json": {
             "target": "Package",
             "version": "[13.0.3, )"
+          },
+          "OpenAI-DotNet": {
+            "target": "Package",
+            "version": "[7.7.8, )"
+          },
+          "SharpToken": {
+            "target": "Package",
+            "version": "[2.0.2, )"
+          },
+          "Xamarin.Essentials": {
+            "target": "Package",
+            "version": "[1.8.1, )"
           }
         },
         "imports": [

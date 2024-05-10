@@ -62,11 +62,23 @@
             },
             "LLamaSharp.Backend.Cpu": {
               "target": "Package",
-              "version": "[0.11.2, )"
+              "version": "[0.10.0, )"
             },
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.3, )"
+            },
+            "OpenAI-DotNet": {
+              "target": "Package",
+              "version": "[7.7.8, )"
+            },
+            "SharpToken": {
+              "target": "Package",
+              "version": "[2.0.2, )"
+            },
+            "Xamarin.Essentials": {
+              "target": "Package",
+              "version": "[1.8.1, )"
             }
           },
           "imports": [

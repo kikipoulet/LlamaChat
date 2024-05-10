@@ -22,6 +22,8 @@ C:\Users\Sepul\.nuget\packages\microsoft.netcore.app.ref\6.0.26\ref\net6.0\Micro
 C:\Users\Sepul\.nuget\packages\microsoft.netcore.app.ref\6.0.26\ref\net6.0\mscorlib.dll
 C:\Users\Sepul\.nuget\packages\microsoft.netcore.app.ref\6.0.26\ref\net6.0\netstandard.dll
 C:\Users\Sepul\.nuget\packages\newtonsoft.json\13.0.3\lib\net6.0\Newtonsoft.Json.dll
+C:\Users\Sepul\.nuget\packages\openai-dotnet\7.7.8\lib\net6.0\OpenAI-DotNet.dll
+C:\Users\Sepul\.nuget\packages\sharptoken\2.0.2\lib\net6.0\SharpToken.dll
 C:\Users\Sepul\.nuget\packages\microsoft.netcore.app.ref\6.0.26\ref\net6.0\System.AppContext.dll
 C:\Users\Sepul\.nuget\packages\microsoft.netcore.app.ref\6.0.26\ref\net6.0\System.Buffers.dll
 C:\Users\Sepul\.nuget\packages\microsoft.netcore.app.ref\6.0.26\ref\net6.0\System.Collections.Concurrent.dll
@@ -174,3 +176,4 @@ C:\Users\Sepul\.nuget\packages\microsoft.netcore.app.ref\6.0.26\ref\net6.0\Syste
 C:\Users\Sepul\.nuget\packages\microsoft.netcore.app.ref\6.0.26\ref\net6.0\System.Xml.XPath.dll
 C:\Users\Sepul\.nuget\packages\microsoft.netcore.app.ref\6.0.26\ref\net6.0\System.Xml.XPath.XDocument.dll
 C:\Users\Sepul\.nuget\packages\microsoft.netcore.app.ref\6.0.26\ref\net6.0\WindowsBase.dll
+C:\Users\Sepul\.nuget\packages\xamarin.essentials\1.8.1\lib\netstandard2.0\Xamarin.Essentials.dll

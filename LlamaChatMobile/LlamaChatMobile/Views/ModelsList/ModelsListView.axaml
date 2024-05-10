@@ -1,0 +1,94 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" x:DataType="pages:ResourcesVM" DataContext="{x:Static pages:ResourcesVM.Instance}" 
+             xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+             xmlns:pages="clr-namespace:LlamaChat.Pages;assembly=LLamaChatBackend"
+             xmlns:classes="clr-namespace:LlamaChat.Classes;assembly=LLamaChatBackend"
+             xmlns:glassMorphism="clr-namespace:CherylUI.Controls.GlassMorphism;assembly=CherylUI"
+             xmlns:modelsList="clr-namespace:LlamaChatMobile.Views.ModelsList"
+             mc:Ignorable="d" d:DesignWidth="370" d:DesignHeight="650"
+             x:Class="LlamaChatMobile.Views.ModelsList.ModelsListView">
+    <UserControl.Resources>
+        <modelsList:NoModelConverter x:Key="NMC" />
+    </UserControl.Resources>
+    <ScrollViewer VerticalScrollBarVisibility="Hidden">
+    <StackPanel Margin="25">
+        <Button HorizontalAlignment="Left" Click="GoBack" VerticalAlignment="Center" Padding="0" Classes="Text">
+            <avalonia:MaterialIcon VerticalAlignment="Center" Height="42" Width="42" Kind="ArrowLeftThin" />
+        </Button>
+        
+        <DockPanel Margin="0,12,0,35" >
+       
+            <TextBlock VerticalAlignment="Top" Margin="0,9,0,0" Text="Installed Models" FontWeight="DemiBold" FontSize="22"></TextBlock>
+        </DockPanel>
+
+      <ItemsControl  x:DataType="pages:ResourcesVM" DataContext="{x:Static pages:ResourcesVM.Instance}" ItemsSource="{Binding ModelsToDownload}" Margin="0,5,0,0">
+        <ItemsControl.ItemsPanel>
+          <ItemsPanelTemplate>
+            <StackPanel Spacing="15" Orientation="Horizontal" />
+          </ItemsPanelTemplate>
+        </ItemsControl.ItemsPanel>
+        <ItemsControl.DataTemplates>
+          <DataTemplate DataType="classes:AiModel">
+            <DockPanel IsVisible="{Binding IsInstalled}">
+              <TextBlock Text="{Binding Name}" Foreground="{DynamicResource SecondaryText}" FontWeight="Bold" HorizontalAlignment="Center" Margin="7" DockPanel.Dock="Bottom"></TextBlock>
+              <glassMorphism:GlassCard  Width="70" Height="70" CornerRadius="100">
+                <Image Height="48" Width="48" HorizontalAlignment="Center" VerticalAlignment="Center" Source="/Assets/icons8-artificial-intelligence-48 (1).png"></Image>
+              </glassMorphism:GlassCard>
+            </DockPanel>
+          </DataTemplate>
+        </ItemsControl.DataTemplates>
+
+
+      </ItemsControl>
+
+      <StackPanel  x:DataType="pages:ResourcesVM" DataContext="{x:Static pages:ResourcesVM.Instance}" IsVisible="{Binding ModelsToDownload, Converter={StaticResource NMC}}"  HorizontalAlignment="Center">
+        <Image Height="48" Width="48" Source="/Assets/icons8-empty-96.png"></Image>
+        <TextBlock FontSize="14" HorizontalAlignment="Center" Margin="5" Foreground="{DynamicResource SecondaryText}" Text="No Models Installed Yet"></TextBlock>
+      </StackPanel>
+
+        
+        <DockPanel Margin="0,32,0,30" >
+       
+            <TextBlock VerticalAlignment="Top" Margin="0,9,0,0" Text="Download Model" FontWeight="DemiBold" FontSize="22"></TextBlock>
+        </DockPanel>
+        
+        <ItemsControl ItemsSource="{Binding ModelsToDownload}" Margin="0,8,0,0">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Spacing="25"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.DataTemplates>
+                <DataTemplate DataType="classes:AiModel">
+                    <DockPanel >
+                        
+                        <glassMorphism:GlassCard Padding="15"  >
+                            <DockPanel >
+                                <Image Margin="0,2,0,0" Height="24" Width="24" DockPanel.Dock="Left"  HorizontalAlignment="Center" VerticalAlignment="Top" Source="/Assets/icons8-artificial-intelligence-48 (1).png"></Image>
+                              <Panel  DockPanel.Dock="Bottom">
+                              <Button IsVisible="{Binding !IsInstalled}"  Click="DownloadModel" Tag="{Binding }" Classes="Small Text " Padding="10,5" Margin="0,10,0,-5" HorizontalAlignment="Right">
+                                    <TextBlock Text="Download" />
+                                </Button>
+                              <StackPanel Margin="0,15,13,5" IsVisible="{Binding IsInstalled}" Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+                                <avalonia:MaterialIcon Margin="8,0" Foreground="{DynamicResource SecondaryText}" Kind="Check" Height="15" Width="15"></avalonia:MaterialIcon>
+
+                                <TextBlock FontSize="14" FontWeight="DemiBold" Foreground="{DynamicResource SecondaryText}" Text="Installed" ></TextBlock>
+                              </StackPanel>
+                              </Panel>
+                              <StackPanel Margin="8,5,0,0">
+                                    <TextBlock Text="{Binding Name}"  FontWeight="Bold"  ></TextBlock>
+                                    <TextBlock TextWrapping="Wrap" Text="{Binding  LightDescription}" FontSize="13" Foreground="{DynamicResource SecondaryText}" FontWeight="DemiBold" Margin="0,15,0,0"  ></TextBlock>
+                                </StackPanel>
+                                
+                            </DockPanel>
+                            
+                        </glassMorphism:GlassCard>
+                    </DockPanel>
+                </DataTemplate>
+            </ItemsControl.DataTemplates>
+        </ItemsControl>
+    </StackPanel>
+    </ScrollViewer>
+</UserControl>

@@ -21,12 +21,12 @@
         <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
         <PackageReference Include="HeroIcons.Avalonia" Version="1.0.2" />
         <PackageReference Include="LLamaSharp" Version="0.11.2" />
-        <PackageReference Include="LLamaSharp.Backend.Cpu" Version="0.11.2" />
         <PackageReference Include="Markdown.Avalonia" Version="11.0.3-a1" />
         <PackageReference Include="Markdown.Avalonia.SyntaxHigh" Version="11.0.3-a1" />
         <PackageReference Include="Markdown.Avalonia.Tight" Version="11.0.3-a1" />
         <PackageReference Include="Material.Icons.Avalonia" Version="2.1.9" />
         <PackageReference Include="Projektanker.Icons.Avalonia.FontAwesome" Version="9.3.0" />
+        <PackageReference Include="SharpToken" Version="2.0.2" />
         <PackageReference Include="SukiUI" Version="6.0.0-beta5" />
     </ItemGroup>
 

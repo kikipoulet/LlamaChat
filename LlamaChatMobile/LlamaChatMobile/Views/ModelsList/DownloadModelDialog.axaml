@@ -1,0 +1,18 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:llamaChatMobile="clr-namespace:LlamaChatMobile"
+             xmlns:classes="clr-namespace:LlamaChat.Classes;assembly=LLamaChatBackend"
+             x:DataType="classes:AiModel"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="LlamaChatMobile.Views.ModelsList.DownloadModelDialog">
+    <StackPanel>
+        <llamaChatMobile:WaveProgress Margin="0,0,0,0" IsTextVisible="True" Value="{Binding DownloadValue}" />
+        
+        <TextBlock Text="Downloading .." Foreground="{DynamicResource SecondaryText}" FontWeight="DemiBold" HorizontalAlignment="Center" Margin="-8"></TextBlock>
+        <Button Click="Cancel" Classes="Small" Margin="5,35,5,5">
+            <TextBlock Text="Cancel" FontWeight="DemiBold"></TextBlock>
+        </Button>
+    </StackPanel>
+</UserControl>

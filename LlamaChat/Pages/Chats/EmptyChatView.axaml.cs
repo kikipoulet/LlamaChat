@@ -15,6 +15,7 @@ using LLama;
 using LLama.Common;
 using LlamaChat.Classes;
 using LlamaChatBackend;
+using LLamaChatBackend.Configs;
 using SukiUI.Controls;
 
 namespace LlamaChat.Pages.Chats;
@@ -31,9 +32,29 @@ public partial class EmptyChatView : UserControl
   
         var modelName = this.Get<ListBox>("ListModels").SelectedItem.ToString();
 
-        ChatVM.Instance.InitChat(@"models\" + modelName);
-     
+        if (this.Get<TabItem>("Tab0").IsSelected)
+        {
+            ResourcesVM.Instance.ChatVM = new LlamaChatVM();
+            ResourcesVM.Instance.ChatVM.InitChat(@"models\" + modelName);
+        }else if (this.Get<TabItem>("Tab1").IsSelected)
+        {
+            if (this.Get<CheckBox>("CheckDeepseek").IsChecked == true)
+            {
+                ResourcesVM.Instance.ChatVM = new OpenAIChatVM()
+                {
+                    Key = DeepSeekConfig.Instance.APIKEY
+                };
+                ResourcesVM.Instance.ChatVM.InitChat("DeepSeek Chat");
+            }
+        }
+
         
+    }
+
+
+    private void TextBox_OnTextChanged(object? sender, TextChangedEventArgs e)
+    {
+        DeepSeekConfig.Instance.Save();
     }
 }
 

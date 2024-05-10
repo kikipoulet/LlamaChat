@@ -8,8 +8,9 @@
              xmlns:chats="clr-namespace:LlamaChat.Pages.Chats"
              xmlns:system="clr-namespace:System;assembly=System.Runtime"
              xmlns:pages1="clr-namespace:LlamaChat.Pages;assembly=LLamaChatBackend"
+             xmlns:configs="clr-namespace:LLamaChatBackend.Configs;assembly=LLamaChatBackend"
 
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="750"
              x:Class="LlamaChat.Pages.Chats.EmptyChatView">
     <UserControl.Resources>
         <system:Double x:Key="GlassOpacity">0.3</system:Double>
@@ -60,19 +61,21 @@
             </Style>
         </DockPanel.Styles>
    
-        <TextBlock Classes="h2" Text="New Chat" DockPanel.Dock="Top" Margin="15"></TextBlock>
-        <Button IsVisible="{Binding Models.Count}"  Height="45"  CornerRadius="50" BorderThickness="0" Margin="100,10" Click="newChat" Classes="Large H" DockPanel.Dock="Bottom" >
+        <TextBlock Classes="h2" Text="New Chat" DockPanel.Dock="Top" Margin="5,30"></TextBlock>
+        <Button IsVisible="{Binding Models.Count}"  Height="45"  CornerRadius="50" BorderThickness="0" Margin="100,10" Click="newChat" Classes="Large Flat" DockPanel.Dock="Bottom" >
             <StackPanel Orientation="Horizontal" Spacing="18" Margin="10,0">
                 <avalonia:MaterialIcon Kind="Plus"/>
                 <TextBlock Text="Start New Chat" FontSize="17"></TextBlock>
             </StackPanel>
         </Button>
             <Panel>
-              
-          <ListBox
+              <TabControl Margin="0,0" MinHeight="250" >
+                  <TabItem Name="Tab0" Header="Local LLM">
+                      <Panel>
+                      <ListBox 
                             Classes="Void Stack"
                             ItemsSource="{Binding Models}"
-                            Margin="5,40"
+                            Margin="5,18"
                             Name="ListModels"
                             SelectionMode="AlwaysSelected"
                             VerticalAlignment="Top">
@@ -126,8 +129,70 @@
                         </ListBox>
                 <StackPanel Margin="0,30,0,40" VerticalAlignment="Center" IsVisible="{Binding !Models.Count}" HorizontalAlignment="Center" >
                     <Image Source="/Assets/icons8-empty-96.png" Height="96" Width="96"></Image>
-                    <TextBlock Foreground="{DynamicResource SukiLowText}" Text="No Model Installed yet."></TextBlock>
+                    <TextBlock Foreground="{DynamicResource SukiLowText}" Text="No Model Installed Locally."></TextBlock>
                 </StackPanel>
+                      </Panel>
+                  </TabItem>
+                  <TabItem IsSelected="True" Name="Tab1"  Header="Remote">
+                      <StackPanel  Margin="5,18" Spacing="8">
+                          <StackPanel.Styles>
+                               <Style Selector="CheckBox">
+        <Setter Property="Template">
+            <ControlTemplate>
+               
+                    <ContentPresenter Name="PART_ContentPresenter"
+                                      Grid.Column="1"
+                                      Margin="{TemplateBinding Padding}"
+                                      HorizontalAlignment="Stretch"
+                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                      Content="{TemplateBinding Content}"
+                                      ContentTemplate="{TemplateBinding ContentTemplate}"
+                                      FontSize="{TemplateBinding FontSize}"
+                                      IsVisible="{TemplateBinding Content,
+                                                                  Converter={x:Static ObjectConverters.IsNotNull}}"
+                                      RecognizesAccessKey="True" />
+               
+            </ControlTemplate>
+        </Setter>
+    </Style>
+                          </StackPanel.Styles>
+                          <CheckBox IsChecked="True" Name="CheckDeepseek" HorizontalAlignment="Stretch">
+                               <controls:GlassCard HorizontalAlignment="Stretch" IsInteractive="True"  CornerRadius="12" Classes.Primary="{Binding IsChecked, Mode=TwoWay, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=CheckBox}}" Padding="12" Margin="0,9,9,8">
+                                        <controls:GlassCard.Resources>
+                                            <Color x:Key="SukiBackground">Transparent</Color>
+                                        </controls:GlassCard.Resources>
+                                        
+                                          
+<Panel>
+<Expander Margin="0,-15,0,-17">
+    <Expander.Header>
+       <Border Height="50"></Border>
+    </Expander.Header>
+
+            <TextBox TextChanged="TextBox_OnTextChanged"  DataContext="{x:Static configs:DeepSeekConfig.Instance}" x:DataType="configs:DeepSeekConfig" Text="{Binding APIKEY}" Margin="0,40,0,20" Watermark="API KEY" PasswordChar="*"></TextBox>
+      
+ 
+    
+</Expander>
+    <DockPanel Background="Transparent" Margin="-15,-15,35,-15" VerticalAlignment="Top" Height="68"  >
+                                            
+        <Image DockPanel.Dock="Left" VerticalAlignment="Center" Margin="20,0,15,0" Source="/Assets/icons8-artificial-intelligence-48.png" Height="24" Width="24"></Image>
+              
+        <TextBlock
+            FontSize="15"
+            FontWeight="DemiBold" Foreground="{DynamicResource SukiText}"
+            VerticalAlignment="Center"
+            Text="DeepSeek Chat" />
+    </DockPanel>
+</Panel>
+                                           
+                                          
+                                   </controls:GlassCard>
+                          </CheckBox>
+                       
+                      </StackPanel>
+                  </TabItem>
+              </TabControl>
             </Panel>
     </DockPanel>
         </controls:BusyArea>

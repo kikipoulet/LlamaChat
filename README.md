@@ -7,9 +7,10 @@ A desktop and a mobile application made with [AvaloniaUI](https://github.com/Ava
 
 - Prompt Settings
 - Global Settings Page
-- Better Chat Functionalities (Retry/Continue/Stop/Copy/Edit/Delete ..)
+- Remote providers
+- Better Chat Functionalities (Copy/Edit/Delete ..)
 - Better Mardown Styles (fork ? Need help ?)
--> Mobile UI
+### -> Mobile UI
 
 Do not hesitate to suggest ideas.
 <br/><br/>

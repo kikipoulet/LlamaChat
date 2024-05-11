@@ -61,7 +61,7 @@
                 
                 </StackPanel>
             </ScrollViewer>
-        <Button Margin="25" VerticalAlignment="Bottom" >
+        <Button Click="StartChat" Margin="25" VerticalAlignment="Bottom" >
             <StackPanel Orientation="Horizontal">
                 <avalonia:MaterialIcon Kind="ArrowRight" Foreground="White" Height="20" Width="20" Margin="12,0"></avalonia:MaterialIcon>
 

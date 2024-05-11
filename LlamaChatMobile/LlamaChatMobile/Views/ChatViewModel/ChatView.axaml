@@ -1,0 +1,371 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:glassMorphism="clr-namespace:CherylUI.Controls.GlassMorphism;assembly=CherylUI"
+             xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+             xmlns:llamaChatBackend="clr-namespace:LlamaChatBackend;assembly=LLamaChatBackend"
+             xmlns:llamaChatMobile="clr-namespace:LlamaChatMobile"
+             xmlns:classes="clr-namespace:LlamaChatBackend.Classes;assembly=LLamaChatBackend"
+             xmlns:mdxaml="https://github.com/whistyun/Markdown.Avalonia.Tight"
+             xmlns:ctxt="clr-namespace:ColorTextBlock.Avalonia;assembly=ColorTextBlock.Avalonia"
+             xmlns:styles="clr-namespace:CherylUI.Styles;assembly=CherylUI"
+             xmlns:system="clr-namespace:System;assembly=System.Runtime"
+             xmlns:controls="clr-namespace:CherylUI.Controls;assembly=CherylUI"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450" x:DataType="llamaChatBackend:ChatProvider"
+             x:Class="LlamaChatMobile.Views.ChatViewModel.ChatView">
+    <UserControl.Styles>
+                             <Style Selector="TextBox">
+                                        <Setter Property="Template">
+
+            <ControlTemplate>
+
+                <Border Padding="5">
+                    <Border.Resources>
+                        <styles:StringToDoubleConverter x:Key="StringToDoubleC" />
+                    </Border.Resources>
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding CornerRadius}"
+                        Name="border">
+                        <Border.Transitions>
+                            <Transitions>
+                                <BrushTransition Duration="0:0:0.2" Property="BorderBrush" />
+                            </Transitions>
+                        </Border.Transitions>
+                        <Border
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderBrush}"
+                            ClipToBounds="True"
+                            CornerRadius="1"
+                            Margin="1,-1,1,-1"
+                            Name="borderbottom">
+                            <Border.Transitions>
+                                <Transitions>
+                                    <BrushTransition Duration="0:0:0.2" Property="BorderBrush" />
+                                </Transitions>
+                            </Border.Transitions>
+
+
+
+
+                            <DockPanel
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                Margin="{TemplateBinding Padding}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+
+                                <TextBlock
+                                    Classes="Secondary"
+                                    DockPanel.Dock="Top"
+                                    Name="floatingWatermark"
+                                    Text="{TemplateBinding Watermark}">
+                                    <TextBlock.IsVisible>
+                                        <MultiBinding Converter="{x:Static BoolConverters.And}">
+                                            <Binding Path="UseFloatingWatermark" RelativeSource="{RelativeSource TemplatedParent}" />
+                                            <Binding
+                                                Converter="{x:Static StringConverters.IsNotNullOrEmpty}"
+                                                Path="Text"
+                                                RelativeSource="{RelativeSource TemplatedParent}" />
+                                        </MultiBinding>
+                                    </TextBlock.IsVisible>
+                                </TextBlock>
+
+                                <DataValidationErrors>
+
+                                    <Grid ColumnDefinitions="Auto,*,Auto">
+                                        <Grid>
+                                            <TextBlock
+                                                FontSize="13"
+                                                Foreground="{DynamicResource SecondaryText}"
+                                                Margin="0,2,3,0"
+                                                Text="" />
+                                        </Grid>
+                                        <ScrollViewer
+                                            Grid.Column="1"
+                                            HorizontalScrollBarVisibility="{TemplateBinding (ScrollViewer.HorizontalScrollBarVisibility)}"
+                                            VerticalScrollBarVisibility="{TemplateBinding (ScrollViewer.VerticalScrollBarVisibility)}">
+                                            <Panel>
+                                                <TextBlock
+                                                    Classes="Secondary"
+                                                    IsVisible="{TemplateBinding Text,
+                                                                                Converter={x:Static StringConverters.IsNullOrEmpty}}"
+                                                    Margin="0,1,0,0"
+                                                    Name="watermark"
+                                                    Opacity="0.5"
+                                                    Text="{TemplateBinding Watermark}"
+                                                    TextAlignment="{TemplateBinding TextAlignment}"
+                                                    TextWrapping="{TemplateBinding TextWrapping}" />
+                                                <TextPresenter
+                                                    CaretBrush="{DynamicResource Foreground}"
+                                                    CaretIndex="{TemplateBinding CaretIndex}"
+                                                    FontSize="14" FontFamily="{StaticResource QuicksandFont}"
+                                                    FontWeight="DemiBold" 
+                                                    Margin="0,0,0,-2"
+                                                    Name="PART_TextPresenter"
+                                                    PasswordChar="{TemplateBinding PasswordChar}"
+                                                    RevealPassword="{TemplateBinding RevealPassword}"
+                                                    SelectionBrush="{TemplateBinding SelectionBrush}"
+                                                    SelectionEnd="{TemplateBinding SelectionEnd}"
+                                                    SelectionForegroundBrush="{TemplateBinding SelectionForegroundBrush}"
+                                                    SelectionStart="{TemplateBinding SelectionStart}"
+                                                    Text="{TemplateBinding Text,
+                                                                           Mode=TwoWay}"
+                                                    TextAlignment="{TemplateBinding TextAlignment}"
+                                                    TextBlock.Foreground="{TemplateBinding Foreground}"
+                                                    TextWrapping="{TemplateBinding TextWrapping}" />
+                                            </Panel>
+                                        </ScrollViewer>
+                                      
+
+                                    </Grid>
+                                </DataValidationErrors>
+
+                            </DockPanel>
+                        </Border>
+                    </Border>
+                </Border>
+
+            </ControlTemplate>
+        </Setter>
+                             </Style>  
+    </UserControl.Styles>
+    <DockPanel Margin="25" >
+                           
+                           <DockPanel.Transitions>
+          <Transitions>
+              <DoubleTransition Property="Opacity" Duration="0:0:0.5"></DoubleTransition>
+          </Transitions>
+      </DockPanel.Transitions>
+                
+                <Panel DockPanel.Dock="Top">
+                    <Button HorizontalAlignment="Left" Classes="Text" Margin="0,0" Padding="0">
+                        
+                            <avalonia:MaterialIcon Margin="8,4,0,0" Kind="KeyboardBackspace" Height="28" Width="28" VerticalAlignment="Center" Foreground="{DynamicResource SukiLowText}">
+                            </avalonia:MaterialIcon>
+                       
+                       
+                    </Button>
+                    
+                    <TextBlock Margin="0,0,0,0" Foreground="{DynamicResource SecondaryText}"  VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="22" FontWeight="DemiBold"  Text="{Binding CurrentChat.Title}"></TextBlock>
+                    
+                </Panel>
+                
+       <Grid Margin="-5,10,-5,-5" DockPanel.Dock="Bottom">
+           <DockPanel>
+              <Button Padding="0" Height="55" Width="55" CornerRadius="30" IsDefault="True"  IsEnabled="{Binding !Sending}" Command="{Binding SendMessage}" Classes="Rounded Basic H" DockPanel.Dock="Right">
+                  <Button.Background>
+                      <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+                          <GradientStop Color="{DynamicResource Accent}" Offset="0" />
+                                     
+                          <GradientStop Color="#aab37feb" Offset="1.0" />
+                      </LinearGradientBrush>
+                  </Button.Background>
+                   <PathIcon Margin="5,3,0,0"  Height="22" Width="22" Foreground="White">
+                      <PathIcon.Data>
+                      <StreamGeometry>M3.78963301,2.77233335 L24.8609339,12.8499121 C25.4837277,13.1477699 25.7471402,13.8941055 25.4492823,14.5168992 C25.326107,14.7744476 25.1184823,14.9820723 24.8609339,15.1052476 L3.78963301,25.1828263 C3.16683929,25.4806842 2.42050372,25.2172716 2.12264586,24.5944779 C1.99321184,24.3238431 1.96542524,24.015685 2.04435886,23.7262618 L4.7030903,13.9775798 L2.04435886,4.22889788 C1.8627142,3.56286745 2.25538645,2.87569101 2.92141688,2.69404635 C3.21084015,2.61511273 3.51899823,2.64289932 3.78963301,2.77233335 Z M3.63522914,4.36121177 L6.058,13.249 L17,13.25 C17.3796958,13.25 17.693491,13.5321539 17.7431534,13.8982294 L17.75,14 C17.75,14.3796958 17.4678461,14.693491 17.1017706,14.7431534 L17,14.75 L6.046,14.749 L3.63522914,23.5939479 L23.7421805,13.9775798 L3.63522914,4.36121177 Z</StreamGeometry>
+                      </PathIcon.Data>
+                  </PathIcon>
+               </Button>
+               <TextBox FontFamily="{StaticResource QuicksandFont}" FontSize="14" FontWeight="DemiBold" Foreground="{DynamicResource PrimaryText}" MinHeight="55" Classes="B" BorderThickness="1" CornerRadius="55" Watermark="Send message .." ScrollViewer.VerticalScrollBarVisibility="Hidden" IsEnabled="{Binding !Sending}" Text="{Binding CurrentMessage}" Margin="0,0,10,0" TextWrapping="Wrap" Padding="10,5">
+                   <TextBox.BorderBrush>
+                       <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+                           <GradientStop Color="{DynamicResource Accent}" Offset="0" />
+                                     
+                           <GradientStop Color="#aab37feb" Offset="1.0" />
+                       </LinearGradientBrush>
+                   </TextBox.BorderBrush>
+               </TextBox>
+           </DockPanel>
+       </Grid>
+                
+                <Panel>
+                    
+                    <StackPanel IsVisible="{Binding !CurrentChat.Messages.Count}" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <glassMorphism:GlassCard CornerRadius="120" Height="120" Width="120" >
+                            <Image Height="48" Width="48" Margin="13" Source="/Assets/icons8-artificial-intelligence-48.png"></Image>
+                        </glassMorphism:GlassCard>
+                        
+                        <TextBlock Classes="h3" Text="How can I help you today ?" Margin="15" HorizontalAlignment="Center"  ></TextBlock>
+                    </StackPanel>
+                    
+                    <ScrollViewer VerticalScrollBarVisibility="Hidden" x:Name="MonScrollViewer" >
+           
+           
+           <ItemsControl Margin="0,7,0,0"   llamaChatMobile:ItemsControlExtensions.AnimatedScroll="True" ItemsSource="{Binding CurrentChat.Messages}">
+        
+           <ItemsControl.DataTemplates>
+               <DataTemplate DataType="classes:Message">
+                   <TransitioningContentControl >
+                       <TransitioningContentControl.PageTransition>
+                           <CrossFade Duration="0:00:00.200"  />
+                       </TransitioningContentControl.PageTransition>
+                       
+                       <Grid Margin="0,12">
+                           <Grid IsVisible="{Binding !IsUser}">
+                             <glassMorphism:GlassCard Padding="14" CornerRadius="12" HorizontalAlignment="Stretch" >
+                                       <StackPanel>
+                                           <Panel>
+                                               <StackPanel Spacing="12"  HorizontalAlignment="Left"  Orientation="Horizontal">
+                                                   <Image DockPanel.Dock="Left"  Source="/Assets/icons8-artificial-intelligence-48.png" VerticalAlignment="Center"  Height="24" Width="24"></Image>
+                                                    <TextBlock VerticalAlignment="Center" FontWeight="DemiBold" FontSize="14" Foreground="{DynamicResource SecondaryText}" Text="Assistant"></TextBlock>
+                                               </StackPanel>
+                                               <Button Padding="2" Command="{Binding Copy}" CommandParameter="{Binding Content}" Classes="Text" HorizontalAlignment="Right" >
+                                               <avalonia:MaterialIcon Kind="ContentCopy" Foreground="{DynamicResource SecondaryText}"></avalonia:MaterialIcon>
+                                               </Button>
+                                           </Panel>
+                                           
+                                           <mdxaml:MarkdownScrollViewer SelectionEnabled="True" Margin="0,7,0,0"  Markdown="{Binding Content}">
+                                               <mdxaml:MarkdownScrollViewer.Styles>
+                                                   <Style Selector=".Markdown_Avalonia_MarkdownViewer ctxt|CTextBlock">
+                                                       <Style.Setters>
+                                                           <Setter Property="SelectionBrush" Value="{DynamicResource SukiCardBackground}"></Setter>
+                                                           <Setter Property="FontSize"   Value="15" />
+                                                           <Setter Property="FontFamily" Value="{StaticResource QuicksandFont}"></Setter>
+                                                           <Setter Property="Margin"     Value="0,3" />
+                                                       </Style.Setters>
+                                                   </Style>
+                                                   <Style Selector=".Markdown_Avalonia_MarkdownViewer TextBlock">
+                                                       <Style.Setters>
+                                                           <Setter Property="FontSize"   Value="15" />
+                                                           <Setter Property="FontFamily" Value="{StaticResource QuicksandFont}"></Setter>
+                                                       </Style.Setters>
+                                                   </Style>
+
+                                                   
+                                                   <Style Selector="ctxt|CTextBlock.Heading1">
+                                                       <Setter Property="Foreground" Value="{DynamicResource SukiText}"/>
+                                                       <Setter Property="Margin" Value="0,8"></Setter>
+                                                   </Style>
+                                                   <Style Selector="ctxt|CTextBlock.Heading2">
+                                                       <Setter Property="Foreground" Value="{DynamicResource SukiText}"/>
+                                                       <Setter Property="Margin" Value="0,6"></Setter>
+                                                   </Style>
+                                                   <Style Selector="ctxt|CTextBlock.Heading3">
+                                                       <Setter Property="Foreground" Value="{DynamicResource SukiText}"/>
+                                                       <Setter Property="Margin" Value="0,4"></Setter>
+                                                   </Style>
+                                                   <Style Selector="ctxt|CTextBlock.Heading4">
+                                                       <Setter Property="Foreground" Value="{DynamicResource SukiText}"/>
+                                                       <Setter Property="Margin" Value="0,2"></Setter>
+                                                   </Style>
+                                                   <Style Selector="ctxt|CTextBlock.Heading5">
+                                                       <Setter Property="Foreground" Value="{DynamicResource SukiText}"/>
+                                                   </Style>
+                                                   <Style Selector="ctxt|CTextBlock.Heading6">
+                                                       <Setter Property="Foreground" Value="{DynamicResource SukiText}"/>
+                                                   </Style>
+                                                   
+                                                   <Style Selector="ctxt|CCode">
+                                                       <Style.Setters>
+
+                                                           <Setter Property="FontFamily" Value="{StaticResource QuicksandFont}"></Setter>
+                                                           <Setter Property="BorderThickness"     Value="0"/>
+                                                           <Setter Property="CornerRadius"     Value="7"/>
+                                                           <Setter Property="Padding"             Value="5,5,5,1"/>
+                                                           <Setter Property="Margin" Value="1,0"></Setter>
+      
+       
+                                                       </Style.Setters>
+                                                   </Style>
+
+                                                   <Style Selector=".Markdown_Avalonia_MarkdownViewer ctxt|CCode">
+                                                       <Style.Setters>
+                                                           <Setter Property="FontFamily" Value="{StaticResource QuicksandFont}"></Setter>
+                                                           <Setter Property="FontWeight" Value="Normal"></Setter>
+                                                           <Setter Property="Foreground" Value="White" />
+                                                           <Setter Property="Background" Value="{DynamicResource SukiAccentColor5}" />
+                                                       </Style.Setters>
+                                                   </Style>
+
+                                                   <Style Selector="Border.CodeBlock">
+                                                       <Style.Setters>
+                                                           <Setter Property="CornerRadius" Value="10" />
+                                                           <Setter Property="BorderBrush"     Value="{DynamicResource SukiAccentColor5}"/>
+                                                           <Setter Property="BorderThickness" Value="0"/>
+                                                           <Setter Property="Padding" Value="12"></Setter>
+                                                           <Setter Property="Margin"          Value="5,10"/>
+                                                           <Setter Property="Background"      Value="{DynamicResource SukiAccentColor5}"/>
+                                                       </Style.Setters>
+                                                   </Style>
+
+                                                   <Style Selector="TextBlock.CodeBlock">
+                                                       <Style.Setters>
+                                                           <Setter Property="Foreground"      Value="{DynamicResource SukiText}"/>
+    
+                                                       </Style.Setters>
+                                                   </Style>
+                                                   
+                                                   
+                                                   <Style Selector="AccessText">
+                                                       <Style.Setters>
+                                                           <Setter Property="Foreground"      Value="{DynamicResource SukiText}"/>
+                                                           <Setter Property="FontFamily" Value="{StaticResource QuicksandFont}"></Setter>
+                                                       </Style.Setters>
+                                                   </Style>
+                                                   
+                                                   <Style Selector="TextBlock">
+                                                       <Style.Setters>
+                                                           <Setter Property="Foreground"      Value="{DynamicResource SukiText}"/>
+                                                           <Setter Property="FontFamily" Value="{StaticResource QuicksandFont}"></Setter>
+                                                       </Style.Setters>
+                                                   </Style>
+
+                                             
+                                               </mdxaml:MarkdownScrollViewer.Styles>
+                                           </mdxaml:MarkdownScrollViewer>
+                                           <Panel  IsVisible="{Binding IsWriting}" HorizontalAlignment="Center" Margin="5,12,5,0">
+                                               <Panel.Transitions>
+                                                   <Transitions>
+                                                   <DoubleTransition Property="Opacity" Duration="0:0:0.25"></DoubleTransition>
+                                                       </Transitions>
+                                               </Panel.Transitions> 
+                                            
+                                               <Button Opacity="1" Padding="12,6" Classes="Secondary Small" IsEnabled="False">
+                                                   <StackPanel Margin="7,2" Orientation="Horizontal">
+                                                       <TextBlock VerticalAlignment="Center"  FontSize="14" Text="Generating .." />
+                                                       <Viewbox Margin="12,0,3,0" Height="14" Width="14">
+                                                           <controls:Loading></controls:Loading>
+                                                       </Viewbox>
+                                                   </StackPanel>
+                                               </Button>
+                                           </Panel>
+                                       </StackPanel>
+                                   </glassMorphism:GlassCard>
+                             
+                               </Grid>
+                           
+                           <Grid IsVisible="{Binding IsUser}">
+                               <Grid.Resources>
+                                
+                                       <Color x:Key="GlassCardBackground">#550A59F7</Color>
+                                       <system:Double x:Key="GlassOpacity">0.3</system:Double>
+                                      
+
+                               </Grid.Resources>
+                               <glassMorphism:GlassCard CornerRadius="12" Padding="14"  HorizontalAlignment="Stretch"  >
+                                   <StackPanel>
+                                       <StackPanel Spacing="12" HorizontalAlignment="Left"  Orientation="Horizontal">
+                                           <Image DockPanel.Dock="Left"  Source="/Assets/icons8-user-48.png" VerticalAlignment="Center"  Height="24" Width="24"></Image>
+                                           <TextBlock VerticalAlignment="Center" FontWeight="DemiBold" FontSize="14" Foreground="{DynamicResource SecondaryText}" Text="User"></TextBlock>
+                                       </StackPanel>
+                                  
+                                   <TextBlock FontSize="15" Foreground="{DynamicResource SecondaryText}" Margin="0,9,0,0" VerticalAlignment="Center" TextWrapping="Wrap" Text="{Binding Content}"></TextBlock>
+                                   </StackPanel>
+                                   </glassMorphism:GlassCard>
+                              
+                           </Grid>
+                           </Grid>
+                           
+                       </TransitioningContentControl>
+               </DataTemplate>
+           </ItemsControl.DataTemplates>
+       </ItemsControl>
+           
+           
+       </ScrollViewer>
+                 
+                    </Panel>
+   </DockPanel>
+</UserControl>

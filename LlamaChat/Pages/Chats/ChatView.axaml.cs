@@ -5,6 +5,7 @@ using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
 using LlamaChatBackend;
+using SukiUI;
 using SukiUI.Controls;
 
 namespace LlamaChat.Pages.Chats;
@@ -41,5 +42,10 @@ public partial class ChatView : UserControl
         });
         
         SukiHost.ShowToast("Success !", "Your chat has been saved.");
+    }
+
+    private void stopgenclick(object? sender, RoutedEventArgs e)
+    { 
+        ((Button)sender).Animate<double>(OpacityProperty,1,0);
     }
 }

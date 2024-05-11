@@ -272,7 +272,7 @@
                                                    <Color x:Key="SukiPrimaryColor">#cf1322</Color>
                                                </Panel.Resources>
                                                
-                                               <Button  BorderThickness="0" x:DataType="pages1:ResourcesVM" DataContext="{x:Static pages1:ResourcesVM.Instance}"  Command="{Binding ChatVM.StopAnswerGeneration}"  Margin="0,0,0,0" Classes="Basic Rounded"  >
+                                               <Button Click="stopgenclick" BorderThickness="0" x:DataType="pages1:ResourcesVM" DataContext="{x:Static pages1:ResourcesVM.Instance}"  Command="{Binding ChatVM.StopAnswerGeneration}"  Margin="0,0,0,0" Classes="Basic Rounded"  >
                                                    <TextBlock FontWeight="Bold"  Text="Stop Generation" FontSize="13" ></TextBlock>
                                                </Button>
                                            </Panel>

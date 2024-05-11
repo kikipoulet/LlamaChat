@@ -23,9 +23,11 @@ public class OpenAIChatVM:  ChatProvider
     public string Key { get; set; } = "";
     public string Model { get; set; } = "deepseek-chat";
 
+    private CancellationTokenSource GenerationAnswerToken = new CancellationTokenSource();
+
     public override void StopAnswerGeneration()
     {
-        
+        GenerationAnswerToken.Cancel();
     }
     
 
@@ -102,12 +104,17 @@ public class OpenAIChatVM:  ChatProvider
                     }
                 });
                 
+                GenerationAnswerToken = new CancellationTokenSource();
+                
                 var response = await api.ChatEndpoint.StreamCompletionAsync(chatRequest, partialResponse =>
                 {
-                    
-                    bufferstring += partialResponse.FirstChoice.Delta.ToString();
+                    if(!GenerationAnswerToken.IsCancellationRequested)
+                         bufferstring += partialResponse.FirstChoice.Delta.ToString();
+                  
                     ScrollToBottom();
                 });
+                
+              
                 
                 messages.Add(new OpenAI.Chat.Message(Role.Assistant, aimessage.Content));
                 

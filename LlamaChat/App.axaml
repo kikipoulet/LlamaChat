@@ -2,11 +2,36 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:sukiUi="clr-namespace:SukiUI;assembly=SukiUI"
              xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+             xmlns:controls="clr-namespace:SukiUI.Controls;assembly=SukiUI"
              x:Class="LlamaChat.App">
 
     <Application.Styles>
         <sukiUi:SukiTheme ThemeColor="Blue"  />     
         <avalonia:MaterialIconStyles />
    
+   
+        <Style Selector="controls|GlassCard[IsInteractive=True]:pointerover /template/ Border#PART_ClipBorder">
+            <Setter Property="BorderBrush" Value="{DynamicResource SukiPrimaryColor25}" />
+        </Style>
+        <Style Selector="controls|GlassCard.Primary[IsInteractive=True]:pointerover /template/ Border#PART_ClipBorder">
+            <Setter Property="BorderBrush" Value="{DynamicResource SukiPrimaryColor25}" />
+        </Style>
+        <Style Selector="controls|GlassCard[IsInteractive=True]:pointerdown /template/ Border#PART_ClipBorder">
+            <Setter Property="BorderBrush" Value="{DynamicResource SukiPrimaryColor25}" />
+        </Style>
+        <Style Selector="controls|GlassCard.Primary[IsInteractive=True]:pointerdown /template/ Border#PART_ClipBorder">
+            <Setter Property="BorderBrush" Value="{DynamicResource SukiPrimaryColor25}" />
+        </Style>
+        
+        <Style Selector="controls|GlassCard.Primary[IsInteractive=True] /template/ Border">
+            <Setter Property="Background" >
+                <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+                    <GradientStop Color="{DynamicResource SukiPrimaryColor15}" Offset="0" />
+                                     
+                    <GradientStop Color="{DynamicResource SukiPrimaryColor5}" Offset="1.0" />
+                </LinearGradientBrush>
+            </Setter>
+        </Style>
+        
     </Application.Styles>
 </Application>

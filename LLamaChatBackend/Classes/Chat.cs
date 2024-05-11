@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-
+using Avalonia;
+using Avalonia.Controls;
+using Avalonia.Controls.ApplicationLifetimes;
 using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace LlamaChatBackend.Classes;
@@ -29,6 +31,16 @@ public partial class Message : ObservableObject
     
     public void Copy(string message)
     {
-       // TopLevel.GetTopLevel(((ClassicDesktopStyleApplicationLifetime)Application.Current.ApplicationLifetime).MainWindow).Clipboard.SetTextAsync(message);
+        // i know i know
+        try
+        {
+            TopLevel.GetTopLevel(((ClassicDesktopStyleApplicationLifetime)Application.Current.ApplicationLifetime)
+                .MainWindow).Clipboard.SetTextAsync(message);
+        }
+        catch
+        {
+            TopLevel.GetTopLevel(((ISingleViewApplicationLifetime)Application.Current.ApplicationLifetime)
+                .MainView).Clipboard.SetTextAsync(message);
+        }
     }
 }

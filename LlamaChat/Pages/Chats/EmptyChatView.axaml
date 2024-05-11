@@ -62,7 +62,7 @@
         </DockPanel.Styles>
    
         <TextBlock Classes="h2" Text="New Chat" DockPanel.Dock="Top" Margin="5,30"></TextBlock>
-        <Button IsVisible="{Binding Models.Count}"  Height="45"  CornerRadius="50" BorderThickness="0" Margin="100,10" Click="newChat" Classes="Large Flat" DockPanel.Dock="Bottom" >
+        <Button Height="45"  CornerRadius="50" BorderThickness="0" Margin="100,10" Click="newChat" Classes="Large Flat" DockPanel.Dock="Bottom" >
             <StackPanel Orientation="Horizontal" Spacing="18" Margin="10,0">
                 <avalonia:MaterialIcon Kind="Plus"/>
                 <TextBlock Text="Start New Chat" FontSize="17"></TextBlock>
@@ -70,6 +70,7 @@
         </Button>
             <Panel>
               <TabControl Margin="0,0" MinHeight="250" >
+                
                   <TabItem Name="Tab0" Header="Local LLM">
                       <Panel>
                       <ListBox 
@@ -134,9 +135,9 @@
                       </Panel>
                   </TabItem>
                   <TabItem IsSelected="True" Name="Tab1"  Header="Remote">
-                      <StackPanel  Margin="5,18" Spacing="8">
+                      <StackPanel  Margin="5,18" Spacing="0">
                           <StackPanel.Styles>
-                               <Style Selector="CheckBox">
+                               <Style Selector="RadioButton">
         <Setter Property="Template">
             <ControlTemplate>
                
@@ -156,11 +157,9 @@
         </Setter>
     </Style>
                           </StackPanel.Styles>
-                          <CheckBox IsChecked="True" Name="CheckDeepseek" HorizontalAlignment="Stretch">
-                               <controls:GlassCard HorizontalAlignment="Stretch" IsInteractive="True"  CornerRadius="12" Classes.Primary="{Binding IsChecked, Mode=TwoWay, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=CheckBox}}" Padding="12" Margin="0,9,9,8">
-                                        <controls:GlassCard.Resources>
-                                            <Color x:Key="SukiBackground">Transparent</Color>
-                                        </controls:GlassCard.Resources>
+                          <RadioButton IsChecked="True" Name="CheckDeepseek" HorizontalAlignment="Stretch">
+                               <controls:GlassCard HorizontalAlignment="Stretch" IsInteractive="True"  CornerRadius="12" Classes.Primary="{Binding IsChecked, Mode=TwoWay, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=RadioButton}}" Padding="12" Margin="0,9,9,8">
+                                        
                                         
                                           
 <Panel>
@@ -177,7 +176,10 @@
     <DockPanel Background="Transparent" Margin="-15,-15,35,-15" VerticalAlignment="Top" Height="68"  >
                                             
         <Image DockPanel.Dock="Left" VerticalAlignment="Center" Margin="20,0,15,0" Source="/Assets/icons8-artificial-intelligence-48.png" Height="24" Width="24"></Image>
-              
+        <Image DockPanel.Dock="Right" VerticalAlignment="Center" Source="/Assets/icons8-paramètres-48.png" IsHitTestVisible="False" Margin="0,0,-30,0" Height="24" Width="24"></Image>
+        
+        
+        
         <TextBlock
             FontSize="15"
             FontWeight="DemiBold" Foreground="{DynamicResource SukiText}"
@@ -188,8 +190,43 @@
                                            
                                           
                                    </controls:GlassCard>
-                          </CheckBox>
-                       
+                          </RadioButton>
+                          <RadioButton>
+                          <controls:GlassCard HorizontalAlignment="Stretch" IsInteractive="True"  CornerRadius="12" Classes.Primary="{Binding IsChecked, Mode=TwoWay, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=RadioButton}}" Padding="12" Margin="0,9,9,8">
+                              <controls:GlassCard.Resources>
+                                  <Color x:Key="SukiBackground">Transparent</Color>
+                              </controls:GlassCard.Resources>
+                                        
+                                          
+                              <Panel>
+                                  <Expander Margin="0,-15,0,-17">
+                                      <Expander.Header>
+                                          <Border Height="50"></Border>
+                                      </Expander.Header>
+
+                                      <TextBox TextChanged="TextBox_OnTextChanged"  DataContext="{x:Static configs:DeepSeekConfig.Instance}" x:DataType="configs:DeepSeekConfig" Text="{Binding APIKEY}" Margin="0,40,0,20" Watermark="API KEY" PasswordChar="*"></TextBox>
+      
+ 
+    
+                                  </Expander>
+                                  <DockPanel Background="Transparent" Margin="-15,-15,35,-15" VerticalAlignment="Top" Height="68"  >
+                                            
+                                      <Image DockPanel.Dock="Left" VerticalAlignment="Center" Margin="20,0,15,0" Source="/Assets/icons8-artificial-intelligence-48.png" Height="24" Width="24"></Image>
+                                      <Image DockPanel.Dock="Right" VerticalAlignment="Center" Source="/Assets/icons8-paramètres-48.png" IsHitTestVisible="False" Margin="0,0,-30,0" Height="24" Width="24"></Image>
+        
+        
+        
+                                      <TextBlock
+                                          FontSize="15"
+                                          FontWeight="DemiBold" Foreground="{DynamicResource SukiText}"
+                                          VerticalAlignment="Center"
+                                          Text="DeepSeek Code" />
+                                  </DockPanel>
+                              </Panel>
+                                           
+                                          
+                          </controls:GlassCard>
+                          </RadioButton>
                       </StackPanel>
                   </TabItem>
               </TabControl>

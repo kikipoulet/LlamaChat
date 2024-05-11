@@ -30,7 +30,7 @@ public partial class ChatView : UserControl
 
     private void newChatClick(object? sender, RoutedEventArgs e)
     {
-        ResourcesVM.Instance.ChatVM.CurrentChat = null;
+        MobileNavigation.Pop();
     }
 
     private void SaveChat(object? sender, RoutedEventArgs e)

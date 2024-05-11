@@ -1,6 +1,6 @@
 <Application xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="using:LlamaChatMobile" RequestedThemeVariant="Light"
+             xmlns:local="using:LlamaChatMobile"  
              x:Class="LlamaChatMobile.App"  xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
              xmlns:system="clr-namespace:System;assembly=System.Runtime"
          >
@@ -11,15 +11,24 @@
         <StyleInclude Source="avares://CherylUI/Index.axaml" />
     </Application.Styles>
     <Application.Resources>
-        <ResourceDictionary>
-            <FontFamily x:Key="QuicksandFont">avares://CherylUI/CustomFont#Quicksand</FontFamily>
-            <system:Double x:Key="GlassOpacity">0.28</system:Double>
-            <system:Double x:Key="GlassOpacityDark">0.28</system:Double>
-            <system:Double x:Key="GlassOpacityLight">0.47</system:Double>
-            <Color x:Key="LightAccent">#100A59F7</Color>
-            <Color x:Key="SukiPrimaryColor">#0A59F7</Color>
-            <Color x:Key="SukiPrimaryColorGradient">#317AF7</Color>
- 
+            <ResourceDictionary>
+                <ResourceDictionary.ThemeDictionaries>
+                    <ResourceDictionary x:Key='Light'>
+                        <system:Double x:Key="GlassOpacity">0.34</system:Double>
+                        <system:Double x:Key="GlassOpacityDark">0.28</system:Double>
+                        <system:Double x:Key="GlassOpacityLight">0.47</system:Double>
+                    </ResourceDictionary>
+                    <ResourceDictionary x:Key='Dark'>
+                        <system:Double x:Key="GlassOpacity">0.18</system:Double>
+                        <system:Double x:Key="GlassOpacityDark">0.28</system:Double>
+                        <system:Double x:Key="GlassOpacityLight">0.47</system:Double>
+                    </ResourceDictionary>
+                </ResourceDictionary.ThemeDictionaries>
+                <FontFamily x:Key="QuicksandFont">avares://CherylUI/CustomFont#Quicksand</FontFamily>
+               
+                <Color x:Key="LightAccent">#100A59F7</Color>
+                <Color x:Key="SukiPrimaryColor">#0A59F7</Color>
+                <Color x:Key="SukiPrimaryColorGradient">#317AF7</Color>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

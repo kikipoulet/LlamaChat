@@ -14,8 +14,7 @@ public partial class ChatProvider : ObservableObject
     
     [ObservableProperty] private ChatAdvancedSettings advancedSettings = new ChatAdvancedSettings();
 
-    [
-        ObservableProperty] private bool sending = false;
+    [ObservableProperty] private bool sending = false;
 
     [ObservableProperty] private bool settingsOpen = false;
 

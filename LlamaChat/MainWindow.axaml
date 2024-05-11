@@ -26,7 +26,7 @@
                     <avalonia:MaterialIcon Height="22" Width="22" Foreground="{DynamicResource SukiText}" Kind="ChatOutline" />
                 </suki:SukiSideMenuItem.Icon>
                 <suki:SukiSideMenuItem.PageContent>
-                    <chats:ChatView />
+                    <chats:ChatPage></chats:ChatPage>
                 </suki:SukiSideMenuItem.PageContent>
             </suki:SukiSideMenuItem>
             

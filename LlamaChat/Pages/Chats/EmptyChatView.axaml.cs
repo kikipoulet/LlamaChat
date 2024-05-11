@@ -29,25 +29,26 @@ public partial class EmptyChatView : UserControl
 
     private void newChat(object? sender, RoutedEventArgs e)
     {
-
+        ChatProvider chatVM = null;
+        
         if (this.Get<TabItem>("Tab0").IsSelected)
         {
             var modelName = this.Get<ListBox>("ListModels").SelectedItem?.ToString();
-            ResourcesVM.Instance.ChatVM = new LlamaChatVM();
-            ResourcesVM.Instance.ChatVM.InitChat(@"models\" + modelName);
+            chatVM = new LlamaChatVM();
+            chatVM.InitChat(@"models\" + modelName);
         }else if (this.Get<TabItem>("Tab1").IsSelected)
         {
             if (this.Get<RadioButton>("CheckDeepseek").IsChecked == true)
             {
-                ResourcesVM.Instance.ChatVM = new OpenAIChatVM()
+                chatVM= new OpenAIChatVM()
                 {
                     Key = DeepSeekConfig.Instance.APIKEY
                 };
-                ResourcesVM.Instance.ChatVM.InitChat("DeepSeek Chat");
+                chatVM.InitChat("DeepSeek Chat");
             }
         }
 
-        
+        MobileNavigation.Push(new ChatView(){DataContext = chatVM});
     }
 
 

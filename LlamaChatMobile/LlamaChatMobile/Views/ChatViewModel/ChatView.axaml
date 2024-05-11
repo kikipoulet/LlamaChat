@@ -202,9 +202,9 @@
                            <CrossFade Duration="0:00:00.200"  />
                        </TransitioningContentControl.PageTransition>
                        
-                       <Grid Margin="0,12">
+                       <Grid Margin="0,7">
                            <Grid IsVisible="{Binding !IsUser}">
-                             <glassMorphism:GlassCard Padding="14" CornerRadius="12" HorizontalAlignment="Stretch" >
+                             <glassMorphism:GlassCard Padding="14" CornerRadius="15" HorizontalAlignment="Stretch" >
                                        <StackPanel>
                                            <Panel>
                                                <StackPanel Spacing="12"  HorizontalAlignment="Left"  Orientation="Horizontal">
@@ -339,12 +339,12 @@
                            <Grid IsVisible="{Binding IsUser}">
                                <Grid.Resources>
                                 
-                                       <Color x:Key="GlassCardBackground">#550A59F7</Color>
-                                       <system:Double x:Key="GlassOpacity">0.3</system:Double>
+                                       <Color x:Key="GlassCardBackground">#fa8c16</Color>
+                                       <system:Double x:Key="GlassOpacity">0.07</system:Double>
                                       
 
                                </Grid.Resources>
-                               <glassMorphism:GlassCard CornerRadius="12" Padding="14"  HorizontalAlignment="Stretch"  >
+                               <glassMorphism:GlassCard CornerRadius="15" Padding="14"  HorizontalAlignment="Stretch"  >
                                    <StackPanel>
                                        <StackPanel Spacing="12" HorizontalAlignment="Left"  Orientation="Horizontal">
                                            <Image DockPanel.Dock="Left"  Source="/Assets/icons8-user-48.png" VerticalAlignment="Center"  Height="24" Width="24"></Image>

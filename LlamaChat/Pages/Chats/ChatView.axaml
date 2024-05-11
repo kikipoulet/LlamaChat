@@ -15,7 +15,7 @@
              xmlns:llamaChatBackend="clr-namespace:LlamaChatBackend;assembly=LLamaChatBackend"
              xmlns:classes1="clr-namespace:LlamaChatBackend.Classes;assembly=LLamaChatBackend"
              xmlns:pages1="clr-namespace:LlamaChat.Pages;assembly=LLamaChatBackend"
-             x:DataType="pages1:ResourcesVM" DataContext="{x:Static pages1:ResourcesVM.Instance}"
+             x:DataType="llamaChatBackend:ChatProvider" 
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="LlamaChat.Pages.Chats.ChatView">
   
@@ -38,12 +38,12 @@
         <chats:NotNullToDoubleConverter x:Key="NNtoD"></chats:NotNullToDoubleConverter>
     </UserControl.Resources>
     
-    <SplitView OpenPaneLength="400" PaneBackground="Transparent" IsPaneOpen="{Binding ChatVM.SettingsOpen}" DisplayMode="Inline" PanePlacement="Right">
+    <SplitView OpenPaneLength="400" PaneBackground="Transparent" IsPaneOpen="{Binding SettingsOpen}" DisplayMode="Inline" PanePlacement="Right">
         <SplitView.Pane>
             <chats:ChatSettings></chats:ChatSettings>
         </SplitView.Pane>
         <Panel>
-        <chats:EmptyChatView IsHitTestVisible="{Binding ChatVM.CurrentChat, Converter={x:Static ObjectConverters.IsNull}}" Opacity="{Binding ChatVM.CurrentChat, Converter={StaticResource NNtoD}}">
+        <chats:EmptyChatView IsHitTestVisible="{Binding CurrentChat, Converter={x:Static ObjectConverters.IsNull}}" Opacity="{Binding CurrentChat, Converter={StaticResource NNtoD}}">
             <chats:EmptyChatView.Transitions>
                 <Transitions>
                     <DoubleTransition Property="Opacity" Duration="0:0:0.5"></DoubleTransition>
@@ -52,7 +52,7 @@
         </chats:EmptyChatView>
         
 
-            <DockPanel Margin="20" IsHitTestVisible="{Binding ChatVM.CurrentChat, Converter={x:Static ObjectConverters.IsNotNull}}" Opacity="{Binding ChatVM.CurrentChat, Converter={StaticResource NtoD}}">
+            <DockPanel Margin="20" IsHitTestVisible="{Binding CurrentChat, Converter={x:Static ObjectConverters.IsNotNull}}" Opacity="{Binding CurrentChat, Converter={StaticResource NtoD}}">
       <DockPanel.Transitions>
           <Transitions>
               <DoubleTransition Property="Opacity" Duration="0:0:0.5"></DoubleTransition>
@@ -64,7 +64,7 @@
                         <StackPanel  Orientation="Horizontal">
                             <avalonia:MaterialIcon Margin="8,4,0,0" Kind="KeyboardBackspace" Height="28" Width="28" VerticalAlignment="Center" Foreground="{DynamicResource SukiLowText}">
                             </avalonia:MaterialIcon>
-                            <TextBlock Foreground="{DynamicResource SukiText}" Margin="24,0" VerticalAlignment="Center" FontSize="32" FontWeight="Normal"  Text="{Binding ChatVM.CurrentChat.Title}"></TextBlock>
+                            <TextBlock Foreground="{DynamicResource SukiText}" Margin="24,0" VerticalAlignment="Center" FontSize="32" FontWeight="Normal"  Text="{Binding CurrentChat.Title}"></TextBlock>
                         </StackPanel>
                         <Button.ContextMenu>
                                                                              <ContextMenu>
@@ -92,7 +92,7 @@
                
                    
                     
-                    <Button Opacity="{Binding !ChatVM.SettingsOpen, Converter={StaticResource BtoD }}" Command="{Binding ChatVM.ChangePane}" Classes="Basic" HorizontalAlignment="Right" Margin="12">
+                    <Button Opacity="{Binding !SettingsOpen, Converter={StaticResource BtoD }}" Command="{Binding ChangePane}" Classes="Basic" HorizontalAlignment="Right" Margin="12">
                         <Button.Transitions>
                             <Transitions>
                                 <DoubleTransition Property="Opacity" Duration="0:0:0.3"></DoubleTransition>
@@ -108,7 +108,7 @@
        <Grid Margin="10" DockPanel.Dock="Bottom">
            <DockPanel>
                <Border Margin="0,15" Background="{DynamicResource SukiBorderBrush}" DockPanel.Dock="Top" Height="1" ></Border>
-               <Button Height="55" Width="55" CornerRadius="30" IsDefault="True"  IsEnabled="{Binding !ChatVM.Sending}" Command="{Binding ChatVM.SendMessage}" Classes="Rounded Basic H" DockPanel.Dock="Right">
+               <Button Height="55" Width="55" CornerRadius="30" IsDefault="True"  IsEnabled="{Binding !Sending}" Command="{Binding SendMessage}" Classes="Rounded Basic H" DockPanel.Dock="Right">
                   <PathIcon Margin="5,3,0,0"  Height="22" Width="22" Foreground="{DynamicResource SukiLowText}">
                       <PathIcon.Data>
                       <StreamGeometry>M3.78963301,2.77233335 L24.8609339,12.8499121 C25.4837277,13.1477699 25.7471402,13.8941055 25.4492823,14.5168992 C25.326107,14.7744476 25.1184823,14.9820723 24.8609339,15.1052476 L3.78963301,25.1828263 C3.16683929,25.4806842 2.42050372,25.2172716 2.12264586,24.5944779 C1.99321184,24.3238431 1.96542524,24.015685 2.04435886,23.7262618 L4.7030903,13.9775798 L2.04435886,4.22889788 C1.8627142,3.56286745 2.25538645,2.87569101 2.92141688,2.69404635 C3.21084015,2.61511273 3.51899823,2.64289932 3.78963301,2.77233335 Z M3.63522914,4.36121177 L6.058,13.249 L17,13.25 C17.3796958,13.25 17.693491,13.5321539 17.7431534,13.8982294 L17.75,14 C17.75,14.3796958 17.4678461,14.693491 17.1017706,14.7431534 L17,14.75 L6.046,14.749 L3.63522914,23.5939479 L23.7421805,13.9775798 L3.63522914,4.36121177 Z</StreamGeometry>
@@ -117,13 +117,13 @@
                </Button>
                <Image DockPanel.Dock="Left" Source="/Assets/icons8-user-48.png" Height="48" Width="48"></Image>
               
-               <TextBox Classes="B" Watermark="Type your message here .." IsEnabled="{Binding !ChatVM.Sending}" Text="{Binding ChatVM.CurrentMessage}" Margin="0,0,10,0" TextWrapping="Wrap" Padding="10,5"></TextBox>
+               <TextBox Classes="B" Watermark="Type your message here .." IsEnabled="{Binding !Sending}" Text="{Binding CurrentMessage}" Margin="0,0,10,0" TextWrapping="Wrap" Padding="10,5"></TextBox>
            </DockPanel>
        </Grid>
                 
                 <Panel>
                     
-                    <StackPanel IsVisible="{Binding !ChatVM.CurrentChat.Messages.Count}" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <StackPanel IsVisible="{Binding !CurrentChat.Messages.Count}" HorizontalAlignment="Center" VerticalAlignment="Center">
                         <controls:GlassCard CornerRadius="120" Height="120" Width="120" >
                             <Image Height="48" Width="48" Margin="13" Source="/Assets/icons8-artificial-intelligence-48.png"></Image>
                         </controls:GlassCard>
@@ -134,7 +134,7 @@
                     <ScrollViewer x:Name="MonScrollViewer" >
            
            
-           <ItemsControl    theme:ItemsControlExtensions.AnimatedScroll="True" ItemsSource="{Binding ChatVM.CurrentChat.Messages}">
+           <ItemsControl    theme:ItemsControlExtensions.AnimatedScroll="True" ItemsSource="{Binding CurrentChat.Messages}">
          <ItemsControl.Resources>
              <chats:MarkdownConverter x:Key="MC"/> 
          </ItemsControl.Resources>

@@ -102,6 +102,8 @@ public class OpenAIChatVM:  ChatProvider
                         }catch{}
                         Thread.Sleep(50);
                     }
+                    
+                    ScrollToBottom();
                 });
                 
                 GenerationAnswerToken = new CancellationTokenSource();

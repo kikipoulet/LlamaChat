@@ -27,13 +27,15 @@ public partial class DownloadModelDialog : UserControl
     }
     
     private WebClient client = new WebClient();
-    
+
+    private string name;
+    private string destinationFolder;
     public void DownloadModel(AiModel model)
     {
         
-        string name = model.Name + ".gguf";
+        name = model.Name + ".gguf";
         string url = model.DownloadURl;
-        string destinationFolder = ResourcesVM.GetRootPath() +  @"models/"; // Dossier de destination où le fichier sera enregistré
+        destinationFolder = ResourcesVM.GetRootPath() +  @"models/"; // Dossier de destination où le fichier sera enregistré
 
         model.IsDownloading = true;
 
@@ -89,5 +91,9 @@ public partial class DownloadModelDialog : UserControl
     {
         client.CancelAsync();
         InteractiveContainer.CloseDialog();
+        try
+        {
+            new FileInfo(destinationFolder + name).Delete();
+        }catch{}
     }
 }

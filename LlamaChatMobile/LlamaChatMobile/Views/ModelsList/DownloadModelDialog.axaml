@@ -7,7 +7,7 @@
              x:DataType="classes:AiModel"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="LlamaChatMobile.Views.ModelsList.DownloadModelDialog">
-    <StackPanel>
+    <StackPanel Width="303">
         <llamaChatMobile:WaveProgress Margin="0,0,0,0" IsTextVisible="True" Value="{Binding DownloadValue}" />
         
         <TextBlock Text="Downloading .." Foreground="{DynamicResource SecondaryText}" FontWeight="DemiBold" HorizontalAlignment="Center" Margin="-8"></TextBlock>

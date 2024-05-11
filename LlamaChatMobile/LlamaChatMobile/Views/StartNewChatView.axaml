@@ -1,0 +1,73 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+             xmlns:pages="clr-namespace:LlamaChat.Pages;assembly=LLamaChatBackend"
+             xmlns:classes="clr-namespace:LlamaChat.Classes;assembly=LLamaChatBackend"
+             xmlns:glassMorphism="clr-namespace:CherylUI.Controls.GlassMorphism;assembly=CherylUI"
+             mc:Ignorable="d" d:DesignWidth="350" d:DesignHeight="450"
+             x:Class="LlamaChatMobile.Views.StartNewChatView">
+    <UserControl.Styles>
+        <Style Selector=" ListBox ListBoxItem">
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <ContentPresenter  Content="{TemplateBinding Content}"/>
+                </ControlTemplate>
+            </Setter>
+        </Style>
+        <Style Selector="ListBoxItem:pointerover /template/ ContentPresenter">
+            <Setter Property="Background" Value="Transparent"></Setter>
+        </Style>
+        <Style Selector="ListBoxItem:selected /template/ ContentPresenter">
+        <Setter Property="Background" Value="Transparent"></Setter>
+        </Style>
+    </UserControl.Styles>
+    <Panel>
+        <ScrollViewer Margin="0,0,0,50" VerticalScrollBarVisibility="Hidden">
+            <StackPanel Margin="25">
+                <Button HorizontalAlignment="Left" Click="GoBack" VerticalAlignment="Center" Padding="0" Classes="Text">
+                    <avalonia:MaterialIcon VerticalAlignment="Center" Height="42" Width="42" Kind="ArrowLeftThin" />
+                </Button>
+                
+                <DockPanel Margin="0,5,0,0" >
+                    <TextBlock VerticalAlignment="Top" Margin="0,9,0,0" Text="Model" FontWeight="DemiBold" FontSize="22"></TextBlock>
+                </DockPanel>
+
+                <ListBox SelectionMode="AlwaysSelected" Classes="Void"  x:DataType="pages:ResourcesVM" DataContext="{x:Static pages:ResourcesVM.Instance}" ItemsSource="{Binding ModelsToDownload}" Margin="0,25,0,0">
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Spacing="5"  />
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                    <ListBox.DataTemplates>
+                        <DataTemplate DataType="classes:AiModel">
+                            <RadioButton IsChecked="{Binding Path=IsSelected,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBoxItem}}" HorizontalAlignment="Stretch" IsVisible="{Binding IsInstalled}">
+                                <StackPanel HorizontalAlignment="Stretch" >
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image  Height="24" Width="24" HorizontalAlignment="Left" VerticalAlignment="Center" Source="/Assets/icons8-artificial-intelligence-48 (1).png"></Image>
+                                        <TextBlock Text="{Binding Name}" FontSize="17"  Foreground="{DynamicResource PrimaryText}" FontWeight="Bold" HorizontalAlignment="Left" Margin="7,8,7,7" ></TextBlock>
+                                    </StackPanel>
+                                  
+                                    <TextBlock  Text="{Binding  LightDescription}" FontSize="14" Foreground="{DynamicResource SecondaryText}" FontWeight="DemiBold" HorizontalAlignment="Left" TextWrapping="Wrap" Margin="7"></TextBlock>
+
+                                </StackPanel>
+                            </RadioButton>
+                        </DataTemplate>
+                    </ListBox.DataTemplates>
+           
+
+                </ListBox>
+                
+                </StackPanel>
+            </ScrollViewer>
+        <Button Margin="25" VerticalAlignment="Bottom" >
+            <StackPanel Orientation="Horizontal">
+                <avalonia:MaterialIcon Kind="ArrowRight" Foreground="White" Height="20" Width="20" Margin="12,0"></avalonia:MaterialIcon>
+
+                <TextBlock Margin="0,2" FontSize="21" Text="Start Chat" />
+                
+            </StackPanel>
+        </Button>
+    </Panel>
+</UserControl>

@@ -9,7 +9,7 @@
              xmlns:pages="clr-namespace:LlamaChat.Pages;assembly=LLamaChatBackend"
              xmlns:classes="clr-namespace:LlamaChat.Classes;assembly=LLamaChatBackend"
              xmlns:modelsList="clr-namespace:LlamaChatMobile.Views.ModelsList"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="450"
              x:Class="LlamaChatMobile.Views.MainView"
            >
   <UserControl.Resources>
@@ -85,8 +85,12 @@
 
         </StackPanel>
       </ScrollViewer>
-      <Button Margin="25" VerticalAlignment="Bottom" >
-        <TextBlock Margin="0,2" FontSize="21" Text="New Chat" />
+      <Button Click="StartNewChatView" Margin="25" VerticalAlignment="Bottom" >
+        <StackPanel Orientation="Horizontal">
+          <avalonia:MaterialIcon Kind="ChatOutline" Foreground="White" Height="20" Width="20" Margin="12,0"></avalonia:MaterialIcon>
+          <TextBlock Margin="0,2" FontSize="21" Text="New Chat" />
+
+        </StackPanel>
       </Button>
     </Panel>
   </controls:InteractiveContainer>

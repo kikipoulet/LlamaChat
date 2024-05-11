@@ -16,4 +16,9 @@ public partial class MainView : UserControl
     {
         MobileNavigation.Push(new ModelsListView());
     }
+
+    private void StartNewChatView(object? sender, RoutedEventArgs e)
+    {
+        MobileNavigation.Push(new StartNewChatView());
+    }
 }

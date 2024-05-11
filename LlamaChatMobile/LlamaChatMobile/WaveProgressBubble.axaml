@@ -80,11 +80,11 @@
                                         </Path.Transitions>
                                     </Path>
                                 </Canvas>
-                                <TextBlock Name="PART_Text" Opacity="1"
-                                           Margin="100,200,0,0"
+                                <TextBlock Opacity="1"
+                            
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"
-                                           Classes="h2"
+                                           FontWeight="DemiBold" FontSize="28"
                                            Foreground="{TemplateBinding Value,
                                                                         Converter={StaticResource WValueColorConvert}}"
                                            Text="{TemplateBinding Value,

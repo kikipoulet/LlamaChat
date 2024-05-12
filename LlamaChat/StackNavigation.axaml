@@ -1,0 +1,31 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:LlamaChat.Pages.Chats"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="LlamaChat.Pages.Chats.StackNavigation">
+    <UserControl.Styles>
+
+
+
+        <Style Selector="controls|StackNavigation">
+            <Setter Property="Template">
+                <ControlTemplate>
+                    
+                        <TransitioningContentControl Content="{TemplateBinding Content}" Name="base" >
+                            <TransitioningContentControl.PageTransition>
+                                <CompositePageTransition>
+                                    <CrossFade Duration="0:00:00.300" />
+                                   
+                                </CompositePageTransition>
+                            </TransitioningContentControl.PageTransition>
+                        </TransitioningContentControl>
+                     
+                </ControlTemplate>
+            </Setter>
+        </Style>
+
+
+    </UserControl.Styles>
+</UserControl>

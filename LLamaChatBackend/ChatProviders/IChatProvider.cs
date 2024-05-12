@@ -25,7 +25,7 @@ public partial class ChatProvider : ObservableObject
     
     public void ChangePane() => SettingsOpen = !SettingsOpen;
     
-    public void SaveChat()
+    public virtual void SaveChat()
     {
         File.WriteAllText("chats\\" +CurrentChat.Title + "####" + CurrentChat.CreationDate.ToString().Replace(':','_'),JsonConvert.SerializeObject(CurrentChat));
     }

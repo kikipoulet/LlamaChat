@@ -5,6 +5,7 @@ using LLama.Common;
 using LlamaChatBackend.Classes;
 using OpenAI;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using OpenAI.Chat;
 using Message = LlamaChatBackend.Classes.Message;
 
@@ -30,7 +31,10 @@ public class OpenAIChatVM:  ChatProvider
         GenerationAnswerToken.Cancel();
     }
     
-
+    public override void SaveChat()
+    {
+        File.WriteAllText("chats\\" +CurrentChat.Title + "####" + CurrentChat.CreationDate.ToString().Replace(':','_'),JsonConvert.SerializeObject(CurrentChat));
+    }
     
     public override void InitChat(string modelPath, Chat? previouschat = null)
     {

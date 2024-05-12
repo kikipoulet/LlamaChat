@@ -7,6 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.Shapes;
 using Avalonia.Data.Converters;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
@@ -48,7 +49,7 @@ public partial class EmptyChatView : UserControl
             }
         }
 
-        MobileNavigation.Push(new ChatView(){DataContext = chatVM});
+        this.StackNavigationPush(new ChatView(){DataContext = chatVM});
     }
 
 

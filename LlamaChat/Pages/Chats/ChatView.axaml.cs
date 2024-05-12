@@ -30,17 +30,13 @@ public partial class ChatView : UserControl
 
     private void newChatClick(object? sender, RoutedEventArgs e)
     {
-        MobileNavigation.Pop();
+        this.StackNavigationPop();
     }
 
     private void SaveChat(object? sender, RoutedEventArgs e)
     {
-        Task.Run(() =>
-        {
-            ResourcesVM.Instance.ChatVM.SaveChat();
+            ((ChatProvider)DataContext).SaveChat();
             ResourcesVM.Instance.RecentChats = ResourcesVM.GetChats();
-        });
-        
         SukiHost.ShowToast("Success !", "Your chat has been saved.");
     }
 

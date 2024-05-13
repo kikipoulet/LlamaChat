@@ -26,7 +26,7 @@ public partial class StartNewChatView : UserControl
     {
         var vm= new OpenAIChatVM()
         {
-            Key = DeepSeekConfig.Instance.APIKEY
+            Key = ""
         };
         vm.InitChat("DeepSeek Chat");
         MobileNavigation.Push(new ChatView(){DataContext = vm});

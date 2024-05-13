@@ -101,8 +101,11 @@ public class OpenAIChatVM:  ChatProvider
                     {
                         try
                         {
-                            aimessage.Content += bufferstring.Substring(0, 3);
-                            bufferstring = bufferstring.Remove(0, 3);
+                            if (bufferstring.Length > 0)
+                            {
+                                aimessage.Content += bufferstring.Substring(0, 3);
+                                bufferstring = bufferstring.Remove(0, 3);
+                            }
                         }catch{}
                         Thread.Sleep(50);
                     }

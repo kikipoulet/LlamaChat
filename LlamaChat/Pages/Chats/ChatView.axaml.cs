@@ -55,3 +55,4 @@ public partial class ChatView : UserControl
         }
     }
 }
+

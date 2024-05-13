@@ -18,11 +18,23 @@
         <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
         <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.1.0-beta2" />
         <PackageReference Include="CherylUI" Version="1.2.5" />
+        <PackageReference Include="Markdown.Avalonia" Version="11.0.3-a1" />
+        <PackageReference Include="Markdown.Avalonia.SyntaxHigh" Version="11.0.3-a1" />
+        <PackageReference Include="Markdown.Avalonia.Tight" Version="11.0.3-a1" />
         <PackageReference Include="Material.Icons.Avalonia" Version="2.1.9" />
         <PackageReference Include="Xamarin.Essentials" Version="1.8.1" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\..\LLamaChatBackend\LLamaChatBackend.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="ColorTextBlock.Avalonia">
+        <HintPath>..\..\..\..\.nuget\packages\colortextblock.avalonia\11.0.3-a1\lib\net6.0\ColorTextBlock.Avalonia.dll</HintPath>
+      </Reference>
+      <Reference Include="Markdown.Avalonia">
+        <HintPath>..\..\..\..\.nuget\packages\markdown.avalonia.tight\11.0.3-a1\lib\net6.0\Markdown.Avalonia.dll</HintPath>
+      </Reference>
     </ItemGroup>
 </Project>

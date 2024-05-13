@@ -15,7 +15,7 @@
              xmlns:llamaChatBackend="clr-namespace:LlamaChatBackend;assembly=LLamaChatBackend"
              xmlns:classes1="clr-namespace:LlamaChatBackend.Classes;assembly=LLamaChatBackend"
              xmlns:pages1="clr-namespace:LlamaChat.Pages;assembly=LLamaChatBackend"
-             x:DataType="llamaChatBackend:ChatProvider" 
+             x:DataType="llamaChatBackend:ChatProvider"  Name="MyChatView"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="LlamaChat.Pages.Chats.ChatView">
   
@@ -40,7 +40,7 @@
     
     <SplitView OpenPaneLength="400" PaneBackground="Transparent" IsPaneOpen="{Binding SettingsOpen}" DisplayMode="Inline" PanePlacement="Right">
         <SplitView.Pane>
-            <chats:ChatSettings></chats:ChatSettings>
+            <chats:ChatSettings DataContext="{Binding }"></chats:ChatSettings>
         </SplitView.Pane>
         <Panel>
         <chats:EmptyChatView IsHitTestVisible="{Binding CurrentChat, Converter={x:Static ObjectConverters.IsNull}}" Opacity="{Binding CurrentChat, Converter={StaticResource NNtoD}}">
@@ -150,16 +150,21 @@
                                <DockPanel Grid.Column="0">
                                    <Image DockPanel.Dock="Left"  Source="/Assets/icons8-artificial-intelligence-48.png" VerticalAlignment="Center" Margin="22,15,15,15"  Height="48" Width="48"></Image>
                                   <StackPanel Spacing="0"  HorizontalAlignment="Left" Opacity="{Binding !IsWriting, Converter={StaticResource BtoD}}" VerticalAlignment="Center" DockPanel.Dock="Right" >
-                                   <Button x:DataType="pages1:ResourcesVM" DataContext="{x:Static pages1:ResourcesVM.Instance}" Command="{Binding ChatVM.Retry}"  ToolTip.Tip="Retry"  Classes="Basic">
+                                   <Button  Command="{Binding ((llamaChatBackend:ChatProvider)DataContext).Retry, ElementName=MyChatView}"  ToolTip.Tip="Retry"  Classes="Basic">
                                       <avalonia:MaterialIcon Kind="Refresh" Height="24" Width="24" Foreground="{DynamicResource SukiControlBorderBrush}"></avalonia:MaterialIcon>
                                   </Button>
-                                      <Button x:DataType="pages1:ResourcesVM" DataContext="{x:Static pages1:ResourcesVM.Instance}" Command="{Binding ChatVM.Continue}"  ToolTip.Tip="Retry"  Classes="Basic">
+                                      <Button Command="{Binding ((llamaChatBackend:ChatProvider)DataContext).Continue, ElementName=MyChatView}"  ToolTip.Tip="Retry"  Classes="Basic">
                                           <avalonia:MaterialIcon Kind="ChatPlusOutline" Height="22" Width="22" Foreground="{DynamicResource SukiControlBorderBrush}"></avalonia:MaterialIcon>
                                       </Button>
                                   </StackPanel>
                                    <controls:GlassCard CornerRadius="12" MinWidth="400" HorizontalAlignment="Left" >
                                        <StackPanel>
-                                           <Button Command="{Binding Copy}" CommandParameter="{Binding Content}" Classes="Basic" HorizontalAlignment="Right" Margin="-15,-10,-15,-12">
+                                           <Button  Click="showcopied" Command="{Binding Copy}"  CommandParameter="{Binding Content}" Classes="Basic" HorizontalAlignment="Right" Margin="-15,-10,-15,-12">
+                                               <Button.Flyout >
+                                                   <Flyout Placement="Top">
+                                                       <controls:GlassCard CornerRadius="8" Padding="20,10"><TextBlock Foreground="{DynamicResource SukiLowText}" FontWeight="DemiBold"  Text="Copied !"></TextBlock></controls:GlassCard>
+                                                   </Flyout>
+                                               </Button.Flyout>
                                                <avalonia:MaterialIcon Kind="ContentCopy" Foreground="{DynamicResource SukiText}"></avalonia:MaterialIcon>
                                            </Button>
                                            <mdxaml:MarkdownScrollViewer SelectionEnabled="True" Margin="0,5,0,0"  Markdown="{Binding Content, Converter={StaticResource MC}}">
@@ -272,7 +277,7 @@
                                                    <Color x:Key="SukiPrimaryColor">#cf1322</Color>
                                                </Panel.Resources>
                                                
-                                               <Button Click="stopgenclick" BorderThickness="0" x:DataType="pages1:ResourcesVM" DataContext="{x:Static pages1:ResourcesVM.Instance}"  Command="{Binding ChatVM.StopAnswerGeneration}"  Margin="0,0,0,0" Classes="Basic Rounded"  >
+                                               <Button Click="stopgenclick" BorderThickness="0" Command="{Binding ((llamaChatBackend:ChatProvider)DataContext).StopAnswerGeneration, ElementName=MyChatView}"  Margin="0,0,0,0" Classes="Basic Rounded"  >
                                                    <TextBlock FontWeight="Bold"  Text="Stop Generation" FontSize="13" ></TextBlock>
                                                </Button>
                                            </Panel>

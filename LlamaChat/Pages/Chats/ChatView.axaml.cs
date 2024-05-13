@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.Primitives;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
 using LlamaChatBackend;
@@ -43,5 +44,14 @@ public partial class ChatView : UserControl
     private void stopgenclick(object? sender, RoutedEventArgs e)
     { 
         ((Button)sender).Animate<double>(OpacityProperty,1,0);
+    }
+
+    private void showcopied(object? sender, RoutedEventArgs e)
+    {
+        var ctl = sender as Control;
+        if (ctl != null)
+        {
+            FlyoutBase.ShowAttachedFlyout(ctl);
+        }
     }
 }

@@ -1,6 +1,6 @@
 ﻿<UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" x:DataType="pages:ResourcesVM" DataContext="{x:Static pages:ResourcesVM.Instance}"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" x:DataType="llamaChatBackend:ChatProvider"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:controls="clr-namespace:SukiUI.Controls;assembly=SukiUI"
              xmlns:chats="clr-namespace:LlamaChat.Pages.Chats"
@@ -18,7 +18,7 @@
         <ScrollViewer Classes="Stack">
         <StackPanel>
             <Panel>
-            <Button Command="{Binding ChatVM.ChangePane}" Classes="Basic" HorizontalAlignment="Left" Margin="0">
+            <Button Command="{Binding  ChangePane}" Classes="Basic" HorizontalAlignment="Left" Margin="0">
                 <avalonia:MaterialIcon Foreground="{DynamicResource SukiLowText}" Kind="Close" Height="22" Width="22" />
             </Button>
                 
@@ -27,7 +27,7 @@
             <controls:GlassCard CornerRadius="120" Height="120" Width="120" >
                             <Image Height="48" Width="48" Margin="13" Source="/Assets/icons8-artificial-intelligence-48.png"></Image>
             </controls:GlassCard>
-            <TextBlock HorizontalAlignment="Center" FontWeight="DemiBold" Margin="12" FontSize="17" Text="{Binding ChatVM.CurrentChat.OriginalModel}"></TextBlock>
+            <TextBlock HorizontalAlignment="Center" FontWeight="DemiBold" Margin="12" FontSize="17" Text="{Binding CurrentChat.OriginalModel}"></TextBlock>
           
             
             <Border Margin="12,25,12,25" Height="1" Background="{DynamicResource SukiControlBorderBrush}"></Border>
@@ -36,19 +36,19 @@
             
             <Panel Margin="12,8">
                 <TextBlock VerticalAlignment="Center" FontWeight="DemiBold" Foreground="{DynamicResource SukiLowText}" FontSize="15" Text="Max Tokens"></TextBlock>
-                <NumericUpDown HorizontalContentAlignment="Right" MinWidth="100" HorizontalAlignment="Right" ShowButtonSpinner="False" theme:NumericUpDownExtensions.Unit="tokens" Value="{Binding  ChatVM.AdvancedSettings.MaxTokens}"></NumericUpDown>
+                <NumericUpDown HorizontalContentAlignment="Right" MinWidth="100" HorizontalAlignment="Right" ShowButtonSpinner="False" theme:NumericUpDownExtensions.Unit="tokens" Value="{Binding  AdvancedSettings.MaxTokens}"></NumericUpDown>
             </Panel>
             <Panel Margin="12,8">
                 <TextBlock VerticalAlignment="Center" FontWeight="DemiBold" Foreground="{DynamicResource SukiLowText}" FontSize="15" Text="Temperature"></TextBlock>
-                <NumericUpDown HorizontalContentAlignment="Right" MinWidth="100" HorizontalAlignment="Right" ShowButtonSpinner="False" Value="{Binding  ChatVM.AdvancedSettings.Temperature}"></NumericUpDown>
+                <NumericUpDown HorizontalContentAlignment="Right" MinWidth="100" HorizontalAlignment="Right" ShowButtonSpinner="False" Value="{Binding  AdvancedSettings.Temperature}"></NumericUpDown>
             </Panel>
             <Panel Margin="12,8">
                 <TextBlock VerticalAlignment="Center" FontWeight="DemiBold" Foreground="{DynamicResource SukiLowText}" FontSize="15" Text="Frequence Penalty"></TextBlock>
-                <NumericUpDown HorizontalContentAlignment="Right" MinWidth="100" HorizontalAlignment="Right" ShowButtonSpinner="False" Value="{Binding  ChatVM.AdvancedSettings.FrequencePenalty}"></NumericUpDown>
+                <NumericUpDown HorizontalContentAlignment="Right" MinWidth="100" HorizontalAlignment="Right" ShowButtonSpinner="False" Value="{Binding  AdvancedSettings.FrequencePenalty}"></NumericUpDown>
             </Panel>
             <Panel Margin="12,8">
                 <TextBlock VerticalAlignment="Center" FontWeight="DemiBold" Foreground="{DynamicResource SukiLowText}" FontSize="15" Text="Repeat Penalty"></TextBlock>
-                <NumericUpDown HorizontalContentAlignment="Right" MinWidth="100" HorizontalAlignment="Right" ShowButtonSpinner="False" Value="{Binding  ChatVM.AdvancedSettings.Repeatpenalty}"></NumericUpDown>
+                <NumericUpDown HorizontalContentAlignment="Right" MinWidth="100" HorizontalAlignment="Right" ShowButtonSpinner="False" Value="{Binding  AdvancedSettings.Repeatpenalty}"></NumericUpDown>
             </Panel>
         </StackPanel>
         </ScrollViewer>

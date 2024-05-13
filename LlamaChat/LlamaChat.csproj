@@ -69,6 +69,8 @@
       <AvaloniaResource Include="Assets\icons8-inbox-48.png" />
       <None Remove="Assets\icons8-speech-48 (1).png" />
       <AvaloniaResource Include="Assets\icons8-speech-48 (1).png" />
+      <None Remove="Assets\icons8-settings-48 (1).png" />
+      <AvaloniaResource Include="Assets\icons8-settings-48 (1).png" />
     </ItemGroup>
 
     <ItemGroup>

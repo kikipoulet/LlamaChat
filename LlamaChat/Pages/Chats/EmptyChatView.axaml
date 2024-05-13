@@ -176,7 +176,7 @@
     <DockPanel Background="Transparent" Margin="-15,-15,35,-15" VerticalAlignment="Top" Height="68"  >
                                             
         <Image DockPanel.Dock="Left" VerticalAlignment="Center" Margin="20,0,15,0" Source="/Assets/icons8-artificial-intelligence-48.png" Height="24" Width="24"></Image>
-        <Image DockPanel.Dock="Right" VerticalAlignment="Center" Source="/Assets/icons8-paramètres-48.png" IsHitTestVisible="False" Margin="0,0,-30,0" Height="24" Width="24"></Image>
+        <Image DockPanel.Dock="Right" VerticalAlignment="Center" Source="/Assets/icons8-settings-48 (1).png" IsHitTestVisible="False" Margin="0,0,-30,0" Height="24" Width="24"></Image>
         
         
         
@@ -212,7 +212,7 @@
                                   <DockPanel Background="Transparent" Margin="-15,-15,35,-15" VerticalAlignment="Top" Height="68"  >
                                             
                                       <Image DockPanel.Dock="Left" VerticalAlignment="Center" Margin="20,0,15,0" Source="/Assets/icons8-artificial-intelligence-48.png" Height="24" Width="24"></Image>
-                                      <Image DockPanel.Dock="Right" VerticalAlignment="Center" Source="/Assets/icons8-paramètres-48.png" IsHitTestVisible="False" Margin="0,0,-30,0" Height="24" Width="24"></Image>
+                                      <Image DockPanel.Dock="Right" VerticalAlignment="Center" Source="/Assets/icons8-settings-48 (1).png" IsHitTestVisible="False" Margin="0,0,-30,0" Height="24" Width="24"></Image>
         
         
         

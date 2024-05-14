@@ -6,6 +6,7 @@ using LlamaChatBackend.Classes;
 using OpenAI;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using OpenAI.Assistants;
 using OpenAI.Chat;
 using Message = LlamaChatBackend.Classes.Message;
 
@@ -51,6 +52,7 @@ public class OpenAIChatVM:  ChatProvider
             var token = cts.Token;
             
             using var api = new OpenAIClient( new OpenAIAuthentication(Key), new OpenAIClientSettings(Domain));
+            
             
             var messages = new List<OpenAI.Chat.Message>
             {

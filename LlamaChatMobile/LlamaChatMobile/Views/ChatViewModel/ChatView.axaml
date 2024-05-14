@@ -193,16 +193,12 @@
                     <ScrollViewer VerticalScrollBarVisibility="Hidden" x:Name="MonScrollViewer" >
            
            
-           <ItemsControl Margin="0,7,0,0"   llamaChatMobile:ItemsControlExtensions.AnimatedScroll="True" ItemsSource="{Binding CurrentChat.Messages}">
+           <ItemsControl  Margin="0,7,0,0"   Name="IC" ItemsSource="{Binding CurrentChat.Messages}">
         
            <ItemsControl.DataTemplates>
                <DataTemplate DataType="classes:Message">
-                   <TransitioningContentControl >
-                       <TransitioningContentControl.PageTransition>
-                           <CrossFade Duration="0:00:00.200"  />
-                       </TransitioningContentControl.PageTransition>
-                       
-                       <Grid Margin="0,7">
+         
+                       <Grid Loaded="Animate" Opacity="0" Margin="0,7">
                            <Grid IsVisible="{Binding !IsUser}">
                              <glassMorphism:GlassCard Padding="14" CornerRadius="15" HorizontalAlignment="Stretch" >
                                        <StackPanel>
@@ -358,7 +354,7 @@
                            </Grid>
                            </Grid>
                            
-                       </TransitioningContentControl>
+                      
                </DataTemplate>
            </ItemsControl.DataTemplates>
        </ItemsControl>

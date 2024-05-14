@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Avalonia;
+using Avalonia.Animation;
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
+using Avalonia.Rendering.Composition;
+using Avalonia.Rendering.Composition.Animations;
 using LlamaChatBackend;
 using SukiUI;
 using SukiUI.Controls;
@@ -19,6 +22,40 @@ public partial class ChatView : UserControl
         
         ResourcesVM.Instance.ChatScroll= this.FindControl<ScrollViewer>("MonScrollViewer");
     }
+
+    protected override void OnAttachedToVisualTree(VisualTreeAttachmentEventArgs e)
+    {
+        base.OnAttachedToVisualTree(e);
+
+        var itemscontrol = this.Get<ItemsControl>("IC");
+        
+        itemscontrol.AttachedToVisualTree += (sender, args) =>
+        {
+            var compositionVisual = ElementComposition.GetElementVisual(itemscontrol);
+
+            if (compositionVisual == null)
+                return;
+
+            Compositor compositor = compositionVisual.Compositor;
+
+            var animationGroup = compositor.CreateAnimationGroup();
+            Vector3KeyFrameAnimation offsetAnimation = compositor.CreateVector3KeyFrameAnimation();
+            offsetAnimation.Target = "Offset";
+
+            offsetAnimation.InsertExpressionKeyFrame(1.0f, "this.FinalValue");
+            offsetAnimation.Duration = TimeSpan.FromMilliseconds(400);
+
+            ImplicitAnimationCollection implicitAnimationCollection = compositor.CreateImplicitAnimationCollection();
+            animationGroup.Add(offsetAnimation);
+            implicitAnimationCollection["Offset"] = animationGroup;
+            compositionVisual.ImplicitAnimations = implicitAnimationCollection;
+        };
+
+       
+
+    }
+    
+    
 
     private void Button_OnClick(object? sender, RoutedEventArgs e)
     {
@@ -53,6 +90,11 @@ public partial class ChatView : UserControl
         {
             FlyoutBase.ShowAttachedFlyout(ctl);
         }
+    }
+
+    private void Animate(object? sender, RoutedEventArgs e)
+    { 
+        ((Grid)sender).Animate<double>(OpacityProperty, 0 ,1 );
     }
 }
 

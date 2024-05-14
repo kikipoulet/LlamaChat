@@ -134,18 +134,15 @@
                     <ScrollViewer x:Name="MonScrollViewer" >
            
            
-           <ItemsControl    theme:ItemsControlExtensions.AnimatedScroll="True" ItemsSource="{Binding CurrentChat.Messages}">
-         <ItemsControl.Resources>
+           <ItemsControl  Name="IC"  ItemsSource="{Binding CurrentChat.Messages}">
+               <ItemsControl.Resources>
              <chats:MarkdownConverter x:Key="MC"/> 
          </ItemsControl.Resources>
            <ItemsControl.DataTemplates>
                <DataTemplate DataType="classes1:Message">
-                   <TransitioningContentControl >
-                       <TransitioningContentControl.PageTransition>
-                           <CrossFade Duration="0:00:00.200"  />
-                       </TransitioningContentControl.PageTransition>
+                   
                        
-                       <Grid Margin="0,15">
+                       <Grid Loaded="Animate" Opacity="0" Margin="0,15">
                            <Grid IsVisible="{Binding !IsUser}" ColumnDefinitions="5*,*">
                                <DockPanel Grid.Column="0">
                                    <Image DockPanel.Dock="Left"  Source="/Assets/icons8-artificial-intelligence-48.png" VerticalAlignment="Center" Margin="22,15,15,15"  Height="48" Width="48"></Image>
@@ -157,7 +154,7 @@
                                           <avalonia:MaterialIcon Kind="ChatPlusOutline" Height="22" Width="22" Foreground="{DynamicResource SukiControlBorderBrush}"></avalonia:MaterialIcon>
                                       </Button>
                                   </StackPanel>
-                                   <controls:GlassCard CornerRadius="12" MinWidth="400" HorizontalAlignment="Left" >
+                                   <controls:GlassCard CornerRadius="12" MinWidth="400" MaxWidth="1000" HorizontalAlignment="Left" >
                                        <StackPanel>
                                            <Button  Click="showcopied" Command="{Binding Copy}"  CommandParameter="{Binding Content}" Classes="Basic" HorizontalAlignment="Right" Margin="-15,-10,-15,-12">
                                                <Button.Flyout >
@@ -296,8 +293,7 @@
                                </DockPanel>
                            </Grid>
                            </Grid>
-                           
-                       </TransitioningContentControl>
+                        
                </DataTemplate>
            </ItemsControl.DataTemplates>
        </ItemsControl>

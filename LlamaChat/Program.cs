@@ -1,5 +1,6 @@
 ﻿using Avalonia;
 using System;
+using Avalonia.Controls;
 using Projektanker.Icons.Avalonia;
 using Projektanker.Icons.Avalonia.FontAwesome;
 
@@ -26,3 +27,4 @@ class Program
 
     }
 }
+

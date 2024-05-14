@@ -18,7 +18,8 @@ Do not hesitate to suggest ideas.
 ## 🖥️ Desktop 
 ### Simple Chat & Smooth Scroll
 
-![llamachat](https://github.com/kikipoulet/LlamaChat/assets/19242427/c4667b62-077e-47f7-84c1-e3a0c6bfd2d4)
+![llamachatscroll](https://github.com/kikipoulet/LlamaChat/assets/19242427/ccc3fea9-4c8b-40a6-8566-19d854e92558)
+
 
 ### Chat History & Chat Settings
 
@@ -35,4 +36,14 @@ Do not hesitate to suggest ideas.
 ### Mobile UI in progress ..
 
 <img src="https://github.com/kikipoulet/LlamaChat/assets/19242427/cca050a3-a1fa-4651-9a4c-a8fbcc54d0a3" style="width: 500px" />
+
+https://github.com/kikipoulet/LlamaChat/assets/19242427/b0e07537-126a-4875-a9c7-49c255ee0301
+
+<img src="https://github.com/kikipoulet/LlamaChat/assets/19242427/99b45969-8c7e-49d0-9f7b-57c4bb7c670f" style="width: 350px" />
+
+
+https://github.com/kikipoulet/LlamaChat/assets/19242427/94a8bed7-33e5-420b-a9fd-b01804cb9f7d
+
+
+
 

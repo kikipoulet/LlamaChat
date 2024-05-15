@@ -26,7 +26,7 @@ public partial class StartNewChatView : UserControl
     {
         var vm= new OpenAIChatVM()
         {
-            Key = ""
+            Key = "sk-36119dc49cd846daa3e641222aea6b14"
         };
         vm.InitChat("DeepSeek Chat");
         MobileNavigation.Push(new ChatView(){DataContext = vm});

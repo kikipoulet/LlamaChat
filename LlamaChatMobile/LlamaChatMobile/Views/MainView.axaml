@@ -9,7 +9,9 @@
              xmlns:pages="clr-namespace:LlamaChat.Pages;assembly=LLamaChatBackend"
              xmlns:classes="clr-namespace:LlamaChat.Classes;assembly=LLamaChatBackend"
              xmlns:modelsList="clr-namespace:LlamaChatMobile.Views.ModelsList"
-             mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="450"
+             xmlns:formFields="clr-namespace:CherylUI.Controls.FormFields;assembly=CherylUI"
+             xmlns:views="clr-namespace:LlamaChatMobile.Views"
+             mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="750"
              x:Class="LlamaChatMobile.Views.MainView"
            >
   <UserControl.Resources>
@@ -37,7 +39,7 @@
             <Button Click="GoToModels" VerticalAlignment="Center" DockPanel.Dock="Right" Classes="Text">
               <avalonia:MaterialIcon VerticalAlignment="Center" Height="22" Width="22" Kind="ArrowRightThin" />
             </Button>
-            <TextBlock VerticalAlignment="Top" Margin="0,9,0,0" Text="Models" FontWeight="DemiBold" FontSize="22"></TextBlock>
+            <TextBlock VerticalAlignment="Top" Margin="0,9,0,0" Text="Local Models" FontWeight="DemiBold" FontSize="22"></TextBlock>
           </DockPanel>
 
           <ItemsControl  x:DataType="pages:ResourcesVM" DataContext="{x:Static pages:ResourcesVM.Instance}" ItemsSource="{Binding ModelsToDownload}" Margin="0,5,0,0">
@@ -82,7 +84,17 @@
             </Button>
           </StackPanel>
 
-
+          <DockPanel Margin="0,35,0,0" >
+          
+            <TextBlock VerticalAlignment="Top" Margin="0,9,0,0" Text="Settings" FontWeight="DemiBold" FontSize="22"></TextBlock>
+          </DockPanel>
+          
+          <controls:GroupBox Header="Appearance">
+            <StackPanel x:DataType="views:SettingsVM" DataContext="{x:Static views:SettingsVM.Instance}">
+              <formFields:FormFieldSwitch IsChecked="{Binding DarkMode}"  Margin="8,3" Title="Dark Mode" />
+              </StackPanel>
+            </controls:GroupBox>
+          
         </StackPanel>
       </ScrollViewer>
       <Button Click="StartNewChatView" Margin="25" VerticalAlignment="Bottom" >

@@ -18,6 +18,7 @@
         <entry key="LlamaChatMobile/LlamaChatMobile/Views/MainWindow.axaml" value="LlamaChatMobile/LlamaChatMobile.Desktop/LlamaChatMobile.Desktop.csproj" />
         <entry key="LlamaChatMobile/LlamaChatMobile/Views/ModelsList/DownloadModelDialog.axaml" value="LlamaChatMobile/LlamaChatMobile.Desktop/LlamaChatMobile.Desktop.csproj" />
         <entry key="LlamaChatMobile/LlamaChatMobile/Views/ModelsList/ModelsListView.axaml" value="LlamaChatMobile/LlamaChatMobile.Desktop/LlamaChatMobile.Desktop.csproj" />
+        <entry key="LlamaChatMobile/LlamaChatMobile/Views/StartNewChatView.axaml" value="LlamaChatMobile/LlamaChatMobile.Desktop/LlamaChatMobile.Desktop.csproj" />
         <entry key="LlamaChatMobile/LlamaChatMobile/WaveProgressBubble.axaml" value="LlamaChatMobile/LlamaChatMobile.Desktop/LlamaChatMobile.Desktop.csproj" />
       </map>
     </option>

@@ -15,6 +15,7 @@
              xmlns:llamaChatBackend="clr-namespace:LlamaChatBackend;assembly=LLamaChatBackend"
              xmlns:classes1="clr-namespace:LlamaChatBackend.Classes;assembly=LLamaChatBackend"
              xmlns:pages1="clr-namespace:LlamaChat.Pages;assembly=LLamaChatBackend"
+             xmlns:lLamaChatBackend="clr-namespace:LLamaChatBackend;assembly=LLamaChatBackend"
              x:DataType="llamaChatBackend:ChatProvider"  Name="MyChatView"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="LlamaChat.Pages.Chats.ChatView">
@@ -142,7 +143,7 @@
                <DataTemplate DataType="classes1:Message">
                    
                        
-                       <Grid Loaded="Animate" Opacity="0" Margin="0,15">
+                       <Grid lLamaChatBackend:AnimationExtensions.FadeIn="700" Margin="0,15">
                            <Grid IsVisible="{Binding !IsUser}" ColumnDefinitions="5*,*">
                                <DockPanel Grid.Column="0">
                                    <Image DockPanel.Dock="Left"  Source="/Assets/icons8-artificial-intelligence-48.png" VerticalAlignment="Center" Margin="22,15,15,15"  Height="48" Width="48"></Image>

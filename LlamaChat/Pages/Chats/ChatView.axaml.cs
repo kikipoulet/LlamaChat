@@ -43,7 +43,7 @@ public partial class ChatView : UserControl
             offsetAnimation.Target = "Offset";
 
             offsetAnimation.InsertExpressionKeyFrame(1.0f, "this.FinalValue");
-            offsetAnimation.Duration = TimeSpan.FromMilliseconds(400);
+            offsetAnimation.Duration = TimeSpan.FromMilliseconds(500);
 
             ImplicitAnimationCollection implicitAnimationCollection = compositor.CreateImplicitAnimationCollection();
             animationGroup.Add(offsetAnimation);
@@ -92,9 +92,6 @@ public partial class ChatView : UserControl
         }
     }
 
-    private void Animate(object? sender, RoutedEventArgs e)
-    { 
-        ((Grid)sender).Animate<double>(OpacityProperty, 0 ,1 );
-    }
+  
 }
 

@@ -6,7 +6,7 @@
              xmlns:pages="clr-namespace:LlamaChat.Pages;assembly=LLamaChatBackend"
              xmlns:classes="clr-namespace:LlamaChat.Classes;assembly=LLamaChatBackend"
              xmlns:glassMorphism="clr-namespace:CherylUI.Controls.GlassMorphism;assembly=CherylUI"
-             mc:Ignorable="d" d:DesignWidth="350" d:DesignHeight="450"
+             mc:Ignorable="d" d:DesignWidth="350" d:DesignHeight="850"
              x:Class="LlamaChatMobile.Views.StartNewChatView">
     <UserControl.Styles>
         <Style Selector=" ListBox ListBoxItem">
@@ -31,7 +31,7 @@
                 </Button>
                 
                 <DockPanel Margin="0,5,0,0" >
-                    <TextBlock VerticalAlignment="Top" Margin="0,9,0,0" Text="Model" FontWeight="DemiBold" FontSize="22"></TextBlock>
+                    <TextBlock VerticalAlignment="Top" Margin="0,9,0,0" Text="Local Models" FontWeight="DemiBold" FontSize="22"></TextBlock>
                 </DockPanel>
 
                 <ListBox SelectionMode="AlwaysSelected" Classes="Void"  x:DataType="pages:ResourcesVM" DataContext="{x:Static pages:ResourcesVM.Instance}" ItemsSource="{Binding ModelsToDownload}" Margin="0,25,0,0">
@@ -42,7 +42,7 @@
                     </ListBox.ItemsPanel>
                     <ListBox.DataTemplates>
                         <DataTemplate DataType="classes:AiModel">
-                            <RadioButton IsChecked="{Binding Path=IsSelected,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBoxItem}}" HorizontalAlignment="Stretch" IsVisible="{Binding IsInstalled}">
+                            <RadioButton GroupName="AI" IsChecked="{Binding Path=IsSelected,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBoxItem}}" HorizontalAlignment="Stretch" IsVisible="{Binding IsInstalled}">
                                 <StackPanel HorizontalAlignment="Stretch" >
                                     <StackPanel Orientation="Horizontal">
                                         <Image  Height="24" Width="24" HorizontalAlignment="Left" VerticalAlignment="Center" Source="/Assets/icons8-artificial-intelligence-48 (1).png"></Image>
@@ -58,6 +58,25 @@
            
 
                 </ListBox>
+                
+                <DockPanel Margin="0,5,0,0" >
+                    <TextBlock VerticalAlignment="Top" Margin="0,9,0,0" Text="Remote" FontWeight="DemiBold" FontSize="22"></TextBlock>
+                </DockPanel>
+                
+                <StackPanel Margin="0,25,0,0" Spacing="5">
+                    <RadioButton HorizontalAlignment="Stretch" GroupName="AI">
+                        <StackPanel HorizontalAlignment="Stretch" >
+                            <StackPanel Orientation="Horizontal">
+                                <Image  Height="24" Width="24" HorizontalAlignment="Left" VerticalAlignment="Center" Source="/Assets/icons8-artificial-intelligence-48 (1).png"></Image>
+                                <TextBlock Text="DeepSeek Chat" FontSize="17"  Foreground="{DynamicResource PrimaryText}" FontWeight="Bold" HorizontalAlignment="Left" Margin="7,8,7,7" ></TextBlock>
+                            </StackPanel>
+                                  
+                            <TextBlock  Text="(MoE) Language model, economical  and efficient." FontSize="14" Foreground="{DynamicResource SecondaryText}" FontWeight="DemiBold" HorizontalAlignment="Left" TextWrapping="Wrap" Margin="7"></TextBlock>
+
+                        </StackPanel>
+                    </RadioButton>
+                </StackPanel>
+
                 
                 </StackPanel>
             </ScrollViewer>

@@ -11,11 +11,16 @@
              xmlns:chats="clr-namespace:LlamaChat.Pages.Chats"
              xmlns:classes1="clr-namespace:LlamaChat.Classes;assembly=LLamaChatBackend"
              xmlns:pages1="clr-namespace:LlamaChat.Pages;assembly=LLamaChatBackend"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="850"
+             mc:Ignorable="d" Width="1150" Height="750" d:DesignWidth="1100" d:DesignHeight="750"
              x:Class="LlamaChat.Pages.Models.ModelsView">
   <UserControl.Resources>
+      <system:Double x:Key="GlassOpacity">0.2</system:Double>
       <chats:FilenameToStringConverter x:Key="FilenameConverter"></chats:FilenameToStringConverter>
   </UserControl.Resources>
+    <controls:GlassCard>
+        <Panel>
+        <controls:SukiBackground Margin="-30"></controls:SukiBackground>
+      
     <ScrollViewer Classes="Stack">
         <StackPanel Margin="50">
             <TextBlock Classes="h2" Text="Installed Models"></TextBlock>
@@ -103,4 +108,6 @@
             
         </StackPanel>
     </ScrollViewer>
+        </Panel>
+    </controls:GlassCard>
 </UserControl>

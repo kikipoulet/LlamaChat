@@ -15,6 +15,7 @@ using Avalonia.Threading;
 using LLama;
 using LLama.Common;
 using LlamaChat.Classes;
+using LlamaChat.Pages.Models;
 using LlamaChatBackend;
 using LLamaChatBackend.Configs;
 using SukiUI.Controls;
@@ -56,6 +57,11 @@ public partial class EmptyChatView : UserControl
     private void TextBox_OnTextChanged(object? sender, TextChangedEventArgs e)
     {
         DeepSeekConfig.Instance.Save();
+    }
+
+    private void showModels(object? sender, RoutedEventArgs e)
+    {
+        SukiHost.ShowDialog(new ModelsView(),false,true);
     }
 }
 

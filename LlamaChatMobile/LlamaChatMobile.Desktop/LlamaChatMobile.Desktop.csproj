@@ -16,6 +16,7 @@
         <PackageReference Include="Avalonia.Desktop" Version="11.1.0-beta2" />
         <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
         <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.1.0-beta2" />
+        <PackageReference Include="SkiaSharp.NativeAssets.Linux" Version="3.0.0-preview.3.1" />
     </ItemGroup>
 
     <ItemGroup>

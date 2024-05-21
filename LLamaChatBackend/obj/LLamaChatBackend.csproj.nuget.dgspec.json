@@ -1,35 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Sepul\\RiderProjects\\LlamaChat\\LLamaChatBackend\\LLamaChatBackend.csproj": {}
+    "/home/user/RiderProjects/LlamaChat/LLamaChatBackend/LLamaChatBackend.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Sepul\\RiderProjects\\LlamaChat\\LLamaChatBackend\\LLamaChatBackend.csproj": {
+    "/home/user/RiderProjects/LlamaChat/LLamaChatBackend/LLamaChatBackend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Sepul\\RiderProjects\\LlamaChat\\LLamaChatBackend\\LLamaChatBackend.csproj",
+        "projectUniqueName": "/home/user/RiderProjects/LlamaChat/LLamaChatBackend/LLamaChatBackend.csproj",
         "projectName": "LLamaChatBackend",
-        "projectPath": "C:\\Users\\Sepul\\RiderProjects\\LlamaChat\\LLamaChatBackend\\LLamaChatBackend.csproj",
-        "packagesPath": "C:\\Users\\Sepul\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Sepul\\RiderProjects\\LlamaChat\\LLamaChatBackend\\obj\\",
+        "projectPath": "/home/user/RiderProjects/LlamaChat/LLamaChatBackend/LLamaChatBackend.csproj",
+        "packagesPath": "/home/user/.nuget/packages/",
+        "outputPath": "/home/user/RiderProjects/LlamaChat/LLamaChatBackend/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Sepul\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "/home/user/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
-          "C:\\Users\\Sepul\\Downloads": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -62,7 +52,7 @@
             },
             "LLamaSharp.Backend.Cpu": {
               "target": "Package",
-              "version": "[0.10.0, )"
+              "version": "[0.11.2, )"
             },
             "Newtonsoft.Json": {
               "target": "Package",
@@ -75,6 +65,10 @@
             "SharpToken": {
               "target": "Package",
               "version": "[2.0.2, )"
+            },
+            "SkiaSharp.NativeAssets.Linux": {
+              "target": "Package",
+              "version": "[3.0.0-preview.3.1, )"
             },
             "Xamarin.Essentials": {
               "target": "Package",
@@ -100,10 +94,6 @@
             {
               "name": "Microsoft.NETCore.App.Ref",
               "version": "[6.0.26, 6.0.26]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[6.0.26, 6.0.26]"
             }
           ],
           "frameworkReferences": {
@@ -111,7 +101,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/home/user/.dotnet/sdk/8.0.101/RuntimeIdentifierGraph.json"
         }
       }
     }

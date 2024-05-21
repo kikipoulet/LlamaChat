@@ -129,7 +129,7 @@
           }
         }
       },
-      "LLamaSharp.Backend.Cpu/0.10.0": {
+      "LLamaSharp.Backend.Cpu/0.11.2": {
         "type": "package",
         "build": {
           "build/netstandard2.0/LLamaSharp.Backend.Cpu.props": {}
@@ -139,7 +139,15 @@
             "assetType": "native",
             "rid": "linux-x64"
           },
+          "runtimes/linux-x64/native/avx/libllava_shared.so": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
           "runtimes/linux-x64/native/avx2/libllama.so": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/linux-x64/native/avx2/libllava_shared.so": {
             "assetType": "native",
             "rid": "linux-x64"
           },
@@ -147,7 +155,15 @@
             "assetType": "native",
             "rid": "linux-x64"
           },
+          "runtimes/linux-x64/native/avx512/libllava_shared.so": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
           "runtimes/linux-x64/native/libllama.so": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/linux-x64/native/libllava_shared.so": {
             "assetType": "native",
             "rid": "linux-x64"
           },
@@ -159,7 +175,15 @@
             "assetType": "native",
             "rid": "osx-arm64"
           },
+          "runtimes/osx-arm64/native/libllava_shared.dylib": {
+            "assetType": "native",
+            "rid": "osx-arm64"
+          },
           "runtimes/osx-x64/native/libllama.dylib": {
+            "assetType": "native",
+            "rid": "osx-x64"
+          },
+          "runtimes/osx-x64/native/libllava_shared.dylib": {
             "assetType": "native",
             "rid": "osx-x64"
           },
@@ -167,7 +191,15 @@
             "assetType": "native",
             "rid": "win-x64"
           },
+          "runtimes/win-x64/native/avx/llava_shared.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
           "runtimes/win-x64/native/avx2/llama.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x64/native/avx2/llava_shared.dll": {
             "assetType": "native",
             "rid": "win-x64"
           },
@@ -175,7 +207,15 @@
             "assetType": "native",
             "rid": "win-x64"
           },
+          "runtimes/win-x64/native/avx512/llava_shared.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
           "runtimes/win-x64/native/llama.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x64/native/llava_shared.dll": {
             "assetType": "native",
             "rid": "win-x64"
           }
@@ -254,6 +294,53 @@
         },
         "runtime": {
           "lib/net6.0/SharpToken.dll": {}
+        }
+      },
+      "SkiaSharp.NativeAssets.Linux/3.0.0-preview.3.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/_._": {}
+        },
+        "contentFiles": {
+          "contentFiles/any/netstandard2.1/libSkiaSharp.so": {
+            "buildAction": "None",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          },
+          "contentFiles/any/netstandard2.1/libSkiaSharp.so.115.0.0": {
+            "buildAction": "None",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/linux-arm/native/libSkiaSharp.so": {
+            "assetType": "native",
+            "rid": "linux-arm"
+          },
+          "runtimes/linux-arm/native/libSkiaSharp.so.115.0.0": {
+            "assetType": "native",
+            "rid": "linux-arm"
+          },
+          "runtimes/linux-arm64/native/libSkiaSharp.so": {
+            "assetType": "native",
+            "rid": "linux-arm64"
+          },
+          "runtimes/linux-arm64/native/libSkiaSharp.so.115.0.0": {
+            "assetType": "native",
+            "rid": "linux-arm64"
+          },
+          "runtimes/linux-x64/native/libSkiaSharp.so": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/linux-x64/native/libSkiaSharp.so.115.0.0": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          }
         }
       },
       "System.Numerics.Vectors/4.5.0": {
@@ -525,28 +612,38 @@
         "llamasharp.nuspec"
       ]
     },
-    "LLamaSharp.Backend.Cpu/0.10.0": {
-      "sha512": "FdYveoisVuwzYVUyHLg73JmgEB1Z+fl8iTJOIN3Rt7YcUAiM/XeZ38uJsjB/sv3eh/Yd7Zc7R96zM5k4zK4ZgA==",
+    "LLamaSharp.Backend.Cpu/0.11.2": {
+      "sha512": "ELBKP9QDnxhecoflMD/dJqt2j9rRFomNx3bcu66z2rx5ufRVvVET/hsDQaAG6JkqUvgfOk5exfDFlrQAHX0zKQ==",
       "type": "package",
-      "path": "llamasharp.backend.cpu/0.10.0",
+      "path": "llamasharp.backend.cpu/0.11.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "build/netstandard2.0/LLamaSharp.Backend.Cpu.props",
         "icon512.png",
-        "llamasharp.backend.cpu.0.10.0.nupkg.sha512",
+        "llamasharp.backend.cpu.0.11.2.nupkg.sha512",
         "llamasharp.backend.cpu.nuspec",
         "runtimes/linux-x64/native/avx/libllama.so",
+        "runtimes/linux-x64/native/avx/libllava_shared.so",
         "runtimes/linux-x64/native/avx2/libllama.so",
+        "runtimes/linux-x64/native/avx2/libllava_shared.so",
         "runtimes/linux-x64/native/avx512/libllama.so",
+        "runtimes/linux-x64/native/avx512/libllava_shared.so",
         "runtimes/linux-x64/native/libllama.so",
+        "runtimes/linux-x64/native/libllava_shared.so",
         "runtimes/osx-arm64/native/ggml-metal.metal",
         "runtimes/osx-arm64/native/libllama.dylib",
+        "runtimes/osx-arm64/native/libllava_shared.dylib",
         "runtimes/osx-x64/native/libllama.dylib",
+        "runtimes/osx-x64/native/libllava_shared.dylib",
         "runtimes/win-x64/native/avx/llama.dll",
+        "runtimes/win-x64/native/avx/llava_shared.dll",
         "runtimes/win-x64/native/avx2/llama.dll",
+        "runtimes/win-x64/native/avx2/llava_shared.dll",
         "runtimes/win-x64/native/avx512/llama.dll",
-        "runtimes/win-x64/native/llama.dll"
+        "runtimes/win-x64/native/avx512/llava_shared.dll",
+        "runtimes/win-x64/native/llama.dll",
+        "runtimes/win-x64/native/llava_shared.dll"
       ]
     },
     "MicroCom.Runtime/0.11.0": {
@@ -728,6 +825,42 @@
         "sharptoken.nuspec"
       ]
     },
+    "SkiaSharp.NativeAssets.Linux/3.0.0-preview.3.1": {
+      "sha512": "s1TnYFyuBjbWehctZn1Wh97Qs61PZ7ph7N0r6xdfQsgtXnR75UmfTC09tbR7LmTFWACdDNAQ6Ev1NOuLWuHsPw==",
+      "type": "package",
+      "path": "skiasharp.nativeassets.linux/3.0.0-preview.3.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "README.md",
+        "THIRD-PARTY-NOTICES.txt",
+        "buildTransitive/net462/SkiaSharp.NativeAssets.Linux.targets",
+        "content/libSkiaSharp.so",
+        "content/libSkiaSharp.so.115.0.0",
+        "contentFiles/any/net462/libSkiaSharp.so",
+        "contentFiles/any/net462/libSkiaSharp.so.115.0.0",
+        "contentFiles/any/net7.0/libSkiaSharp.so",
+        "contentFiles/any/net7.0/libSkiaSharp.so.115.0.0",
+        "contentFiles/any/netstandard2.0/libSkiaSharp.so",
+        "contentFiles/any/netstandard2.0/libSkiaSharp.so.115.0.0",
+        "contentFiles/any/netstandard2.1/libSkiaSharp.so",
+        "contentFiles/any/netstandard2.1/libSkiaSharp.so.115.0.0",
+        "icon.png",
+        "lib/net462/_._",
+        "lib/net7.0/_._",
+        "lib/netstandard2.0/_._",
+        "lib/netstandard2.1/_._",
+        "runtimes/linux-arm/native/libSkiaSharp.so",
+        "runtimes/linux-arm/native/libSkiaSharp.so.115.0.0",
+        "runtimes/linux-arm64/native/libSkiaSharp.so",
+        "runtimes/linux-arm64/native/libSkiaSharp.so.115.0.0",
+        "runtimes/linux-x64/native/libSkiaSharp.so",
+        "runtimes/linux-x64/native/libSkiaSharp.so.115.0.0",
+        "skiasharp.nativeassets.linux.3.0.0-preview.3.1.nupkg.sha512",
+        "skiasharp.nativeassets.linux.nuspec"
+      ]
+    },
     "System.Numerics.Vectors/4.5.0": {
       "sha512": "QQTlPTl06J/iiDbJCiepZ4H//BVraReU4O4EoRw1U02H5TLUIT7xn3GnDp9AXPSlJUDyFs4uWjWafNX6WrAojQ==",
       "type": "package",
@@ -823,44 +956,33 @@
       "Avalonia >= 11.1.0-beta2",
       "CommunityToolkit.Mvvm >= 8.2.2",
       "LLamaSharp >= 0.11.2",
-      "LLamaSharp.Backend.Cpu >= 0.10.0",
+      "LLamaSharp.Backend.Cpu >= 0.11.2",
       "Newtonsoft.Json >= 13.0.3",
       "OpenAI-DotNet >= 7.7.8",
       "SharpToken >= 2.0.2",
+      "SkiaSharp.NativeAssets.Linux >= 3.0.0-preview.3.1",
       "Xamarin.Essentials >= 1.8.1"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Sepul\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet": {}
+    "/home/user/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Sepul\\RiderProjects\\LlamaChat\\LLamaChatBackend\\LLamaChatBackend.csproj",
+      "projectUniqueName": "/home/user/RiderProjects/LlamaChat/LLamaChatBackend/LLamaChatBackend.csproj",
       "projectName": "LLamaChatBackend",
-      "projectPath": "C:\\Users\\Sepul\\RiderProjects\\LlamaChat\\LLamaChatBackend\\LLamaChatBackend.csproj",
-      "packagesPath": "C:\\Users\\Sepul\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Sepul\\RiderProjects\\LlamaChat\\LLamaChatBackend\\obj\\",
+      "projectPath": "/home/user/RiderProjects/LlamaChat/LLamaChatBackend/LLamaChatBackend.csproj",
+      "packagesPath": "/home/user/.nuget/packages/",
+      "outputPath": "/home/user/RiderProjects/LlamaChat/LLamaChatBackend/obj/",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Sepul\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "/home/user/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
-        "C:\\Users\\Sepul\\Downloads": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -893,7 +1015,7 @@
           },
           "LLamaSharp.Backend.Cpu": {
             "target": "Package",
-            "version": "[0.10.0, )"
+            "version": "[0.11.2, )"
           },
           "Newtonsoft.Json": {
             "target": "Package",
@@ -906,6 +1028,10 @@
           "SharpToken": {
             "target": "Package",
             "version": "[2.0.2, )"
+          },
+          "SkiaSharp.NativeAssets.Linux": {
+            "target": "Package",
+            "version": "[3.0.0-preview.3.1, )"
           },
           "Xamarin.Essentials": {
             "target": "Package",
@@ -931,10 +1057,6 @@
           {
             "name": "Microsoft.NETCore.App.Ref",
             "version": "[6.0.26, 6.0.26]"
-          },
-          {
-            "name": "Microsoft.WindowsDesktop.App.Ref",
-            "version": "[6.0.26, 6.0.26]"
           }
         ],
         "frameworkReferences": {
@@ -942,7 +1064,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/home/user/.dotnet/sdk/8.0.101/RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -33,7 +33,7 @@
      </Style>
  </UserControl.Styles>
     <UserControl.Resources>
-        <system:Double x:Key="GlassOpacity">0.32</system:Double>
+        <system:Double x:Key="GlassOpacity">0.22</system:Double>
         <chats:BoolToDoubleConverter x:Key="BtoD"></chats:BoolToDoubleConverter>
         <chats:NullToDoubleConverter x:Key="NtoD"></chats:NullToDoubleConverter>
         <chats:NotNullToDoubleConverter x:Key="NNtoD"></chats:NotNullToDoubleConverter>
@@ -155,7 +155,7 @@
                                           <avalonia:MaterialIcon Kind="ChatPlusOutline" Height="22" Width="22" Foreground="{DynamicResource SukiControlBorderBrush}"></avalonia:MaterialIcon>
                                       </Button>
                                   </StackPanel>
-                                   <controls:GlassCard CornerRadius="12" MinWidth="400" MaxWidth="1000" HorizontalAlignment="Left" >
+                                   <controls:GlassCard CornerRadius="15" MinWidth="400" MaxWidth="1000" HorizontalAlignment="Left" >
                                        <StackPanel>
                                            <Button  Click="showcopied" Command="{Binding Copy}"  CommandParameter="{Binding Content}" Classes="Basic" HorizontalAlignment="Right" Margin="-15,-10,-15,-12">
                                                <Button.Flyout >
@@ -288,7 +288,7 @@
                                <DockPanel Grid.Column="1">
                                    <Image DockPanel.Dock="Right" Source="/Assets/icons8-user-48.png" VerticalAlignment="Center" Margin="15,15,22,15"  Height="48" Width="48"></Image>
             
-                                   <controls:GlassCard CornerRadius="12" MinWidth="200" HorizontalAlignment="Right"  >
+                                   <controls:GlassCard CornerRadius="15" MinWidth="200" HorizontalAlignment="Right"  >
                                        <TextBlock VerticalAlignment="Center" TextWrapping="Wrap" Text="{Binding Content}"></TextBlock>
                                    </controls:GlassCard>
                                </DockPanel>

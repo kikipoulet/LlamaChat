@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <Import Project="$(NuGetPackageRoot)microsoft.extensions.logging.abstractions\8.0.1\buildTransitive\net6.0\Microsoft.Extensions.Logging.Abstractions.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.extensions.logging.abstractions\8.0.1\buildTransitive\net6.0\Microsoft.Extensions.Logging.Abstractions.targets')" />
-    <Import Project="$(NuGetPackageRoot)communitytoolkit.mvvm\8.2.2\buildTransitive\netstandard2.1\CommunityToolkit.Mvvm.targets" Condition="Exists('$(NuGetPackageRoot)communitytoolkit.mvvm\8.2.2\buildTransitive\netstandard2.1\CommunityToolkit.Mvvm.targets')" />
-    <Import Project="$(NuGetPackageRoot)avalonia.buildservices\0.0.29\buildTransitive\Avalonia.BuildServices.targets" Condition="Exists('$(NuGetPackageRoot)avalonia.buildservices\0.0.29\buildTransitive\Avalonia.BuildServices.targets')" />
-    <Import Project="$(NuGetPackageRoot)avalonia\11.1.0-beta2\buildTransitive\Avalonia.targets" Condition="Exists('$(NuGetPackageRoot)avalonia\11.1.0-beta2\buildTransitive\Avalonia.targets')" />
+    <Import Project="$(NuGetPackageRoot)microsoft.extensions.logging.abstractions/8.0.1/buildTransitive/net6.0/Microsoft.Extensions.Logging.Abstractions.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.extensions.logging.abstractions/8.0.1/buildTransitive/net6.0/Microsoft.Extensions.Logging.Abstractions.targets')" />
+    <Import Project="$(NuGetPackageRoot)communitytoolkit.mvvm/8.2.2/buildTransitive/netstandard2.1/CommunityToolkit.Mvvm.targets" Condition="Exists('$(NuGetPackageRoot)communitytoolkit.mvvm/8.2.2/buildTransitive/netstandard2.1/CommunityToolkit.Mvvm.targets')" />
+    <Import Project="$(NuGetPackageRoot)avalonia.buildservices/0.0.29/buildTransitive/Avalonia.BuildServices.targets" Condition="Exists('$(NuGetPackageRoot)avalonia.buildservices/0.0.29/buildTransitive/Avalonia.BuildServices.targets')" />
+    <Import Project="$(NuGetPackageRoot)avalonia/11.1.0-beta2/buildTransitive/Avalonia.targets" Condition="Exists('$(NuGetPackageRoot)avalonia/11.1.0-beta2/buildTransitive/Avalonia.targets')" />
   </ImportGroup>
 </Project>

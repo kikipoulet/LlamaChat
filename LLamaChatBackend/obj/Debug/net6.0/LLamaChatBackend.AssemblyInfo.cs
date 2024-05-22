@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LLamaChatBackend")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9b1c0d08ed00bd965bf88e3bdfdd6c2ada613cd7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b81f3c64bdc7218da246b31ae568926e55103a91")]
 [assembly: System.Reflection.AssemblyProductAttribute("LLamaChatBackend")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LLamaChatBackend")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -10,7 +10,7 @@
              xmlns:pages1="clr-namespace:LlamaChat.Pages;assembly=LLamaChatBackend"
              xmlns:configs="clr-namespace:LLamaChatBackend.Configs;assembly=LLamaChatBackend"
 
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="750"
+             mc:Ignorable="d" d:DesignWidth="1200" d:DesignHeight="750"
              x:Class="LlamaChat.Pages.Chats.EmptyChatView">
     <UserControl.Resources>
         <system:Double x:Key="GlassOpacity">0.3</system:Double>
@@ -53,12 +53,8 @@
             </Style>
         </DockPanel.Styles>
    
-        <Button Height="45"  CornerRadius="50" BorderThickness="0" Margin="100,10" Click="newChat" Classes="Large Flat" DockPanel.Dock="Bottom" >
-            <StackPanel Orientation="Horizontal" Spacing="18" Margin="10,0">
-                <avalonia:MaterialIcon Kind="Plus"/>
-                <TextBlock Text="Start New Chat" FontSize="17"></TextBlock>
-            </StackPanel>
-        </Button>
+        
+            <ScrollViewer Classes="Stack">
             <StackPanel>
             
                       <StackPanel>
@@ -66,7 +62,7 @@
                               <TextBlock Classes="h3" FontSize="28" Text="Local LLM" DockPanel.Dock="Top" Margin="5,5,5,0"></TextBlock>
 
 
-                              <Button VerticalAlignment="Center" Click="showModels" Margin="15,-15" Classes="HA" Padding="5" CornerRadius="50" HorizontalAlignment="Right" >
+                              <Button VerticalAlignment="Center" Click="showModels" Margin="15,0" Classes="HA" Padding="5" CornerRadius="50" HorizontalAlignment="Right" >
                                   <StackPanel Orientation="Horizontal">
                                       <avalonia:MaterialIcon Margin="8" Kind="Plus"></avalonia:MaterialIcon>
                                       <TextBlock VerticalAlignment="Center"  Text="Add Model" >
@@ -109,7 +105,7 @@
                             </ListBox.ItemsPanel>
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
-                                    <controls:GlassCard IsInteractive="True"  CornerRadius="12" Classes.Primary="{Binding Path=IsSelected, Mode=TwoWay, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBoxItem}}" Padding="12" Margin="0,5">
+                                    <controls:GlassCard IsInteractive="True"  CornerRadius="12" Classes.Primary="{Binding Path=IsSelected, Mode=TwoWay, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBoxItem}}" Padding="12" Margin="10,5,0,5">
                                         <controls:GlassCard.Resources>
                                             <Color x:Key="SukiBackground">Transparent</Color>
                                         </controls:GlassCard.Resources>
@@ -145,7 +141,14 @@
                     <Image Source="/Assets/icons8-empty-96.png" Height="96" Width="96"></Image>
                     <TextBlock Foreground="{DynamicResource SukiLowText}" Text="No Model Installed Locally."></TextBlock>
                 </StackPanel>
+                             
                       </Panel>
+                          <Button  HorizontalAlignment="Right" CornerRadius="50" BorderThickness="0" Margin="0,0,15,0" Click="newChatlocal" Classes="Large Flat"  >
+                              <StackPanel Orientation="Horizontal" Spacing="8" Margin="0,0">
+                                  <avalonia:MaterialIcon Kind="ChatOutline"/>
+                                  <TextBlock Text="Chat" ></TextBlock>
+                              </StackPanel>
+                          </Button>
                           
                       </StackPanel>
               
@@ -176,7 +179,7 @@
 
                           
                           <RadioButton IsChecked="True" Name="CheckDeepseek" HorizontalAlignment="Stretch">
-                               <controls:GlassCard HorizontalAlignment="Stretch" IsInteractive="True"  CornerRadius="12" Classes.Primary="{Binding IsChecked, Mode=TwoWay, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=RadioButton}}" Padding="12" Margin="0,9,9,8">
+                               <controls:GlassCard HorizontalAlignment="Stretch" IsInteractive="True"  CornerRadius="12" Classes.Primary="{Binding IsChecked, Mode=TwoWay, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=RadioButton}}" Padding="12" Margin="20,9,9,8">
                                         
                                         
                                           
@@ -210,7 +213,7 @@
                                    </controls:GlassCard>
                           </RadioButton>
                           <RadioButton>
-                          <controls:GlassCard HorizontalAlignment="Stretch" IsInteractive="True"  CornerRadius="12" Classes.Primary="{Binding IsChecked, Mode=TwoWay, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=RadioButton}}" Padding="12" Margin="0,9,9,8">
+                          <controls:GlassCard HorizontalAlignment="Stretch" IsInteractive="True"  CornerRadius="12" Classes.Primary="{Binding IsChecked, Mode=TwoWay, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=RadioButton}}" Padding="12" Margin="20,9,9,8">
                               <controls:GlassCard.Resources>
                                   <Color x:Key="SukiBackground">Transparent</Color>
                               </controls:GlassCard.Resources>
@@ -245,9 +248,17 @@
                                           
                           </controls:GlassCard>
                           </RadioButton>
+                          
+                          <Button  HorizontalAlignment="Right" CornerRadius="50" BorderThickness="0" Margin="0,25,10,0" Click="newchatremote" Classes="Large Flat"  >
+                              <StackPanel Orientation="Horizontal" Spacing="8" Margin="0,0">
+                                  <avalonia:MaterialIcon Kind="ChatOutline"/>
+                                  <TextBlock Text="Chat" ></TextBlock>
+                              </StackPanel>
+                          </Button>
                       </StackPanel>
                   
             </StackPanel>
+            </ScrollViewer>
     </DockPanel>
         </controls:BusyArea>
         </Border>

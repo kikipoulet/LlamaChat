@@ -2,8 +2,10 @@
 using Avalonia.Animation;
 using Avalonia.Animation.Easings;
 using Avalonia.Controls;
+using Avalonia.Media;
 using Avalonia.Rendering.Composition;
 using Avalonia.Styling;
+using Avalonia.Threading;
 
 namespace LLamaChatBackend;
 
@@ -60,10 +62,11 @@ public static class AnimationExtensions
             interactElem.AttachedToVisualTree += (sender, args) =>
             {
                 interactElem.Animate<double>(Control.OpacityProperty, 0,1, TimeSpan.FromMilliseconds(value));
+               // interactElem.Animate<Transform>(Control.RenderTransformProperty, new ScaleTransform(2,1),new ScaleTransform(1,1), TimeSpan.FromMilliseconds(value));
             };
         }
         interactElem.SetValue(FadeInProperty, value);
     }
-    
+
   
 }

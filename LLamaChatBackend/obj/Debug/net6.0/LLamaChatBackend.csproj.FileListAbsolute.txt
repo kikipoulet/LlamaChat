@@ -26,3 +26,17 @@ C:/Users/Sepul/RiderProjects/LlamaChat/LLamaChatBackend/obj/Debug/net6.0/ref/LLa
 /home/user/RiderProjects/LlamaChat/LLamaChatBackend/obj/Debug/net6.0/refint/LLamaChatBackend.dll
 /home/user/RiderProjects/LlamaChat/LLamaChatBackend/obj/Debug/net6.0/LLamaChatBackend.pdb
 /home/user/RiderProjects/LlamaChat/LLamaChatBackend/obj/Debug/net6.0/ref/LLamaChatBackend.dll
+C:\Users\Sepul\RiderProjects\LlamaChat\LLamaChatBackend\bin\Debug\net6.0\LLamaChatBackend.deps.json
+C:\Users\Sepul\RiderProjects\LlamaChat\LLamaChatBackend\bin\Debug\net6.0\LLamaChatBackend.dll
+C:\Users\Sepul\RiderProjects\LlamaChat\LLamaChatBackend\bin\Debug\net6.0\LLamaChatBackend.pdb
+C:\Users\Sepul\RiderProjects\LlamaChat\LLamaChatBackend\obj\Debug\net6.0\LLamaChatBackend.csproj.AssemblyReference.cache
+C:\Users\Sepul\RiderProjects\LlamaChat\LLamaChatBackend\obj\Debug\net6.0\Avalonia\Resources.Inputs.cache
+C:\Users\Sepul\RiderProjects\LlamaChat\LLamaChatBackend\obj\Debug\net6.0\LLamaChatBackend.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Sepul\RiderProjects\LlamaChat\LLamaChatBackend\obj\Debug\net6.0\LLamaChatBackend.AssemblyInfoInputs.cache
+C:\Users\Sepul\RiderProjects\LlamaChat\LLamaChatBackend\obj\Debug\net6.0\LLamaChatBackend.AssemblyInfo.cs
+C:\Users\Sepul\RiderProjects\LlamaChat\LLamaChatBackend\obj\Debug\net6.0\LLamaChatBackend.csproj.CoreCompileInputs.cache
+C:\Users\Sepul\RiderProjects\LlamaChat\LLamaChatBackend\obj\Debug\net6.0\LLamaChatBackend.sourcelink.json
+C:\Users\Sepul\RiderProjects\LlamaChat\LLamaChatBackend\obj\Debug\net6.0\LLamaChatBackend.dll
+C:\Users\Sepul\RiderProjects\LlamaChat\LLamaChatBackend\obj\Debug\net6.0\refint\LLamaChatBackend.dll
+C:\Users\Sepul\RiderProjects\LlamaChat\LLamaChatBackend\obj\Debug\net6.0\LLamaChatBackend.pdb
+C:\Users\Sepul\RiderProjects\LlamaChat\LLamaChatBackend\obj\Debug\net6.0\ref\LLamaChatBackend.dll

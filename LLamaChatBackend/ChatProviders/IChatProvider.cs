@@ -39,6 +39,8 @@ public partial class ChatProvider : ObservableObject
     }
 
     public virtual void StopAnswerGeneration(){}
+    
+    
     public virtual void InitChat(string modelPath, Chat? previouschat = null){}
 
     public virtual void Retry(){}

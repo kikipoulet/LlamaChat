@@ -29,17 +29,23 @@ public partial class EmptyChatView : UserControl
         InitializeComponent();
     }
 
-    private void newChat(object? sender, RoutedEventArgs e)
+    private void newChatlocal(object? sender, RoutedEventArgs e)
     {
         ChatProvider chatVM = null;
-        
-        if (this.Get<TabItem>("Tab0").IsSelected)
-        {
+      
             var modelName = this.Get<ListBox>("ListModels").SelectedItem?.ToString();
             chatVM = new LlamaChatVM();
             chatVM.InitChat(@"models\" + modelName);
-        }else if (this.Get<TabItem>("Tab1").IsSelected)
-        {
+       
+
+        this.StackNavigationPush(new ChatView(){DataContext = chatVM});
+    }
+
+    private void newchatremote(object? sender, RoutedEventArgs e)
+    {
+        ChatProvider chatVM = null;
+        
+        
             if (this.Get<RadioButton>("CheckDeepseek").IsChecked == true)
             {
                 chatVM= new OpenAIChatVM()
@@ -48,11 +54,10 @@ public partial class EmptyChatView : UserControl
                 };
                 chatVM.InitChat("DeepSeek Chat");
             }
-        }
+       
 
         this.StackNavigationPush(new ChatView(){DataContext = chatVM});
     }
-
 
     private void TextBox_OnTextChanged(object? sender, TextChangedEventArgs e)
     {

@@ -16,12 +16,37 @@
              xmlns:classes1="clr-namespace:LlamaChatBackend.Classes;assembly=LLamaChatBackend"
              xmlns:pages1="clr-namespace:LlamaChat.Pages;assembly=LLamaChatBackend"
              xmlns:lLamaChatBackend="clr-namespace:LLamaChatBackend;assembly=LLamaChatBackend"
+             xmlns:classes2="clr-namespace:LLamaChatBackend.Classes;assembly=LLamaChatBackend"
              x:DataType="llamaChatBackend:ChatProvider"  Name="MyChatView"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="LlamaChat.Pages.Chats.ChatView">
   
     <UserControl.Styles>
-     <Style Selector="Button.H:pointerover">
+        <Style Selector="Grid.FadeIn">
+            <Style.Animations>
+                <Animation Duration="0:0:0.400" IterationCount="1"
+                           FillMode="Forward"
+                           PlaybackDirection="Normal"
+                           >
+                    <KeyFrame Cue="0%">
+                        <Setter Property="Opacity" Value="0"/>
+                        <Setter Property="ScaleTransform.ScaleX" Value="0.8"></Setter>
+                        <Setter Property="ScaleTransform.ScaleY" Value="0.8"></Setter>
+                        <Setter Property="TranslateTransform.Y" Value="30"/>
+                        <Setter Property="TranslateTransform.X" Value="80"/>
+                    </KeyFrame>
+                   
+                    <KeyFrame Cue="100%">
+                        <Setter Property="Opacity" Value="1"/>
+                        <Setter Property="ScaleTransform.ScaleX" Value="1"></Setter>
+                        <Setter Property="ScaleTransform.ScaleY" Value="1"></Setter>
+                        <Setter Property="TranslateTransform.Y" Value="0"/>
+                        <Setter Property="TranslateTransform.X" Value="0"/>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+        <Style Selector="Button.H:pointerover">
          <Setter Property="Background" Value="{DynamicResource SukiPrimaryColor5}" />
      </Style>
      <Style Selector="Button.H:pressed">
@@ -124,13 +149,7 @@
                 
                 <Panel>
                     
-                    <StackPanel IsVisible="{Binding !CurrentChat.Messages.Count}" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <controls:GlassCard CornerRadius="120" Height="120" Width="120" >
-                            <Image Height="48" Width="48" Margin="13" Source="/Assets/icons8-artificial-intelligence-48.png"></Image>
-                        </controls:GlassCard>
-                        
-                        <TextBlock Classes="h3" Text="How can I help you today ?" Margin="15" HorizontalAlignment="Center"  ></TextBlock>
-                    </StackPanel>
+                   
                     
                     <ScrollViewer x:Name="MonScrollViewer" >
            
@@ -143,7 +162,8 @@
                <DataTemplate DataType="classes1:Message">
                    
                        
-                       <Grid lLamaChatBackend:AnimationExtensions.FadeIn="700" Margin="0,15">
+                       <Grid RenderTransformOrigin="50%,50%" Classes="FadeIn" Margin="0,15">
+                          
                            <Grid IsVisible="{Binding !IsUser}" ColumnDefinitions="5*,*">
                                <DockPanel Grid.Column="0">
                                    <Image DockPanel.Dock="Left"  Source="/Assets/icons8-artificial-intelligence-48.png" VerticalAlignment="Center" Margin="22,15,15,15"  Height="48" Width="48"></Image>
@@ -289,6 +309,7 @@
                                    <Image DockPanel.Dock="Right" Source="/Assets/icons8-user-48.png" VerticalAlignment="Center" Margin="15,15,22,15"  Height="48" Width="48"></Image>
             
                                    <controls:GlassCard CornerRadius="15" MinWidth="200" HorizontalAlignment="Right"  >
+                                      
                                        <TextBlock VerticalAlignment="Center" TextWrapping="Wrap" Text="{Binding Content}"></TextBlock>
                                    </controls:GlassCard>
                                </DockPanel>
@@ -301,6 +322,52 @@
            
            
        </ScrollViewer>
+                    
+                     <StackPanel IsVisible="{Binding !CurrentChat.Messages.Count}" IsHitTestVisible="{Binding !CurrentChat.Messages.Count}" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <controls:GlassCard CornerRadius="120" Height="120" Width="120" >
+                            <Image Height="48" Width="48" Margin="13" Source="/Assets/icons8-artificial-intelligence-48.png"></Image>
+                        </controls:GlassCard>
+                        
+                        <TextBlock Classes="h3" Text="How can I help you today ?" Margin="15" HorizontalAlignment="Center"  ></TextBlock>
+                        
+                         <ScrollViewer  Margin="0,40,0,0">
+                             <StackPanel Orientation="Horizontal">
+                             <ListBox SelectedIndex="{Binding SelectedPrompt, Mode=TwoWay}" ItemsSource="{Binding Prompts}" x:DataType="pages1:ResourcesVM" DataContext="{x:Static pages1:ResourcesVM.Instance}" Classes="Void">
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Horizontal"/>
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+                            <ListBox.ItemTemplate>
+                                <DataTemplate x:DataType="classes2:Prompt" >
+                                    <RadioButton Width="300" Height="150"  Classes="GigaChips"   IsChecked="{Binding Path=IsSelected, Mode=TwoWay, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBoxItem}}" >
+                                      <DockPanel>
+                                          <avalonia:MaterialIcon Foreground="{DynamicResource SukiPrimaryColor}" Kind="SparklesOutline" DockPanel.Dock="Left" VerticalAlignment="Top" Margin="0,2,10,0"></avalonia:MaterialIcon>
+                                          <StackPanel>
+                                              <TextBlock Foreground="{DynamicResource SukiText}" FontSize="16" FontWeight="DemiBold" Text="{Binding Name}"></TextBlock>
+                                              <Panel Height="100"  Margin="0,8,0,0">
+                                                  <Panel.OpacityMask>
+                                                      <LinearGradientBrush StartPoint="50%,0%" EndPoint="50%,100%">
+                                                          <GradientStop Color="Black" Offset="0.5"></GradientStop>
+                                                          <GradientStop Color="Transparent" Offset="1"></GradientStop>
+                                                      </LinearGradientBrush>
+                                                  </Panel.OpacityMask>
+                                                  <TextBlock TextWrapping="Wrap"  FontSize="14"  Foreground="{DynamicResource SukiLowText}" Text="{Binding Content}"></TextBlock>
+
+                                              </Panel>
+                                          </StackPanel>
+                                      </DockPanel>
+                                      
+                                    </RadioButton>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                                 <Button Click="CreatePrompt" Margin="30,0,0,0" Padding="0" CornerRadius="50" Height="50" Width="50" VerticalAlignment="Center">
+                                     <avalonia:MaterialIcon Kind="Plus" Foreground="{DynamicResource SukilowText}"></avalonia:MaterialIcon>
+                                 </Button>
+                             </StackPanel>
+                         </ScrollViewer>
+                    </StackPanel>
                  
                     </Panel>
    </DockPanel>

@@ -5,6 +5,7 @@ using LLama.Common;
 using LlamaChatBackend.Classes;
 using OpenAI;
 using System.Threading.Tasks;
+using LlamaChat.Pages;
 using Newtonsoft.Json;
 using OpenAI.Assistants;
 using OpenAI.Chat;
@@ -36,6 +37,8 @@ public class OpenAIChatVM:  ChatProvider
     {
         File.WriteAllText("chats\\" +CurrentChat.Title + "####" + CurrentChat.CreationDate.ToString().Replace(':','_'),JsonConvert.SerializeObject(CurrentChat));
     }
+
+    private List<OpenAI.Chat.Message> messages = new List<OpenAI.Chat.Message>();
     
     public override void InitChat(string modelPath, Chat? previouschat = null)
     {
@@ -54,10 +57,7 @@ public class OpenAIChatVM:  ChatProvider
             using var api = new OpenAIClient( new OpenAIAuthentication(Key), new OpenAIClientSettings(Domain));
             
             
-            var messages = new List<OpenAI.Chat.Message>
-            {
-                new(Role.System, "Transcript of a dialog, where the User interacts with you, its Assistant. You are helpful, kind, honest, good at writing, and never fails to answer the User's requests immediately and with precision. You are an expert in various scientific disciplines, including physics, chemistry, and biology. Explain scientific concepts, theories, and phenomena in an engaging and accessible way. Use lots of emojis in your answers."),
-            };
+        
             
           
             foreach (var currentChatMessage in CurrentChat.Messages)
@@ -155,6 +155,9 @@ public class OpenAIChatVM:  ChatProvider
     
     public override async void SendMessage()
     {
+        if(!messages.Any())
+            messages.Add(new OpenAI.Chat.Message(Role.System, ResourcesVM.Instance.Prompts[ResourcesVM.Instance.SelectedPrompt].Content));
+            
         if (CurrentChat?.Title?.Length == 0)
             CurrentChat.Title = CurrentMessage.Length > 30 ? CurrentMessage.Substring(0, 30) + " .." : CurrentMessage;
         

@@ -12,6 +12,7 @@ using LLama;
 using LLama.Abstractions;
 using LLama.Common;
 using LLama.Native;
+using LlamaChat.Pages;
 using LlamaChatBackend.Classes;
 using MvvmStupidPocHelper;
 using Newtonsoft.Json;
@@ -44,6 +45,8 @@ public partial class LlamaChatVM :  ChatProvider
         GenerationAnswerToken.Cancel();
     }
     
+   
+    
     public override void InitChat(string modelPath, Chat? previouschat = null)
     {
         var cts = new CancellationTokenSource();
@@ -73,9 +76,8 @@ public partial class LlamaChatVM :  ChatProvider
             var executor = new InteractiveExecutor(context);
 
 // Add chat histories as prompt to tell AI how to act.
-            var chatHistory = new ChatHistory(); 
-            
-            chatHistory.AddMessage(AuthorRole.System, "Transcript of a dialog, where the User interacts with you, its Assistant. You are helpful, kind, honest, good at writing, and never fails to answer the User's requests immediately and with precision. You are an expert in various scientific disciplines, including physics, chemistry, and biology. Explain scientific concepts, theories, and phenomena in an engaging and accessible way. Use lots of emojis in your answers.");
+            var chatHistory = new ChatHistory();
+
           
             foreach (var currentChatMessage in CurrentChat.Messages)
                 chatHistory.AddMessage( currentChatMessage.IsUser ? AuthorRole.User : AuthorRole.Assistant, currentChatMessage.Content);
@@ -115,7 +117,7 @@ public partial class LlamaChatVM :  ChatProvider
                     Temperature = AdvancedSettings.Temperature,
                     FrequencyPenalty = AdvancedSettings.FrequencePenalty,
                     RepeatPenalty = AdvancedSettings.Repeatpenalty,
-                    AntiPrompts = new List<string> { "User:" } // Stop generation once antiprompts appear.
+                    AntiPrompts = new List<string> { "User:", "System:" } // Stop generation once antiprompts appear.
                     , 
                 
                 };
@@ -194,6 +196,10 @@ public partial class LlamaChatVM :  ChatProvider
     
     public override async void SendMessage()
     {
+
+        if(!session.History.Messages.Any())
+            session.History.AddMessage(AuthorRole.System, ResourcesVM.Instance.Prompts[ResourcesVM.Instance.SelectedPrompt].Content);
+        
         if (CurrentChat?.Title?.Length == 0)
             CurrentChat.Title = CurrentMessage.Length > 30 ? CurrentMessage.Substring(0, 30) + " .." : CurrentMessage;
         

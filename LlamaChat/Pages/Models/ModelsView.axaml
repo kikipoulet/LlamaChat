@@ -17,7 +17,7 @@
       <system:Double x:Key="GlassOpacity">0.2</system:Double>
       <chats:FilenameToStringConverter x:Key="FilenameConverter"></chats:FilenameToStringConverter>
   </UserControl.Resources>
-    <controls:GlassCard>
+    <controls:GlassCard CornerRadius="25">
         <Panel>
         <controls:SukiBackground Margin="-30"></controls:SukiBackground>
       

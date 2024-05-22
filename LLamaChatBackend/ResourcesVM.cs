@@ -2,11 +2,14 @@
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using System.Text.Json.Nodes;
 using Avalonia.Controls;
 using CommunityToolkit.Mvvm.ComponentModel;
 using LlamaChat.Classes;
 using LlamaChatBackend;
+using LLamaChatBackend.Classes;
 using MvvmStupidPocHelper;
+using Newtonsoft.Json;
 using Xamarin.Essentials;
 
 namespace LlamaChat.Pages;
@@ -16,8 +19,37 @@ public partial class ResourcesVM : Singleton<ResourcesVM>
     public ScrollViewer ChatScroll = null;
     
     [ObservableProperty] private ChatProvider chatVM = new LlamaChatVM();  
+    
+    [ObservableProperty] private ObservableCollection<Prompt> prompts = GetPrompts();
+    [ObservableProperty] private int selectedPrompt = 0;
 
-[ObservableProperty] private ObservableCollection<string> recentChats = GetChats();
+    public static ObservableCollection<Prompt> GetPrompts()
+    {
+        var collection =  new ObservableCollection<Prompt>()
+        {
+            new Prompt()
+            {
+                Name = "Assistant",
+                Content =
+                    "Transcript of a dialog, where the User interacts with you, its Assistant. You are helpful, kind, honest, good at writing, and never fails to answer the User's requests immediately and with precision. You are an expert in various scientific disciplines, including physics, chemistry, and biology. Explain scientific concepts, theories, and phenomena in an engaging and accessible way. Use lots of emojis in your answers."
+            }
+        };
+
+        var d = new DirectoryInfo(GetRootPath() + "Prompts");
+        if(!d.Exists)
+            d.Create();
+        
+        foreach (var fileInfo in d.GetFiles())
+            try
+            {
+                collection.Add(JsonConvert.DeserializeObject<Prompt>(File.ReadAllText(fileInfo.FullName)));
+            }catch{}
+            
+
+        return collection;
+    }
+
+    [ObservableProperty] private ObservableCollection<string> recentChats = GetChats();
 
 public static string GetRootPath()
 {

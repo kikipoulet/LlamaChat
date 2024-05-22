@@ -92,6 +92,10 @@ public partial class ChatView : UserControl
         }
     }
 
-  
+
+    private void CreatePrompt(object? sender, RoutedEventArgs e)
+    {
+        SukiHost.ShowDialog(new CreatepromptView(), false,true);
+    }
 }
 

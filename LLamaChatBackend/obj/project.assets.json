@@ -965,24 +965,36 @@
     ]
   },
   "packageFolders": {
-    "/home/user/.nuget/packages/": {}
+    "C:\\Users\\Sepul\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/user/RiderProjects/LlamaChat/LLamaChatBackend/LLamaChatBackend.csproj",
+      "projectUniqueName": "C:\\Users\\Sepul\\RiderProjects\\LlamaChat\\LLamaChatBackend\\LLamaChatBackend.csproj",
       "projectName": "LLamaChatBackend",
-      "projectPath": "/home/user/RiderProjects/LlamaChat/LLamaChatBackend/LLamaChatBackend.csproj",
-      "packagesPath": "/home/user/.nuget/packages/",
-      "outputPath": "/home/user/RiderProjects/LlamaChat/LLamaChatBackend/obj/",
+      "projectPath": "C:\\Users\\Sepul\\RiderProjects\\LlamaChat\\LLamaChatBackend\\LLamaChatBackend.csproj",
+      "packagesPath": "C:\\Users\\Sepul\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Sepul\\RiderProjects\\LlamaChat\\LLamaChatBackend\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet"
+      ],
       "configFilePaths": [
-        "/home/user/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\Sepul\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
+        "C:\\Users\\Sepul\\Downloads": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -1057,6 +1069,10 @@
           {
             "name": "Microsoft.NETCore.App.Ref",
             "version": "[6.0.26, 6.0.26]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[6.0.26, 6.0.26]"
           }
         ],
         "frameworkReferences": {
@@ -1064,7 +1080,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/home/user/.dotnet/sdk/8.0.101/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }

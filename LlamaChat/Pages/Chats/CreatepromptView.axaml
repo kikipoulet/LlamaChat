@@ -1,0 +1,26 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:SukiUI.Controls;assembly=SukiUI"
+             xmlns:system="clr-namespace:System;assembly=System.Runtime"
+             xmlns:chats="clr-namespace:LlamaChat.Pages.Chats"
+             mc:Ignorable="d" Width="400" Height="450" d:DesignWidth="400" d:DesignHeight="450"
+             x:Class="LlamaChat.Pages.Chats.CreatepromptView">
+    <UserControl.Resources>
+        <system:Double x:Key="GlassOpacity">0.2</system:Double>
+        <chats:FilenameToStringConverter x:Key="FilenameConverter"></chats:FilenameToStringConverter>
+    </UserControl.Resources>
+    <Panel>
+    <controls:GlassCard Margin="0,0,0,25" CornerRadius="25">
+        <Panel>
+            <controls:SukiBackground Margin="-30"></controls:SukiBackground>
+            <TextBox Name="PromptName" FontSize="18" Watermark="Prompt Name" VerticalAlignment="Top"></TextBox>
+            <TextBox Name="PromptContent" TextWrapping="Wrap" BorderThickness="1" CornerRadius="10" Watermark="Write your Content .." VerticalContentAlignment="Top" Margin="0,70,0,20"></TextBox>
+        </Panel>
+        </controls:GlassCard>
+        <Button Click="Create" Height="45" Classes="Flat Large Rounded" VerticalAlignment="Bottom" HorizontalAlignment="Center" CornerRadius="50">
+            <TextBlock Text="Create Prompt" FontSize="16"></TextBlock>
+        </Button>
+    </Panel>
+</UserControl>
